@@ -1,0 +1,49 @@
+body{
+    font-family: 'Roboto';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+.card{
+    height: 430px;
+    width: 400px;
+    border: 1px solid rgb(193, 196, 198) ;
+}
+.year,.date{
+    text-align: center;
+}
+.year{
+    background-color: #ef5321;
+    font-size: 15px;
+    color: aliceblue;
+    margin-top: -15px;
+    margin-bottom: -40px;
+}
+.date{
+    background-color: #fe6d40;
+    color: aliceblue;
+    padding-bottom: 15px;
+    line-height: 0px;
+}
+#ngay{
+    font-weight: 400;
+    font-size: 40px;
+    padding-top: 70px;
+}
+div.content{
+    color:#4a4a4a;
+    list-style: none;
+    padding-left: 20px;
+    border-bottom: 2px solid #dad4d2;
+
+}
+#code{
+    font-weight: 400;
+    color: #464646;
+}
+a{
+    color:#467ee8 ;
+    text-decoration: none;
+    padding-left: 20px;
+}
