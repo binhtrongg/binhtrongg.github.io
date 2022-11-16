@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Phân tích nghiệp vụ: Action - Event - Status</h1>
+    <p>14 tháng 10, 2021 - 655 lượt xem</p>
+    <button>desing pattern</button>
+    <p>Gần đây tôi tham gia thiết kế một dự án. Các thành viên trong nhóm cứ tạo những bảng có trường status, rồi thêm trường create_date và modified_date nhìn rất giống trong sách. Nhưng họ không hiểu rõ khác biệt giữa Action (Hành động) - Event (Sự kiện) - Status (Trạng thái) trong phân tích thiết kế phần mềm. Kết quả là bảng nhiều, cột nhiều nhưng không xử lý hết yêu cầu nghiệp vụ. Bàn tới bàn lui, mà không giải quyết được nghiệp vụ.</p>
+    <h2>Action là động từ, Event là danh từ, còn Status là tính từ</h2>
+    <p>Action: Khách hàng đặt hàng - customer orders an item</p>
+    <p>Event: Bản ghi đơn hàng được tạo ra - order record is created</p>
+    <p>Status: Trạng thái của đơn hàng là "được tạo" - order status is "created"</p>
+    <p>Action mô tả một người (role) hành động hay hệ thống (system) thực hiện tác vụ. Ở đây tôi cố ý phân biệt:</p>
+    <ul>
+        <li>Người tác động lên một đối tượng - User does some thing</li>
+        <li>Hệ thống (phần mềm) thì thực hiện tác vụ - System run a task</li>
+    </ul>
+    <p>Nếu bạn sử CSDL quan hệ bạn có thể lưu lại từng dòng action theo thời gian. Tuy nhiên sau một hành động có ít nhất 2 sự kiện: thành công hoặc thất bại. Nếu bạn chỉ quan tâm đến sự kiện hữu ích với hệ thống thì bạn nên dùng event.</p>
+    <h2>Liệt kê đủ sự kiện / tác vụ phát sinh sau một hành động ban đầu.</h2>
+    <p>Khi khách hàng đặt mua một mặt hàng ~ action: customer orders an item. Có những sự kiện và tác vụ phát sinh:</p>
+    <ol>
+        <li>Event: Đơn hàng được tạo ra ~ order is created.</li>
+        <li>Action: Hệ thống kho kiểm tra số lượng hàng tồn kho - inventory check item availability. Hoặc với shop nhỏ, chỉ cần truy vấn số lượng hàng có sẵn.</li>
+        <li>Nếu mặt hàng ở trạng thái hết hàng (status out of stock) --> action: hệ thống tự động đặt mua bổ xung hàng hoặc trả về thông báo hết hàng hoặc email thông báo cho phòng đặt hàng.</li>
+    </ol>
+    <p>Liệt kê đủ thì cơ bản hiểu được yêu cầu nghiệp vụ. Nhưng việc chúng ta hiện thực hoá nghiệp vụ như thế nào xin mời đọc tiếp.</p>
+    <h3>Lưu lại chân thực các sự kiện đã diễn ra - store immutable events</h3>
+    <p>Nếu bạn thiết kế một hệ thống lớn, microservice phức tạp. Ở đó các microservice trao đổi với nhau qua những event, message thi bạn cần phải đọc khá nhiều pattern này nọ, phức tạp. Bài viết này dành cho những bạn sinh viên đang học nghề, code với một CSDL:</p>
+    <ul>
+        <li>Hãy tạo bảng lưu sự kiện: order_event, member_event, inventory_event</li>
+        <li>Tạo bảng lưu giá trị theo thời gian ví dụ lịch sử giá mặt hàng. Mỗi dòng trong đơn hàng, tham chiếu đến giá tại thời điểm đặt hàng. Thay đổi giá hay tạo khuyến mại thì tạo bản ghi lưu giá mới, không sửa trực tiếp vào bản ghi cũ.</li>
+    </ul>
+    <p>Khi lưu sự kiện theo thời gian, đôi khi chúng ta cần lưu cả trạng thái kết quả của sự kiện đó. Vậy các bạn cần liệt kê các trạng thái có thể xảy ra.</p>
+    <img src="https://dwarvesf-outline.s3.amazonaws.com/uploads/08852c07-eed1-4703-b411-fe1581277313/67db667c-f11d-46f8-8b5b-48fe348916d2/image.png" alt="anh bro vip">
+    <p>Liệt kê các sự kiện (event) một lớp học ở Techmaster:</p>
+    <ol>
+        <li>Giáo vụ lên lịch khai giảng một lớp học - Staff schedules a class</li>
+        <li>Giáo vụ điều chỉnh lịch khai giảng - Staff reschedules a class</li>
+        <li>Giáo vụ thu học phí và chuyển sinh viên vào lớp - Staff adds student to clas</li>
+    </ol>
+    <p>Rõ ràng không phải sự kiện nào cũng thay đổi trạng thái của lớp học, hoặc có lúc thay đổi có lúc không</p>
+    <ul>
+        <li>Ví dụ 1: thêm sinh viên vào lớp, không chuyển lớp từ scheduled sang active</li>
+        <li>Ví dụ 2: file được tạo ra trong ổ cứng (file is created) là sự kiện tác động lên ổ cứng. Ổ cứng chuyển sang trạng thái đầy disk full sau khi rất nhiều file kích thước khủng tạo ra</li>
+    </ul>
+    <img src="./image/c5k4s6451co6ehverbt0.png" alt="hay qua">
+    fb ca nhan <a href="https://www.facebook.com/chonqqq"></a>
+</body>
+</html>

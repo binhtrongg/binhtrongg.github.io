@@ -1,0 +1,33 @@
+h2 {
+    color: brown;
+}
+/* chon the h2 */
+
+#heading {
+    color: aqua !important;
+}
+/* chon the id  */
+h2#heading{
+    color: black;
+
+}
+/* h2#heading chọn thẻ id heading nằm trong thẻ h2 */
+/* h2 >heading chọn thẻ id heading là con trực tiếp của h2 */
+body >h2#heading {
+    color: blueviolet;
+} 
+/* !important : quan trọng nhất */
+.text-center{
+    text-align: center;
+    color: rgb(40 121 251);
+}
+.text-big{
+    font-size: 50px;
+}
+.text-uppercase {
+    text-transform: uppercase;
+    object-fit: cover;
+}
+h3.text-big.text-center.text-uppercase
+/*    object-fit: cover giữ tỉ lệ ảnh */
+

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, td, th {
+            border: 1px solid black;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+            <th>no</th>
+            <th>fullname</th>
+            <th>salary</th>
+            <th>position</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>chonq</td>
+                <td>200$</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>chonq2</td>
+                <td>300$</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>chonq3</td>
+                <td>400$</td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+            <th>no</th>
+            <th>fullname</th>
+            <th>salary</th>
+            <th>position</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2">1</td>
+                <td rowspan="2">chonq</td>
+                <td>200$</td>
+            </tr>
+            <tr>
+                
+                <td>chonq</td>
+                <td>300$</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>chonq3</td>
+                <td>400$</td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+            <th rowspan="2">no</th>
+            <th rowspan="2">name</th>
+            <th colspan="2">ad</th>
+            </tr>
+            <tr>
+                <th>city</th>
+                <th>ct</th>
+                </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>chonq</td>
+                <td>200$</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>chonq2</td>
+                <td>300$</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>chonq3</td>
+                <td>400$</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

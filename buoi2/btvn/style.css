@@ -1,0 +1,26 @@
+* {
+    /* text-align: center; */
+}
+
+body{
+    color: #fff;
+    background-color: #30598c;
+    margin-top: 50px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+ul {
+    list-style: none;
+    font-size: 13px;
+    
+}
+a {
+    text-decoration: none;
+    color: #fff;
+}
+h2{
+    font-size: 18px;
+}
+span{
+    size: 200px;
+}

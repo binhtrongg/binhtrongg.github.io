@@ -1,0 +1,30 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); */
+/* font-family: 'Roboto', sans-serif; */
+body{
+    font-family: 'Roboto', sans-serif;
+    
+
+}
+
+.card {
+    width: 320px;
+    background-color: aliceblue;
+
+}
+.content h3{
+    color: #464646;
+    font-size: 19px;
+    font-weight: 400;
+}
+img{
+    max-width: 100%;
+}
+.content p{
+    color: #757575;
+    font-size: 14px;
+    font-weight: 100;
+}
+.content p span{
+    color: #ffd600;
+}
+/* pasding margin */
