@@ -100,6 +100,9 @@ img:hover{
 .rung img{
   max-width: 100%;
 }
+audio{
+  width: 70%;
+}
 
 @keyframes animate{
   0%{
