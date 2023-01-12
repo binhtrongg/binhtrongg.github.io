@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Trần Bình Trọng",
+    "email": "binhtrong0504@gmail.com",
+    "password": "trong1123",
+    "phoneNumber": "0379221205",
+    "address": "sân bay nội bài"
+  },
+  {
+    "id": 2,
+    "name": "Trần pink chọng",
+    "email": "chonqcoder@gmail.com",
+    "password": "trong123",
+    "phoneNumber": "0379221205",
+    "address": "Sân Bay Nội Bài"
+  },
+  {
+    "id": 3,
+    "name": "trọng",
+    "email": "trongdeptrai@gmail.com",
+    "password": "trong123",
+    "phoneNumber": "",
+    "address": ""
+  },
+  {
+    "id": 4,
+    "name": "trôngk",
+    "email": "trongok@gmail.com",
+    "password": "trong123",
+    "phoneNumber": "",
+    "address": ""
+  }
+]

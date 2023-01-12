@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "iPhone 14 Pro Max",
+    "brand": "Apple",
+    "quantity": 5,
+    "price": 31990000
+  },
+  {
+    "id": 2,
+    "name": "iPhone 14 Pro",
+    "brand": "Apple",
+    "quantity": 7,
+    "price": 28990000
+  },
+  {
+    "id": 3,
+    "name": "AirPods Pro",
+    "brand": "Apple",
+    "quantity": 17,
+    "price": 4549000
+  },
+  {
+    "id": 4,
+    "name": "Samsung Galaxy Z Fold4",
+    "brand": "Samsung",
+    "quantity": 99,
+    "price": 34990000
+  },
+  {
+    "id": 5,
+    "name": "Acer Nitro 5",
+    "brand": "Acer",
+    "quantity": 99,
+    "price": 24690000
+  },
+  {
+    "id": 6,
+    "name": "Xiaomi Redmi A1",
+    "brand": "Xiaomi",
+    "quantity": 99,
+    "price": 2090000
+  },
+  {
+    "id": 7,
+    "name": "Logitech M221",
+    "brand": "Logitech",
+    "quantity": 99,
+    "price": 300000
+  },
+  {
+    "id": 8,
+    "name": "MacBook Pro 16",
+    "brand": "Apple",
+    "quantity": 99,
+    "price": 68990000
+  },
+  {
+    "id": 9,
+    "name": "Bùi Hiên",
+    "brand": "PeoPle",
+    "quantity": 99,
+    "price": 15000000
+  },
+  {
+    "id": 11,
+    "name": "trọng",
+    "brand": "people",
+    "quantity": 99,
+    "price": 15000000
+  }
+]
