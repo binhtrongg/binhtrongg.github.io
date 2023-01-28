@@ -1,13 +1,1 @@
-[
-  {
-    "email": "chonqcoder@gmail.com",
-    "product": {
-      "id": 4,
-      "name": "Samsung Galaxy Z Fold4",
-      "brand": "Samsung",
-      "quantity": 8,
-      "price": 34990000
-    },
-    "quantityOnCart": 5
-  }
-]
+[]

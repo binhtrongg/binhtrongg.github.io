@@ -34,4 +34,8 @@ public class ProductController {
     public void updateProductQuantity(int id, int quantity) {
         productServie.updateProductQuantity(id,quantity);
     }
+
+    public void updatePrice(int id, int price) {
+        productServie.updatePrice(id,price);
+    }
 }

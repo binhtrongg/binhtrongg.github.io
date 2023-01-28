@@ -62,4 +62,9 @@ public class ProductRepository {
         product.setQuantity(quantity);;
         FileUtils.saveDataToFile("product.json",findAllProduct());
     }
+
+    public void updatePrice(Product product, int price) {
+        product.setPrice(price);
+        FileUtils.saveDataToFile("product.json",findAllProduct());
+    }
 }

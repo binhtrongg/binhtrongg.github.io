@@ -1,7 +1,17 @@
 [
   {
     "email": "binhtrong0504@gmail.com",
-    "money": 838460000,
+    "money": 717829000,
+    "password": "105204"
+  },
+  {
+    "email": "chonqcoder@gmail.com",
+    "money": 0,
+    "password": "105204"
+  },
+  {
+    "email": "emtrong@gmail.com",
+    "money": 0,
     "password": "105204"
   }
 ]

@@ -21,12 +21,13 @@ public class UserSerVice {
         return false;
     }
 
-    public void getName(String email) {
+    public String getName(String email) {
         for (User user:userRepository.findAllUser()) {
             if (user.getEmail().equalsIgnoreCase(email)){
-                System.out.println("\n---------Xin chào " + user.getName()+"--------");
+                return user.getName();
             }
         }
+        return email;
     }
 
     public String  getAddress(String email) {
@@ -58,7 +59,7 @@ public class UserSerVice {
 
     public boolean checkEmailExist(String emailSignup) {
             for (User user : allUser()) {
-                if (Objects.equals(user.getEmail(), emailSignup))
+                if (user.getEmail().equals(emailSignup))
                     return true;
             }
             return false;

@@ -84,6 +84,51 @@ public class FileUtils {
             return new ArrayList<>();
         }
     }
+    public static ArrayList<Order> getOrderDataFromFile(String fileName) {
+
+        try {
+            Gson gson = new Gson();
+            Reader reader = Files.newBufferedReader(Paths.get(fileName));
+            Type type = new TypeToken<ArrayList<Order>>() {
+            }.getType();
+            ArrayList<Order> order = gson.fromJson(reader, type);
+            reader.close();
+            return order;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+    public static ArrayList<HistoryTran> getHistoryDataFromFile(String fileName) {
+
+        try {
+            Gson gson = new Gson();
+            Reader reader = Files.newBufferedReader(Paths.get(fileName));
+            Type type = new TypeToken<ArrayList<HistoryTran>>() {
+            }.getType();
+            ArrayList<HistoryTran> historyTrans = gson.fromJson(reader, type);
+            reader.close();
+            return historyTrans;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+    public static ArrayList<Feedback> getFbFromFile(String fileName) {
+
+        try {
+            Gson gson = new Gson();
+            Reader reader = Files.newBufferedReader(Paths.get(fileName));
+            Type type = new TypeToken<ArrayList<Feedback>>() {
+            }.getType();
+            ArrayList<Feedback> feedbacks = gson.fromJson(reader, type);
+            reader.close();
+            return feedbacks;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
     public static void saveDataToFile(String fileName, Object obj) {
         try {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();

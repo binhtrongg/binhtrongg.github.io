@@ -1,6 +1,9 @@
 package tech_shop.backend.controller;
 
+import tech_shop.backend.model.HistoryTran;
 import tech_shop.backend.service.EpayService;
+
+import java.util.List;
 
 public class EpayController {
     static final EpayService epayService=new EpayService();
@@ -24,4 +27,11 @@ public class EpayController {
         epayService.withdraw(email,money);
     }
 
+    public void creatHistory(HistoryTran historyTran) {
+        epayService.creatHistory(historyTran);
+    }
+
+    public List<HistoryTran> getHistory(String email) {
+        return epayService.getHistory(email);
+    }
 }

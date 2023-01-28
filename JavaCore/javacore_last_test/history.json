@@ -1,0 +1,44 @@
+[
+  {
+    "email": "binhtrong0504@gmail.com",
+    "time": "28/01/2023  16:57",
+    "money": -400000000,
+    "historyStatus": "THANHTOÁNĐƠNHÀNG"
+  },
+  {
+    "email": "binhtrong0504@gmail.com",
+    "time": "28/01/2023  16:55",
+    "money": -200000,
+    "historyStatus": "RÚTTIỀN"
+  },
+  {
+    "email": "binhtrong0504@gmail.com",
+    "time": "28/01/2023  16:54",
+    "money": 2000000,
+    "historyStatus": "NẠPTIỀN"
+  },
+  {
+    "email": "binhtrong0504@gmail.com",
+    "time": "28/01/2023  16:45",
+    "money": -20000000,
+    "historyStatus": "RÚTTIỀN"
+  },
+  {
+    "email": "binhtrong0504@gmail.com",
+    "time": "28/01/2023  16:44",
+    "money": 2000000,
+    "historyStatus": "NẠPTIỀN"
+  },
+  {
+    "email": "binhtrong0504@gmail.com",
+    "time": "28/01/2023  16:29",
+    "money": -300000000,
+    "historyStatus": "THANHTOÁNĐƠNHÀNG"
+  },
+  {
+    "email": "binhtrong0504@gmail.com",
+    "time": "28/01/2023  16:21",
+    "money": -144950000,
+    "historyStatus": "THANHTOÁNĐƠNHÀNG"
+  }
+]

@@ -43,4 +43,9 @@ public class ProductSerVice {
         Product product=findProductByID(id);
         productRepository.updateProductQuantity(product,quantity);
     }
+
+    public void updatePrice(int id, int price) {
+        Product product=findProductByID(id);
+        productRepository.updatePrice(product,price);
+    }
 }

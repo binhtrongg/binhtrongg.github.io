@@ -1,6 +1,7 @@
 package tech_shop.backend.repository;
 
 import tech_shop.backend.database.UserDatabase;
+import tech_shop.backend.exception.NotFoundException;
 import tech_shop.backend.model.User;
 import tech_shop.backend.utils.FileUtils;
 
@@ -9,6 +10,14 @@ import java.util.List;
 public class UserRepository {
     public List<User> findAllUser() {
         return UserDatabase.users;
+    }
+    public User findUserById(int id){
+        for (User user:findAllUser()) {
+            if (user.getId()==id){
+                return user;
+            }
+        }
+        throw new NotFoundException("Không có User nào có id "+id);
     }
 
     public void updatePassword(String email, String newPassword) {
@@ -39,7 +48,8 @@ public class UserRepository {
     }
 
     public void deleteUser(int id) {
-        findAllUser().removeIf(user -> user.getId()==id);
+        User user=findUserById(id);
+        findAllUser().remove(user);
         FileUtils.saveDataToFile("user.json",findAllUser());
     }
 

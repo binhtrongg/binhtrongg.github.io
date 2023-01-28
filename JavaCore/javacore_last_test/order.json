@@ -1,0 +1,189 @@
+[
+  {
+    "id": 1,
+    "email": "binhtrong0504@gmail.com",
+    "cart": [
+      {
+        "email": "binhtrong0504@gmail.com",
+        "product": {
+          "id": 1,
+          "name": "iPhone 14 Pro Max",
+          "brand": "Apple",
+          "quantity": 10,
+          "price": 31990000
+        },
+        "quantityOnCart": 6
+      },
+      {
+        "email": "binhtrong0504@gmail.com",
+        "product": {
+          "id": 2,
+          "name": "iPhone 14 Pro",
+          "brand": "Apple",
+          "quantity": 7,
+          "price": 28990000
+        },
+        "quantityOnCart": 6
+      }
+    ],
+    "name": "Trần Bình Trọng",
+    "phone": "0379221205",
+    "address": "Sân Bay Nội Bài",
+    "time": "28/01/2023  15:16",
+    "orderStatus": "ĐÃ_HỦY"
+  },
+  {
+    "id": 2,
+    "email": "binhtrong0504@gmail.com",
+    "cart": [
+      {
+        "email": "binhtrong0504@gmail.com",
+        "product": {
+          "id": 5,
+          "name": "Acer Nitro 5",
+          "brand": "Acer",
+          "quantity": 80,
+          "price": 24690000
+        },
+        "quantityOnCart": 10
+      }
+    ],
+    "name": "Trần Bình Trọng",
+    "phone": "0379221205",
+    "address": "Sân Bay Nội Bài",
+    "time": "28/01/2023  15:17",
+    "orderStatus": "ĐÃ_HỦY"
+  },
+  {
+    "id": 3,
+    "email": "binhtrong0504@gmail.com",
+    "cart": [
+      {
+        "email": "binhtrong0504@gmail.com",
+        "product": {
+          "id": 3,
+          "name": "AirPods Pro",
+          "brand": "Apple",
+          "quantity": 17,
+          "price": 4549000
+        },
+        "quantityOnCart": 9
+      }
+    ],
+    "name": "Trần Bình Trọng",
+    "phone": "0379221205",
+    "address": "Sân Bay Nội Bài",
+    "time": "20/01/2023  15:48",
+    "orderStatus": "ĐÃ_NHẬN_HÀNG"
+  },
+  {
+    "id": 4,
+    "email": "binhtrong0504@gmail.com",
+    "cart": [
+      {
+        "email": "binhtrong0504@gmail.com",
+        "product": {
+          "id": 3,
+          "name": "AirPods Pro",
+          "brand": "Apple",
+          "quantity": 20,
+          "price": 4549000
+        },
+        "quantityOnCart": 20
+      }
+    ],
+    "name": "Trần Bình Trọng",
+    "phone": "0346349528",
+    "address": "thái bình",
+    "time": "28/01/2023  16:18",
+    "orderStatus": "ĐÃ_HỦY"
+  },
+  {
+    "id": 5,
+    "email": "binhtrong0504@gmail.com",
+    "cart": [
+      {
+        "email": "binhtrong0504@gmail.com",
+        "product": {
+          "id": 2,
+          "name": "iPhone 14 Pro",
+          "brand": "Apple",
+          "quantity": 12,
+          "price": 28990000
+        },
+        "quantityOnCart": 5
+      }
+    ],
+    "name": "Trần Bình Trọng",
+    "phone": "0346349528",
+    "address": "thái bình",
+    "time": "28/01/2023  16:21",
+    "orderStatus": "ĐÃ_NHẬN_HÀNG"
+  },
+  {
+    "id": 6,
+    "email": "binhtrong0504@gmail.com",
+    "cart": [
+      {
+        "email": "binhtrong0504@gmail.com",
+        "product": {
+          "id": 5,
+          "name": "Acer Nitro 5",
+          "brand": "Acer",
+          "quantity": 80,
+          "price": 10000000
+        },
+        "quantityOnCart": 30
+      }
+    ],
+    "name": "Trần Bình Trọng",
+    "phone": "0379221205",
+    "address": "hà nội",
+    "time": "28/01/2023  16:29",
+    "orderStatus": "ĐÃ_NHẬN_HÀNG"
+  },
+  {
+    "id": 7,
+    "email": "binhtrong0504@gmail.com",
+    "cart": [
+      {
+        "email": "binhtrong0504@gmail.com",
+        "product": {
+          "id": 5,
+          "name": "Acer Nitro 5",
+          "brand": "Acer",
+          "quantity": 80,
+          "price": 10000000
+        },
+        "quantityOnCart": 40
+      }
+    ],
+    "name": "Trần Bình Trọng",
+    "phone": "0379221205",
+    "address": "hà nội",
+    "time": "28/01/2023  16:57",
+    "orderStatus": "ĐÃ_HỦY"
+  },
+  {
+    "id": 8,
+    "email": "binhtrong0504@gmail.com",
+    "cart": [
+      {
+        "email": "binhtrong0504@gmail.com",
+        "product": {
+          "id": 2,
+          "name": "iPhone 14 Pro",
+          "brand": "Apple",
+          "quantity": 30,
+          "price": 25000000
+        },
+        "quantityOnCart": 10
+      }
+    ],
+    "name": "Trần Bình Trọng",
+    "phone": "0379221205",
+    "address": "hà nội",
+    "time": "28/01/2023  16:58",
+    "orderStatus": "ĐÃ_NHẬN_HÀNG"
+  }
+]

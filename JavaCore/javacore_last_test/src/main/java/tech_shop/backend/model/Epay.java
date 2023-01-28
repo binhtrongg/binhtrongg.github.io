@@ -13,4 +13,5 @@ public class Epay {
     private String email;
     private int money;
     private String password;
+    HistoryTran historyTran;
 }

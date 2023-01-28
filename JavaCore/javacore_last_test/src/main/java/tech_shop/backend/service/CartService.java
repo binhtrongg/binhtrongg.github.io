@@ -4,7 +4,6 @@ import tech_shop.backend.database.CartDataBase;
 import tech_shop.backend.model.CartItem;
 import tech_shop.backend.model.Product;
 import tech_shop.backend.repository.CartRepository;
-import tech_shop.backend.utils.FileUtils;
 
 import java.util.ArrayList;
 import java.util.List;

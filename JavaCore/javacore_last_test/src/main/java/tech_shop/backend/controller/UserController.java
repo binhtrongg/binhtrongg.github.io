@@ -12,8 +12,8 @@ public class UserController {
         return userSerVice.userLogin(email,password);
     }
 
-    public void getname(String email) {
-        userSerVice.getName(email);
+    public String getname(String email) {
+        return userSerVice.getName(email);
     }
 
     public String getAddress(String email) {
@@ -51,4 +51,5 @@ public class UserController {
     public User getUser(String email) {
        return userSerVice.getUser(email);
     }
+
 }

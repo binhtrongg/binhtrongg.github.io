@@ -10,14 +10,14 @@ import tech_shop.backend.utils.FunctionUtils;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Product {
-    private int id;
-    private String name;
-    private String brand;
-    private int quantity;
-    private int price;
+public class HistoryTran {
+    private String email;
+    private String time;
+    private int money;
+    private HistoryStatus historyStatus;
+
     @Override
     public String toString() {
-        return String.format("| %-2s | %-23s | %-11s | %-8s | %-12s |",id,name,brand,quantity, FunctionUtils.currency(price));
+        return String.format("| %-20s | %-15s | %-16s |",time,FunctionUtils.currency(money),historyStatus);
     }
 }
