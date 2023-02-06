@@ -9,6 +9,7 @@ public class LC1859 {
         for (int i = 0; i <strings.length-1 ; i++) {
             for (int j = 0; j <strings.length-i-1 ; j++) {
                 if (strings[j].charAt(strings[j].length()-1)>strings[j+1].charAt(strings[j+1].length()-1)) {
+                    // so sánh số cuối cùng của mỗi từ rồi sắp xếp
                     swap(strings, j, j + 1);
                 }
             }
@@ -16,6 +17,7 @@ public class LC1859 {
         StringBuilder stringBuilder=new StringBuilder();
         for (int i = 0; i <strings.length ; i++) {
             stringBuilder.append(strings[i].substring(0,strings[i].length()-1)).append(" ");
+            // loại bỏ chữ số cuối cùng và ghép chuỗi
         }
         return stringBuilder.toString().trim();
     }
