@@ -1,0 +1,6 @@
+bài 1:l?y ra thông tin h?c sinh có ?i?m toán cao nh?t
+SELECT students.*,diemToan FROM students,scores WHERE students.id=SinhVien_id AND diemToan=(SELECT MAX(diemToan) FROM scores);
+bài 2:l?y ra thông tin h?c sinh có ?i?m v?n th?p nh?t
+SELECT students.*,diemVan FROM students,scores WHERE students.id=SinhVien_id AND diemVan=(SELECT MIN(diemVan) FROM scores);
+bài 3: l?y ra thông tin h?c sinh có ?i?m toán,v?n ho?c anh th?p nh?t
+SELECT students.*,diemToan,diemVan,diemAnh FROM students,scores WHERE students.id=SinhVien_id AND (diemToan=(SELECT MIN(diemToan)FROM scores) OR diemVan=(SELECT MIN(diemVan)FROM scores)OR diemAnh=(SELECT MIN(diemAnh)FROM scores));
