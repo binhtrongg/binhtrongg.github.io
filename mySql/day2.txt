@@ -1,0 +1,7 @@
+bai 1:lay ra sinhvien_id co tong diem toan cao nhat
+SELECT sinhvien_id,SUM(diem_toan) AS tongdiemtoan FROM tbl_diem GROUP BY sinhvien_id ORDER BY tongdiemtoan DESC LIMIT 1;
+
+bai 2:lay ra email sinh vien co tong diem van cao nhat
+SELECT email FROM tbl_sinhvien WHERE id =(SELECT tbl_diem.sinhvien_id FROM tbl_diem GROUP BY tbl_diem.sinhvien_id ORDER BY SUM(diem_van)DESC LIMIT 1);
+bai 3:
+SELECT ten_lop FROM tbl_sinhvien,tbl_lop,tbl_diem WHERE tbl_lop.id =(SELECT tbl_sinhvien.lop_id FROM tbl_sinhvien WHERE tbl_sinhvien.id=(SELECT tbl_diem.sinhvien_id FROM tbl_diem GROUP BY tbl_diem.sinhvien_id ORDER BY SUM(diem_anh) DESC LIMIT 1)) LIMIT 1;
