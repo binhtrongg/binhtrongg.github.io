@@ -1,0 +1,81 @@
+1.??a ra thông tin g?m mã s?, h? tên và tên khoa c?a t?t c? các gi?ng viên
+
+SELECT tblgiangvien.Magv,tblgiangvien.Hotengv,tblkhoa.Tenkhoa FROM tblgiangvien JOIN tblkhoa ON tblgiangvien.Makhoa=tblkhoa.Makhoa;
+
+2.??a ra thông tin g?m mã s?, h? tên và tên khoa c?a các gi?ng viên c?a khoa
+‘DIA LY va QLTN’
+
+SELECT tblgiangvien.Magv,tblgiangvien.Hotengv,tblkhoa.Tenkhoa FROM tblgiangvien JOIN tblkhoa ON tblgiangvien.Makhoa=tblkhoa.Makhoa WHERE tblkhoa.Makhoa='geo';
+
+3.Cho bi?t s? sinh viên c?a khoa ‘CONG NGHE SINH HOC’
+
+SELECT COUNT(tblsinhvien.Makhoa) AS AllBioStd FROM tblsinhvien JOIN tblkhoa ON tblsinhvien.Makhoa=tblkhoa.Makhoa WHERE tblkhoa.Makhoa ='bio';
+
+4.??a ra danh sách g?m mã s?, h? tên và tu?i c?a các sinh viên khoa ‘TOAN’
+
+SELECT tblsinhvien.Masv,tblsinhvien.Hotensv,YEAR(CURRENT_DATE)-tblsinhvien.Namsinh AS tuoi FROM tblsinhvien WHERE tblsinhvien.Makhoa='math';
+
+5.Cho bi?t s? gi?ng viên c?a khoa ‘CONG NGHE SINH HOC’
+
+SELECT COUNT(tblgiangvien.Makhoa) AS AllBioTeacher FROM tblgiangvien WHERE tblgiangvien.Makhoa ='bio';
+
+6.Cho bi?t thông tin v? sinh viên không tham gia th?c t?p
+
+SELECT * FROM tblsinhvien WHERE NOT EXISTS (
+    SELECT * FROM tblhuongdan 
+    WHERE tblsinhvien.Masv=tblhuongdan.Masv);
+
+7.??a ra mã khoa, tên khoa và s? gi?ng viên c?a m?i khoa
+
+SELECT tblkhoa.Makhoa, tblkhoa.Tenkhoa, COUNT(tblgiangvien.Makhoa) AS SoGV FROM tblkhoa LEFT JOIN tblgiangvien ON tblkhoa.Makhoa = tblgiangvien.Makhoa GROUP BY tblkhoa.Makhoa;
+
+8.Cho bi?t s? ?i?n tho?i c?a khoa mà sinh viên có tên ‘Le van son’ ?ang theo
+
+SELECT tblkhoa.Dienthoai
+FROM tblkhoa 
+JOIN tblsinhvien ON tblsinhvien.Makhoa = tblkhoa.Makhoa
+WHERE tblsinhvien.Hotensv = 'le van son';
+
+9.Cho bi?t mã s? và tên c?a các ?? tài do gi?ng viên ‘Tran son’ h??ng d?n
+
+SELECT tbldetai.Madt,tbldetai.Tendt FROM tbldetai WHERE tbldetai.Madt IN( SELECT tblhuongdan.Madt FROM tblhuongdan JOIN tblgiangvien ON tblhuongdan.Magv=tblgiangvien.Magv WHERE tblgiangvien.Hotengv='tran son');
+
+10.Cho bi?t tên ?? tài không có sinh viên nào th?c t?p
+
+SELECT tbldetai.Tendt FROM tbldetai WHERE NOT EXISTS (SELECT tblhuongdan.Madt FROM tblhuongdan WHERE tbldetai.Madt=tblhuongdan.Madt);
+
+11.Cho bi?t mã s?, h? tên, tên khoa c?a các gi?ng viên h??ng d?n t? 3 sinh
+viên tr? lên.
+
+SELECT tblgiangvien.Magv,tblgiangvien.Hotengv,tblkhoa.Tenkhoa FROM tblgiangvien 
+JOIN tblkhoa ON tblgiangvien.Makhoa=tblkhoa.Makhoa 
+JOIN tblhuongdan ON tblgiangvien.Magv=tblhuongdan.Magv GROUP BY tblhuongdan.Magv HAVING COUNT(tblhuongdan.Masv)=3;
+
+12.Cho bi?t mã s?, tên ?? tài c?a ?? tài có kinh phí cao nh?t
+
+SELECT Madt,Tendt FROM tbldetai WHERE Kinhphi IN(SELECT MAX(Kinhphi) FROM tbldetai);
+
+13.Cho bi?t mã s? và tên các ?? tài có nhi?u h?n 2 sinh viên tham gia th?c t?p
+
+SELECT tbldetai.Madt,tbldetai.Tendt FROM tbldetai JOIN tblhuongdan ON tbldetai.Madt=tblhuongdan.Madt GROUP BY tblhuongdan.Madt HAVING COUNT(tblhuongdan.Masv)>2;
+
+14.??a ra mã s?, h? tên và ?i?m c?a các sinh viên khoa ‘DIALY và QLTN’
+
+SELECT tblsinhvien.Masv,tblsinhvien.Hotensv,tblhuongdan.KetQua FROM tblsinhvien JOIN tblhuongdan ON tblsinhvien.Masv=tblhuongdan.Masv WHERE tblsinhvien.Makhoa='geo';
+
+15.??a ra tên khoa, s? l??ng sinh viên c?a m?i khoa
+
+SELECT tblkhoa.Tenkhoa,COUNT(tblsinhvien.Makhoa) AS soLuongSV FROM tblkhoa JOIN tblsinhvien ON tblkhoa.Makhoa=tblsinhvien.Makhoa GROUP BY tblkhoa.Tenkhoa;
+
+
+16.Cho bi?t thông tin v? các sinh viên th?c t?p t?i quê nhà
+
+SELECT tblsinhvien.* FROM tblsinhvien JOIN tbldetai ON tblsinhvien.Quequan=tbldetai.Noithuctap;
+
+17.Hãy cho bi?t thông tin v? nh?ng sinh viên ch?a có ?i?m th?c t?p
+
+SELECT * FROM tblsinhvien JOIN tblhuongdan ON tblsinhvien.Masv=tblhuongdan.Masv WHERE tblhuongdan.KetQua IS NULL;
+
+18.??a ra danh sách g?m mã s?, h? tên các sinh viên có ?i?m th?c t?p b?ng 0
+
+SELECT tblsinhvien.Masv,tblsinhvien.Hotensv FROM tblsinhvien JOIN tblhuongdan ON tblsinhvien.Masv=tblhuongdan.Masv WHERE tblhuongdan.KetQua=0;
