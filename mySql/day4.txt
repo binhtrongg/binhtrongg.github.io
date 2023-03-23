@@ -1,0 +1,63 @@
+1.Tr? giá trung bình c?a t?t c? các hóa ??n ???c bán ra trong n?m 2006 là bao nhiêu?
+
+SELECT AVG(invoices.total) AS tb FROM invoices WHERE YEAR(invoices.purchase_day) = 2021;
+
+2.Tính doanh thu bán hàng trong n?m 2006.
+
+SELECT SUM(invoices.total) AS tong FROM invoices WHERE YEAR(invoices.purchase_day)=2006;
+
+3.Tìm s? hóa ??n có tr? giá cao nh?t trong n?m 2006.
+
+SELECT invoice_id FROM invoices WHERE invoices.total=(SELECT MAX(invoices.total) FROM invoices);
+
+4.Tìm h? tên khách hàng ?ã mua hóa ??n có tr? giá cao nh?t trong n?m 2006.
+
+SELECT a.name FROM customers a JOIN invoices b ON a.id=b.customer_id WHERE b.total=(SELECT MAX(total) FROM invoices WHERE YEAR(invoices.purchase_day)=2006);
+
+5.In ra danh sách 3 khách hàng (MAKH, HOTEN) có doanh s? cao nh?t.
+
+SELECT a.id,a.name FROM customers a ORDER BY doanhSo DESC LIMIT 3;
+
+6.In ra danh sách các s?n ph?m (MASP, TENSP) có giá bán b?ng 1 trong 3 m?c giá cao nh?t.
+
+SELECT product_id, product_name FROM products WHERE unit_price IN (
+  SELECT unit_price 
+  FROM products
+  GROUP BY unit_price
+  ORDER BY unit_price DESC
+  LIMIT 3
+);
+7.In ra danh sách các s?n ph?m (MASP, TENSP) do “Trung Qu?c” s?n xu?t có giá b?ng 1 trong 3 m?c iá th?p nh?t (c?a t?t c? các s?n ph?m).
+
+SELECT product_id, product_name 
+FROM products 
+WHERE unit_price IN (
+  SELECT unit_price 
+  FROM products 
+  WHERE country='Trung Qu?c'
+  GROUP BY unit_price
+  ORDER BY unit_price ASC
+  LIMIT 3
+)
+
+8.In ra danh sách các s?n ph?m (MASP, TENSP) do “Trung Qu?c” s?n xu?t có giá b?ng 1 trong 3 m?c iá th?p nh?t (c?a s?n ph?m do “Trung Qu?c” s?n xu?t).
+
+SELECT product_id, product_name FROM products WHERE country = 'Trung Qu?c' AND unit_price IN (
+  SELECT DISTINCT unit_price 
+  FROM products
+  WHERE country = 'Trung Qu?c'
+  ORDER BY unit_price
+  LIMIT 3
+)
+
+9.In ra danh sách 3 khách hàng (MAKH, HOTEN) có doanh s? cao nh?t (s?p x?p theo ki?u x?p h?ng).
+
+SELECT a.id,a.name FROM customers a ORDER BY doanhSo DESC LIMIT 3;
+
+10.Tính t?ng s? s?n ph?m do “Trung Qu?c” s?n xu?t.
+
+SELECT COUNT(products.product_id) AS ByTQ FROM products WHERE products.country='Trung Qu?c';
+
+11.Tính t?ng s? s?n ph?m c?a t?ng n??c s?n xu?t.
+
+SELECT country,COUNT(product_id) AS SL FROM products GROUP BY country;
