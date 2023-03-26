@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2023 at 06:41 PM
+-- Generation Time: Mar 26, 2023 at 07:09 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -96,7 +96,14 @@ CREATE TABLE `permision` (
 INSERT INTO `permision` (`id`, `name`) VALUES
 (1, 'review'),
 (2, 'comment'),
-(3, 'post');
+(3, 'post'),
+(4, 'band user'),
+(5, 'delete post'),
+(6, 'delete comment'),
+(7, 'delete review'),
+(8, 'hidden post'),
+(9, 'hidden comment'),
+(10, 'hidden review');
 
 -- --------------------------------------------------------
 
@@ -199,7 +206,8 @@ CREATE TABLE `role` (
 
 INSERT INTO `role` (`id`, `name`) VALUES
 (1, 'user'),
-(2, 'restaurant');
+(2, 'restaurant'),
+(3, 'admin');
 
 -- --------------------------------------------------------
 
@@ -220,7 +228,13 @@ CREATE TABLE `role_permision` (
 INSERT INTO `role_permision` (`id`, `role_id`, `permision_id`) VALUES
 (1, 1, 1),
 (2, 1, 2),
-(3, 2, 3);
+(3, 2, 3),
+(4, 1, 9),
+(5, 1, 10),
+(6, 1, 6),
+(7, 1, 7),
+(8, 2, 8),
+(9, 2, 5);
 
 -- --------------------------------------------------------
 
@@ -280,7 +294,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `avatar`, `phone_number`, `email`, `password`, `status_id`, `role_id`) VALUES
 (1, 'ri cha', 'dsajdhsa8cds767s', '0232826463', 'richa@gmail.com', 'richa123', 3, 1),
 (2, 'si tạ', 'sd8u83c8ds', '02384626233', 'sita@gmail.com', 'sita123', 3, 1),
-(3, 'chonq', 'sekjo ccjdufu83ewdhds', '0343827437', 'chonq@gmail.com', 'chonq123', 3, 1);
+(3, 'chonq', 'sekjo ccjdufu83ewdhds', '0343827437', 'chonq@gmail.com', 'chonq123', 3, 1),
+(4, 'trần bình trọng', 'dfh9438uhdc', '0379221205', 'binhtrong0504@gmail.com', 'trong123', 3, 3);
 
 --
 -- Indexes for dumped tables
@@ -383,7 +398,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `permision`
 --
 ALTER TABLE `permision`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -407,13 +422,13 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `role_permision`
 --
 ALTER TABLE `role_permision`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `status`
@@ -425,7 +440,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
