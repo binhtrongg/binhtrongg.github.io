@@ -1,0 +1,13 @@
+-bảng teacher chứa các thông tin cá nhân của giáo viên
+-bảng classes chứa tên(vd;java 17),id khóa học(vd: java fullstack),address(địac chỉ học),time(thời gian học,vd:18:30-21:30 t3,5,7),
+form(hình thức học)
+-bảng assignment_class:bảng dùng để phân công giảng dạy(1 thầy dạy nhiều lớp,1 lớp nhiều thầy dạy,mqh:nhiều nhiều)
+-bảng courses chứa thông tin khóa học(tên, giá,...)
+-bảng subject chứa thông tin môn học bao gồm tên,id khóa học(mỗi môn thuộc 1 khóa học)
+-bảng assignment_subject: bảng phân công giảng dạy môn học,cấu trúc tương tự bảng assignment_class
+-bảng students chứa thông tin học viên,kèm theo học viên đó thuộc lớp nào
+bảng attendance : bảng chứa thông tin điểm danh bao gồm học viên,lớp, môn, buổi ,và điểm danh
+vd: trần văn a,lớp java 17,môn cơ sở  dữ liệu,buổi 2-insert,vắng)
+-bảng score lưu trữ điểm học sinh theo cấu trúc tương tự như bảng attendance chỉ thay trường diểm danh(present)
+thành score
+-bảng status chứa key và value để lưu trữ status cho 1 số bảng
