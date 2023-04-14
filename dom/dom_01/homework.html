@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <p id="item">homework1_dom</p>
+
+    <ul id="list_item">
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+    </ul>
+
+    <ul id="list">
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+        <li>item4</li>
+        <li>item5</li>
+        <li>item6</li>
+        <li>item7</li>
+    </ul>
+    <script>
+        // homework1.bài1
+        let text = document.getElementById("item")
+        text.style.color = "#777"
+        text.style.fontSize = "2rem"
+        text.innerHTML = `tôi có thể làm <em>bất cứ điều gì </em>tôi muốn với JavaScript`
+        //
+
+        // homework1.bài2
+        let list_item = document.querySelectorAll("#list_item li")
+        console.log(list_item)
+        for (const element of list_item) {
+            element.style.color = "blue"
+        }
+        //
+
+        // homework2
+        let list = document.getElementById("list")
+        list.insertAdjacentHTML("beforeend", `<li>item8</li>`)
+        list.insertAdjacentHTML("beforeend", `<li>item9</li>`)
+        list.insertAdjacentHTML("beforeend", `<li>item10</li>`)
+
+        list.querySelector("#list li:first-child").style.color = "red"
+        list.querySelector("#list li:nth-child(3)").style.backgroundColor = "green"
+        list.removeChild(list.querySelector("#list li:nth-child(4)"))
+    </script>
+</body>
+
+</html>
