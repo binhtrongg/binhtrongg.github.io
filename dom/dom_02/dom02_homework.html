@@ -67,8 +67,8 @@
         // remove color
         boxes.addEventListener("click", function (event) {
             let target_Box = event.target;
-            if (targetBox.classList.contains("box")) {
-                targetBox.remove()
+            if (target_Box.classList.contains("box")) {
+                target_Box.remove()
                 total_box--
                 score.innerText = 'Total box:' + total_box;
             }
