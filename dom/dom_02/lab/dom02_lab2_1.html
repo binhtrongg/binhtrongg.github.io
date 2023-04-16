@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="rectangle" class="h-10 w-20 bg-green-400"></div>
+    <script>
+        document.addEventListener("click", function (event) {
+            let html = '<div id="div_1" class = " bg-red-500 absolute  rounded-full " style="width: 50px; height: 50px; margin-top: '
+                + (event.offsetY - 25) + 'px; margin-left:'
+                + (event.offsetX - 25) + 'px;"></div>'
+            document.body.insertAdjacentHTML("beforeend", html)
+        });
+
+        console.log("Chiều rộng màn hình: " + window.screen.width);
+        console.log("Chiều cao màn hình: " + window.screen.height);
+
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === 'b') {
+                let html_1 = '<div id="div_2" class="h-10 w-20 bg-green-400" style="width:' + Math.floor(Math.random() * 100) + 'px; height:' + Math.floor(Math.random() * 100) + 'px; top: '
+                    + Math.floor(Math.random() * 720) + 'px; left:' + Math.floor(Math.random() * 1280) + 'px; position:absolute;"></div>';
+                document.body.insertAdjacentHTML("beforeend", html_1)
+            }
+        })
+    </script>
+</body>
+
+</html>

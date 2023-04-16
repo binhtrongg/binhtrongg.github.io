@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <!-- <h1 class="text-3xl font-bold text-red-500 text-center mt-12">--- Random Generate Color ---</h1>
+    <div class="justify-center text-center mt-4 mb-4">
+        <button
+            class="px-8 py-4 text-lg border border-2 border-green-400 bg-green-400 hover:border-orange-400 text-black text-center rounded-2xl hover:bg-white"
+            onclick="generate_random_color()">Generate</button>
+    </div>
+    <div class="mt-16 ">
+        <div class="grid grid-cols-6 gap-0">
+            <div id="color_1" class="color_review h-96 bg-red-400 relative">
+                <p class="absolute bottom-0 text-center w-full font-bold text-2xl mb-8 text-gray-700" id="color_1_code">
+                    #217262</p>
+            </div>
+            <div id="color_2" class="color_review h-96 bg-yellow-400 relative">
+                <p class="absolute bottom-0 text-center w-full font-bold text-2xl mb-8 text-gray-700" id="color_2_code">
+                    #217262</p>
+            </div>
+            <div id="color_3" class="color_review h-96 bg-red-400 relative">
+                <p class="absolute bottom-0 text-center w-full font-bold text-2xl mb-8 text-gray-700" id="color_3_code">
+                    #217262</p>
+            </div>
+            <div id="color_4" class="color_review h-96 bg-yellow-400 relative">
+                <p class="absolute bottom-0 text-center w-full font-bold text-2xl mb-8 text-gray-700" id="color_4_code">
+                    #217262</p>
+            </div>
+            <div id="color_5" class="color_review h-96 bg-red-400 relative">
+                <p class="absolute bottom-0 text-center w-full font-bold text-2xl mb-8 text-gray-700" id="color_5_code">
+                    #217262</p>
+            </div>
+            <div id="color_6" class="color_review h-96 bg-yellow-400 relative">
+                <p class="absolute bottom-0 text-center w-full font-bold text-2xl mb-8 text-gray-700" id="color_6_code">
+                    #217262</p>
+            </div> -->
+    <!-- </div>
+    </div> -->
+    <h1 id="title" class="font_bold text-3xl mt-12 text-red-400 text-center hover:text-blue-400">Hello</h1>
+    <div class="justify-center text-center mt-4 mb-4">
+        <button id="btn_content"
+            class=" px-10 py-5 bg-white-400 text-red-400 text-xl border border-2 border-red-400  rounded-lg">Change
+            Content</button>
+        <button id="btn_color"
+            class=" px-10 py-5 bg-white-400 text-yellow-400 text-xl border border-2 border-yellow-400  rounded-lg">Change
+            Color</button>
+        <button id="btn_background"
+            class=" px-10 py-5 bg-white-400 text-green-400 text-xl border border-2 border-green-400  rounded-lg">Change
+            Background</button>
+    </div>
+    <script>
+        function random_Text(text_length) {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result = ""
+            for (let i = 0; i < text_length; i++)
+                result += characters.charAt(Math.floor(Math.random() * characters.length))
+            return result
+        }
+        function random_hex_code() {
+            let values = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
+            let hex_code = "#"
+            for (let i = 0; i < 6; i++) hex_code += values[Math.floor(Math.random() * 16)]
+            return hex_code
+        }
+        function random_rgb() {
+            const red = Math.floor(Math.random() * 256);
+            const green = Math.floor(Math.random() * 256);
+            const blue = Math.floor(Math.random() * 256);
+
+            const rgbColor = `rgb(${red}, ${green}, ${blue})`;
+            return rgbColor;
+        }
+        let btn = document.getElementById("btn_content")
+        btn.addEventListener("click", function () {
+            document.getElementById("title").innerText = random_Text(16)
+        })
+
+        document.getElementById("btn_color").addEventListener("click", function () {
+            document.getElementById("title").style.color = random_hex_code()
+        })
+
+        document.getElementById("btn_background").addEventListener("click", function () {
+            document.getElementById("title").style.background = random_rgb()
+        })
+
+
+    </script>
+</body>
+
+</html>

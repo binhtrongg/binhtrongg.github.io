@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+
+    <style>
+        .box {
+            display: block;
+            background-color: #f3f3f3;
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            float: left;
+            margin: 5px;
+        }
+
+        .box:hover {
+            transform: scale(.9);
+            transition-duration: .5s;
+            opacity: .8;
+            cursor: pointer;
+        }
+
+        .box:active {
+            transform: scale(1.5);
+            transition-duration: .5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1> JS DOM</h1>
+        <button id="btn">More boxes</button>
+        <h4 id="score"> Total box:<span class="points"></span></h4>
+
+        <div class="boxes">
+        </div>
+    </div>
+
+    <script>
+        const boxes = document.querySelector(".boxes")
+        const btn = document.getElementById("btn")
+        const colors = ['#3498db', '#9b59b6', '#e74c3c', '#2c3e50', '#d35400']
+        // generate 5 color
+        for (let i = 0; i < 5; i++) {
+            let html = '<div class="box bg-[' + colors[i] + ']"></div>'
+            boxes.insertAdjacentHTML("beforeend", html)
+        }
+        let total_box = document.querySelectorAll(".box").length
+        const score = document.getElementById("score")
+        score.innerText = `Total box: ${total_box}`
+
+        // add color
+        btn.addEventListener("click", function () {
+            const color = colors[total_box % colors.length]
+            let html = '<div class="box bg-[' + color + ']"></div>'
+            boxes.insertAdjacentHTML("beforeend", html)
+            total_box++
+            score.innerText = `Total box: ${total_box}`
+        });
+
+        // remove color
+        boxes.addEventListener("click", function (event) {
+            let target_Box = event.target;
+            if (targetBox.classList.contains("box")) {
+                targetBox.remove()
+                total_box--
+                score.innerText = 'Total box:' + total_box;
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
