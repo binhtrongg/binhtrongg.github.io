@@ -1,0 +1,5 @@
+2023-04-27 01:55:50 DEBUG Main:192 - Mã công nhân: 1001,Tên công nhân: tran van a,Thu nhập: 18,685,227 VND
+2023-04-27 01:55:50 DEBUG Main:192 - Mã công nhân: 1002,Tên công nhân: tran van b,Thu nhập: 5,522,727 VND
+2023-04-27 10:11:14 DEBUG Main:182 - Mã công nhân: 1001,Tên công nhân: tran van a,Thu nhập: 26,846,591 VND
+2023-04-27 10:11:15 DEBUG Main:182 - Mã công nhân: 1002,Tên công nhân: nguyen thi c,Thu nhập: 18,685,227 VND
+2023-04-27 10:21:14 DEBUG LogicHandle:182 - Mã công nhân: 1003,Tên công nhân: tran binh trong,Thu nhập: 11,033,182 VND
