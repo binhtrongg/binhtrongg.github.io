@@ -9,13 +9,14 @@ import java.util.Scanner;
 @Data
 
 @AllArgsConstructor
-public class Service  {
+public class Service {
     private int id;
     private String name;
     private double price;
     private String unit;
 
     private static int AUTO_ID = 100;
+
     public Service() {
         this.id = AUTO_ID;
         AUTO_ID++;

@@ -1,6 +1,5 @@
 package logic_handel;
 import entity.Service;
-
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -39,10 +38,9 @@ public class ServiceManagement {
     }
 
     public Service findById(int id) {
-        for (int i = 0; i < services.size(); i++) {
-            if (services.get(i).getId() == id)
-                return services.get(i);
-
+        for (Service service : services) {
+            if (service.getId() == id)
+                return service;
         }
         return null;
     }

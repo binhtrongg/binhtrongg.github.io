@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
 import java.util.Scanner;
 
 @Data
@@ -12,7 +11,7 @@ import java.util.Scanner;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Person implements InputInfo{
+public class Person implements InputInfo {
     protected String name;
     protected String address;
     protected String phone;

@@ -54,7 +54,7 @@ public class MenuManagement {
         System.out.println("4. Sắp xếp danh sách hóa đơn");
         System.out.println("5. Lập bảng thống kê cho khách hàng");
         System.out.println("6. Thoát");
-        System.out.println("Vui lòng chọn chức năng: ");
+        System.out.print("Vui lòng chọn chức năng: ");
     }
     private int functionChoice() {
         int choice ;

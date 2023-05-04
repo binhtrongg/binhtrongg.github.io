@@ -12,7 +12,6 @@ import lombok.ToString;
 public class BillDetail {
     private Service service;
     private int quantity;
-
     public int getUsage() {
         return this.quantity;
     }

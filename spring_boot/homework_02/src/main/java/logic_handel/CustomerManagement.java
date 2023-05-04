@@ -1,5 +1,7 @@
 package logic_handel;
+
 import entity.Customer;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -11,6 +13,7 @@ public class CustomerManagement {
     public CustomerManagement() {
         this.customers = new ArrayList<>();
     }
+
     public void inputInfo() {
         System.out.println("Bạn muốn nhập bao nhiêu khách hàng: ");
         int cusNumber;
@@ -31,9 +34,11 @@ public class CustomerManagement {
         }
         showCustomer();
     }
+
     public void showCustomer() {
         customers.forEach(System.out::println);
     }
+
     public static Customer findById(int id) {
         for (int i = 0; i < customers.size(); i++) {
             if (customers.get(i).getId() == id)

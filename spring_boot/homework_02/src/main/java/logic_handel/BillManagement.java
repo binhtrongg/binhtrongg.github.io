@@ -1,12 +1,9 @@
 package logic_handel;
-
 import entity.Bill;
 import entity.BillDetail;
 import entity.Customer;
 import entity.Service;
-
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class BillManagement {
     private List<Bill> bills;
@@ -18,9 +15,7 @@ public class BillManagement {
         this.bills = new ArrayList<>();
         this.customerManagement = customerManagement;
         this.serviceManagement = serviceManagement;
-
     }
-
 
     public void logBill() {
         System.out.println("Bạn muốn lập hóa đơn cho bao nhiêu khách hàng");
@@ -105,34 +100,39 @@ public class BillManagement {
     }
 
     public void mergeBills() {
-        // Tạo một Map lưu trữ các hóa đơn được gộp theo id khách hàng
-        Map<Integer, List<Bill>> billMap = bills.stream().collect(Collectors.groupingBy(bill -> bill.getCustomer().getId()));
+        // Tạo một Map lưu trữ thông tin của từng khách hàng
+        Map<Integer, Map<Service, Integer>> customerServiceMap = new HashMap<>();
+        for (Bill bill : bills) {
+            Customer customer = bill.getCustomer();
+            Map<Service, Integer> serviceMap = customerServiceMap.getOrDefault(customer.getId(), new HashMap<>());
+            for (BillDetail billDetail : bill.getBillDetails()) {
+                Service service = billDetail.getService();
+                int quantity = billDetail.getQuantity();
+                serviceMap.put(service, serviceMap.getOrDefault(service, 0) + quantity);
+            }
+            customerServiceMap.put(customer.getId(), serviceMap);
+        }
 
         // Tạo danh sách mới để lưu trữ các hóa đơn đã được gộp
         List<Bill> mergedBills = new ArrayList<>();
 
         // Duyệt qua Map và tạo các hóa đơn mới đã được gộp
-        for (Map.Entry<Integer, List<Bill>> entry : billMap.entrySet()) {
-            List<Bill> clientBills = entry.getValue();
-            if (clientBills.size() > 1) {
-                // Tạo một hóa đơn mới bằng cách gộp các hóa đơn có cùng id khách hàng
-                Customer customer = CustomerManagement.findById(entry.getKey());
+        for (Map.Entry<Integer, Map<Service, Integer>> entry : customerServiceMap.entrySet()) {
+            Customer customer = CustomerManagement.findById(entry.getKey());
+            Map<Service, Integer> serviceMap = entry.getValue();
+            if (!serviceMap.isEmpty()) {
+                // Tạo một danh sách các BillDetail từ Map này
                 List<BillDetail> billDetails = new ArrayList<>();
-                for (Bill b : clientBills) {
-                    billDetails.addAll(b.getBillDetails());
+                for (Map.Entry<Service, Integer> serviceEntry : serviceMap.entrySet()) {
+                    billDetails.add(new BillDetail(serviceEntry.getKey(), serviceEntry.getValue()));
                 }
                 Bill mergedBill = new Bill(customer, billDetails);
                 mergedBills.add(mergedBill);
-            } else {
-                // Nếu không có hóa đơn nào được gộp, thêm hóa đơn vào danh sách mới
-                mergedBills.addAll(clientBills);
             }
         }
-
         // Cập nhật danh sách hóa đơn
         this.bills = mergedBills;
         showInfor();
-
         // In danh sách hóa đơn sau khi gộp
     }
 
@@ -154,17 +154,18 @@ public class BillManagement {
         });
         showInfor();
     }
+
     public void calculateTotal() {
         Map<Customer, List<Bill>> cusBillMap = new HashMap<>();
-// Thêm danh sách hóa đơn cho từng khách hàng vào Map
+        // Thêm danh sách hóa đơn cho từng khách hàng vào Map
         for (Bill bill : bills) {
-            Customer customer=bill.getCustomer();
+            Customer customer = bill.getCustomer();
             List<Bill> billListForClient = cusBillMap.getOrDefault(customer, new ArrayList<>());
             billListForClient.add(bill);
             cusBillMap.put(customer, billListForClient);
         }
 
-// Tính tổng tiền phải trả cho từng khách hàng và in ra tên và số tiền tương ứng
+         // Tính tổng tiền phải trả cho từng khách hàng và in ra tên và số tiền tương ứng
         for (Customer customer : cusBillMap.keySet()) {
             double totalAmount = 0;
             for (Bill bill : cusBillMap.get(customer)) {

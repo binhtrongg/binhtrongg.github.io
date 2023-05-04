@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 @Data
 @AllArgsConstructor
-
 public class Customer extends Person {
     private int id;
     private Clientlever level;
@@ -42,12 +41,12 @@ public class Customer extends Person {
         do {
             try {
                 choice = new Scanner(System.in).nextInt();
-                if (choice >=1 && choice <= 3) break;
+                if (choice >= 1 && choice <= 3) break;
                 System.out.println("Lựa chọn không hợp lệ. Vui lòng nhập lại: ");
             } catch (InputMismatchException ex) {
                 System.out.println("Vui lòng nhập số từ 1 tới 3");
             }
-        }while (true);
+        } while (true);
         switch (choice) {
             case 1:
                 this.setLevel(Clientlever.ca_nhan);
