@@ -1,0 +1,102 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.65;
+}
+body{
+    font-family: 'Montserrat';
+    }
+
+.logo-img {
+    width: 30px;
+}
+
+.nav-link:hover {
+    color: #000;
+}
+
+.font-small-bold {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.nav-item.active .nav-link {
+    color: #10c9c3 !important;
+}
+
+.footer .company-name {
+    font-weight: 500;
+    font-size: 18px;
+}
+.footer {
+    background-color: black;
+}
+
+.footer .footer-detail {
+    font-size: 14px;
+    color: #bcbcbc;
+}
+
+.image-element:hover {
+    cursor: pointer;
+    background-color: #10c9c3;
+    opacity: 0.5;
+}
+.body .row .image_wrap:hover {
+    cursor: pointer;
+    background-color: #10c9c3;
+    opacity: 0.5;
+}
+
+.logo-img {
+    width: 30px;
+}
+
+.nav-link:hover {
+    color: black;
+    font-weight: 500;
+}
+
+.font-small {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.navbar-nav .active .nav-link {
+    color: #10c9c3 !important;
+}
+
+.contact-info {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.contact-detail {
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+.contact .form-control {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.contact .button {
+    padding: 15px 30px;
+    border: none;
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+    background-color: #10C9C3;
+    transition: all 0.5s;
+}
+
+.contact .button:hover {
+    background-color: black;
+}
+.footer .company-name {
+    font-size: 18px;
+    font-weight: 500;
+}
+.footer .footer-detail,
+.contact-detail {
+    font-family: 'Nunito Sans', sans-serif;
+}

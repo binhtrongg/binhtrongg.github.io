@@ -1,0 +1,86 @@
+body{
+    font-family: 'Montserrat';
+    }
+
+.logo-img {
+    width: 30px;
+}
+
+.nav-link:hover {
+    color: #000;
+}
+
+.font-small-bold {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.nav-item.active .nav-link {
+    color: #10c9c3 !important;
+}
+
+.footer .company-name {
+    font-weight: 500;
+    font-size: 18px;
+}
+.footer {
+    background-color: black;
+}
+
+.footer .footer-detail {
+    font-size: 14px;
+    color: #bcbcbc;
+}
+
+.image-element:hover {
+    cursor: pointer;
+    background-color: #10c9c3;
+    opacity: 0.5;
+}
+.header {
+    background-size: cover;
+    background-position: center center;
+    max-width: 100%;
+    min-height: 468px;
+    opacity: 0.9;
+}
+
+.header::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Màu đen với độ mờ 50% */
+}
+.image{
+    margin: 0 calc(185px / 3);
+}
+.quote{
+    position: relative;
+    z-index: 1;
+}
+.quote p{
+    font-size: 20px;
+}
+img{
+    max-width: 100%;
+    object-fit: cover;
+}
+.container .nav a{
+    color: rgb(114, 118, 121);
+    font-size: 14px;
+}
+.text-center{
+    width: 55%;
+}
+#img{
+    min-height: 100%;
+}
+.btn{
+    width: 30%;
+    height: 50px;
+}
