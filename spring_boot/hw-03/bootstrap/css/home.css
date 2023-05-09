@@ -1,0 +1,39 @@
+body{
+    font-family: 'Montserrat';
+    }
+
+.logo-img {
+    width: 30px;
+}
+
+.nav-link:hover {
+    color: #000;
+}
+
+.font-small-bold {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.nav-item.active .nav-link {
+    color: #10c9c3 !important;
+}
+
+.footer .company-name {
+    font-weight: 500;
+    font-size: 18px;
+}
+.footer {
+    background-color: black;
+}
+
+.footer .footer-detail {
+    font-size: 14px;
+    color: #bcbcbc;
+}
+
+.image-element:hover {
+    cursor: pointer;
+    background-color: #10c9c3;
+    opacity: 0.5;
+}
