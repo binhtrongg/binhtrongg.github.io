@@ -30,6 +30,7 @@ public class TeacherService {
         teachers.removeAll(teachersToRemove);
     }
     public void saveTeacher(Teacher teacher) {
+        teacher.setId(teachers.size());
         teachers.add(teacher);
     }
 
