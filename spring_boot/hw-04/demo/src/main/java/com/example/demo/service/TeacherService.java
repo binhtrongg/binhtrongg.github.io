@@ -7,15 +7,16 @@ import java.util.List;
 
 @Service
 public class TeacherService {
+    public TeacherService(){
+        creatData();
+    }
     private final List<Teacher>teachers=new ArrayList<>();
-    public List<Teacher> getTeachers(){return teachers;}
     public void creatData(){
         for (int i = 0; i <10 ; i++) {
             teachers.add(new Teacher(i,"nguyen văn "+i,"016"+i,"thanh pho "+i,"12A"+i));
         }
     }
     public List<Teacher> getAllTeachers(){
-        creatData();
         return teachers;
     }
 
