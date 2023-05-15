@@ -35,4 +35,9 @@ public class BookController {
         bookService.updateBook(id,updateBook);
         return "redirect:/books";
     }
+    @PostMapping("/delete/{id}")
+    public String deleteBook(@PathVariable("id") int id){
+        bookService.deleteBook(id);
+        return "redirect:/books";
+    }
 }

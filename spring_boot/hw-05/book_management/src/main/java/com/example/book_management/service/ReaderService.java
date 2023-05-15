@@ -39,4 +39,8 @@ public class ReaderService {
         reader.setPhoneNumber(updateReader.getPhoneNumber());
         reader.setReaderType(updateReader.getReaderType());
     }
+
+    public void deleteReader(int id) {
+        readers.removeIf(reader -> reader.getId()==id);
+    }
 }

@@ -83,12 +83,12 @@
           <td th:text="${reader.ReaderType}"></td>
           <td class="col-1">
             <div class="d-flex justify-content-between">
-<!--              <form th:action="@{'readers/delete/' + ${reader.id}}" method="post"-->
-<!--                    onsubmit="return confirm('Bạn có chắc chắn muốn xóa đọc giả này không?');">-->
-<!--                <button type="submit" class="btn btn-link p-0 mr-2">-->
-<!--                  <span><i class="fa-solid fa-trash-can fa-lg text-danger"></i></span>-->
-<!--                </button>-->
-<!--              </form>-->
+              <form th:action="@{'readers/delete/' + ${reader.id}}" method="post"
+                    onsubmit="return confirm('Bạn có chắc chắn muốn xóa đọc giả này không?');">
+                <button type="submit" class="btn btn-link p-0 mr-2">
+                  <span><i class="fa-solid fa-trash-can fa-lg text-danger"></i></span>
+                </button>
+              </form>
               <a data-toggle="modal" data-target="#updateReaderModal" class="btn btn-link p-0">
                 <i class="fa-solid fa-pencil fa-lg text-primary"></i> <!-- Nút Update -->
               </a>

@@ -34,4 +34,8 @@ public class BookService {
         myBook.setBookType(updateBook.getBookType());
         myBook.setCreationYear(updateBook.getCreationYear());
     }
+
+    public void deleteBook(int id) {
+        books.removeIf(book -> book.getId()==id);
+    }
 }

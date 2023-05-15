@@ -34,4 +34,9 @@ public class ReaderController {
         readerService.updateReader(id,updateReader);
         return "redirect:/readers";
     }
+    @PostMapping("/delete/{id}")
+    public String deleteReader(@PathVariable("id") int id){
+        readerService.deleteReader(id);
+        return "redirect:/readers";
+    }
 }

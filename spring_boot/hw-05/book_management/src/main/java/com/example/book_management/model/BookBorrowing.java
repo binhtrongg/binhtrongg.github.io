@@ -9,6 +9,5 @@ import java.util.List;
 public class BookBorrowing {
     int id;
     Reader reader;
-    int numOfBooks;
     List<BookBorrowingDetail>bookBorrowingDetails;
 }
