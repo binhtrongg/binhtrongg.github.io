@@ -1,0 +1,64 @@
+* {
+    font-family: Inter, sans-serif;
+    font-size: 17px;
+}
+
+.header-area {
+    font-weight: 500;
+}
+
+.header-area .navbar .nav-link,
+.right-bar a {
+    color: rgb(23, 23, 23);
+}
+
+.right-bar .text-second {
+    color: rgb(160, 161, 163);
+}
+
+.right-bar .btn {
+    color: white;
+    font-weight: 700;
+    padding: 10px 32px;
+    background-color: rgb(236, 89, 90);
+    transition: all 0.5s;
+}
+
+.right-bar .btn:hover {
+    color: red;
+    background-color: black;
+    animation-timing-function: 1s;
+}
+
+.middle-bar i {
+    font-size: 12px;
+}
+
+.sign-up-wrapper {
+    padding-top: 215px;
+    padding-bottom: 165px;
+}
+
+.row .bgFFEDED {
+    background-color: #FFEDED;
+}
+
+main .shapes {
+    width: 95px;
+    height: 36px;
+    border: solid 3px black;
+}
+.sign-up-wrapper .col{
+    min-height: 650px;
+}
+h1{
+    font-weight: 700;
+}
+.login-icon{
+    width: 65px;
+    height: 65px;
+    border-radius: 5px;
+}
+.items{
+    width: 60%;
+}
