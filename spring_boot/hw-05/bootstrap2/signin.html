@@ -24,7 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="./css/signup.css">
+    <link rel="stylesheet" href="./css/signin.css">
 </head>
 
 <body>
@@ -85,11 +85,10 @@
                     </div>
                     <div class="col">
                         <div class="d-flex justify-content-center mt-5 pt-4">
-                            <h1>Create Your Account</h1>
+                            <h1>Sign in to Landpagy</h1>
                         </div>
-                        <p class="text-center mt-3 graph">Redownload themes, get support, and review themes.</p>
                         <div class="row">
-                            <div class="items container d-flex justify-content-between mt-3">
+                            <div class="items container d-flex justify-content-between mt-5">
                                 <a href=""
                                     class="login-icon text-center shadow d-flex justify-content-center align-items-center">
                                     <img src="https://html.spiderthemes-demos.com/landpagy/assets/images/signup/icon1.svg"
@@ -118,38 +117,25 @@
                         <div class="row">
                             <div class="col login mt-5">
                                 <form>
-                                    <div class="form-row">
-                                      <div class="form-group col-md-6">
-                                        <input type="text" class="form-control" id="firstName" placeholder="First Name">
-                                      </div>
-                                      <div class="form-group col-md-6">
-                                        <input type="text" class="form-control" id="lastName" placeholder="Last Name">
-                                      </div>
-                                    </div>
                                     <div class="form-group">
-                                      <input type="email" class="form-control" id="email" placeholder="Email">
+                                        <input type="text" class="form-control" id="username" placeholder="Email Address Or Username">
                                     </div>
-                                    <div class="form-group">
-                                      <input type="password" class="form-control" id="password" placeholder="Password">
+                                    <div class="form-group mt-3">
+                                        <input type="password" class="form-control" id="password" placeholder="Password*">
                                     </div>
-                                    <p class="mt-3 gr mb-0">Make sure it's at least 15 characters OR at least 8 characters including a number and a lowercase letter</p>
-                                    <div class="form-group form-inline mb-0">
-                                        <div class="form-check">
+                                    <div class="form-group form-inline">
+                                        <div class="form-check mr-auto">
                                             <input type="checkbox" class="form-check-input" id="rememberMe">
                                             <label class="form-check-label" for="rememberMe">Remember me</label>
                                         </div>
+                                        <a href="#" class="forgot-password-link text-success">Forgot Password?</a>
                                     </div>
-                                    <div class="form-group form-inline mb-0">
-                                        <div class="form-check mb-3">
-                                            <input type="checkbox" class="form-check-input" id="tb">
-                                            <label class="form-check-label mb" for="tb">I’d like being informed about latest news and tips</label>
-                                        </div>
+                                    <button type="submit" class="btn btn-danger sign btn-block">Sign In</button>
+                                    <p class="text-center my-3">Dont Have Account?</p>
+                                    <div class="text-center">
+                                        <a href="" class="text-success">Create Account</a>
                                     </div>
-                                    <button type="submit" class="btn btn-danger sign btn-block">Sign Up</button>
-                                    <p class="text-center p my-3">Already Have Account? <a href="" class="text-success">Sign In</a></p> 
-                                    <p class="text-center p my-3">By clicking “Sign up” you agree to our <a href="" class="text-success">Terms of Service.</a></p> 
-                                  </form>
-                                  
+                                </form>
                             </div>
                         </div>
                     </div>

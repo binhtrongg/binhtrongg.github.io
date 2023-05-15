@@ -1,0 +1,127 @@
+* {
+    font-family: Inter, sans-serif;
+    font-size: 17px;
+}
+
+.header-area {
+    font-weight: 500;
+}
+
+.header-area .navbar .nav-link,
+.right-bar a {
+    color: rgb(23, 23, 23);
+}
+
+.right-bar .text-second {
+    color: rgb(160, 161, 163);
+}
+
+.right-bar .btn {
+    color: white;
+    font-weight: 700;
+    padding: 10px 32px;
+    background-color: rgb(236, 89, 90);
+    transition: all 0.5s;
+}
+
+.right-bar .btn:hover {
+    color: red;
+    background-color: black;
+    animation-timing-function: 1s;
+}
+
+.middle-bar i {
+    font-size: 12px;
+}
+
+.sign-up-wrapper {
+    padding-top: 215px;
+    padding-bottom: 165px;
+}
+
+.row .bgFFEDED {
+    background-color: #FFEDED;
+}
+
+main .shapes {
+    width: 95px;
+    height: 36px;
+    border: solid 3px black;
+}
+.sign-up-wrapper .col{
+    min-height: 500px;
+}
+h1{
+    font-weight: 700;
+}
+.login-icon{
+    width: 65px;
+    height: 65px;
+    border-radius: 5px;
+}
+.items{
+    width: 60%;
+}
+.sign{
+    height: 50px;
+    font-weight: 600;
+}
+.graph{
+    color:#7d848d;
+    font-size: 14px;
+}
+.p{
+    font-size: 13px;
+}
+.p a{font-size: 13px;}
+.form-check{
+    height: 35px;
+}
+.form-check-label{
+    font-size: 14px;
+}
+.gr{
+    font-size: 12px;
+}
+.custom-input{
+    padding: 5px;
+}
+.login{
+    color: #9199a1;
+}
+input{
+    height: 50px !important ;
+}
+footer{
+    background-color: black;
+    color: white;}
+li{
+    list-style: none;
+}
+a{
+    color:#7d848d;
+}
+.footer-bottom-menu > ul{
+    width: 80%;
+}
+
+.footer-bottom-menu > ul li a{
+    font-size: 14px;
+}
+.contact-icon{
+    width: 15%;
+    text-align: center;
+}
+h4{
+    font-weight: bold;
+    font-size: 20px;
+}
+.newsletter-text{
+    color:#7d848d;
+}
+.subscribe{
+    color: white;
+    font-weight: bold;
+    background-color: #3a3c3e;
+    height: 50px;
+}

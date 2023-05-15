@@ -49,7 +49,7 @@ main .shapes {
     border: solid 3px black;
 }
 .sign-up-wrapper .col{
-    min-height: 650px;
+    min-height: 450px;
 }
 h1{
     font-weight: 700;
@@ -61,4 +61,50 @@ h1{
 }
 .items{
     width: 60%;
+}
+.sign{
+    height: 50px;
+    font-weight: 600;
+}
+.custom-input{
+    padding: 5px;
+}
+.login{
+    color: #9199a1;
+}
+input{
+    height: 50px !important ;
+}
+footer{
+    background-color: black;
+    color: white;}
+li{
+    list-style: none;
+}
+a{
+    color:#7d848d;
+}
+.footer-bottom-menu > ul{
+    width: 80%;
+}
+
+.footer-bottom-menu > ul li a{
+    font-size: 14px;
+}
+.contact-icon{
+    width: 15%;
+    text-align: center;
+}
+h4{
+    font-weight: bold;
+    font-size: 20px;
+}
+.newsletter-text{
+    color:#7d848d;
+}
+.subscribe{
+    color: white;
+    font-weight: bold;
+    background-color: #3a3c3e;
+    height: 50px;
 }
