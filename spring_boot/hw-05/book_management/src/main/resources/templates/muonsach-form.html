@@ -25,43 +25,31 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <a class="btn btn-primary" data-toggle="modal" data-target="#addBorrowModal">Thêm Mới</a>
-            <div class="modal fade" id="addBorrowModal" tabindex="-1" role="dialog" aria-labelledby="addBorrowModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+            <a class="btn btn-primary" data-toggle="modal" data-target="#addBookModal">Thêm Mới</a>
+            <div class="modal fade" id="addBookModal">
+                <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="addBorrowModalLabel">Thêm Mới Lượt Mượn Sách</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <h5 class="modal-title">Thêm Mới Mượn Sách</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <form id="addBorrowForm" th:action="@{/borrow-book/addNewBorrow}" method="post">
+                            <form th:action="@{/borrow-book/addNewBorrow}" method="post">
                                 <div class="form-group">
                                     <label for="reader">Người mượn:</label>
-                                    <select class="form-control" id="reader" name="reader" required>
-                                        <option th:each="reader : ${readers}" th:value="${reader.id}" th:text="${reader.name}"></option>
+                                    <select  class="form-control" id="reader" name="reader">
+                                        <option th:each="reader : ${readers}" th:value="${reader.id}"
+                                                th:text="${reader.name}"></option>
                                     </select>
                                 </div>
-                                <div id="bookFieldsContainer">
-                                    <div class="form-group">
-                                        <label for="book1">Sách 1:</label>
-                                        <select class="form-control" id="book1" name="book1" required>
-                                            <option th:each="book : ${books}" th:value="${book.id}" th:text="${book.name}"></option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="numOfDays1">Số ngày mượn sách 1:</label>
-                                        <input type="number" class="form-control" id="numOfDays1" name="numOfDays1" min="1" required>
-                                    </div>
-                                </div>
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-primary" id="addBookButton">Thêm Sách</button>
+                                    <label for="numOfBooks">Số sách muốn mượn (tối đa 5):</label>
+                                    <input type="number" class="form-control" id="numOfBooks" name="numOfBooks" min="1"
+                                           max="5" required
+                                           onchange="generateBookFields(this.value)">
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                    <button type="submit" class="btn btn-primary">Thêm Mới</button>
-                                </div>
+                                <div id="bookFieldsContainer"></div>
+                                <button type="submit" class="btn btn-primary">Thêm</button>
                             </form>
                         </div>
                     </div>
@@ -75,8 +63,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Người mượn</th>
-                    <th>Tên sách</th>
-                    <th>Số ngày mượn</th>
+                    <th>Chi Tiết Mượn Sách</th>
                     <th>Actions</th>
                 </tr>
                 <tr th:each="bookBorrowing : ${dsBookBorrowing}">
@@ -94,57 +81,28 @@
         </div>
     </div>
 </div>
-<script>
-    const maxBooks = 5; // Số quyển sách tối đa cho mỗi người mượn
-
-        // Bắt sự kiện click vào nút "Thêm Sách"
-        document.getElementById("addBookButton").addEventListener("click", function() {
-        let bookFieldsContainer = document.getElementById("bookFieldsContainer");
-        let numOfBooks = bookFieldsContainer.childElementCount / 2; // Số quyển sách đã được thêm
-            if (numOfBooks >= maxBooks) {
-                alert("Bạn đã đạt số lượng sách mượn tối đa (" + maxBooks + " quyển).");
-                return;
+<script th:inline="javascript">
+    let books = /*[[${books}]]*/ '[]';
+    books = JSON.parse(books);
+    function generateBookFields(numOfBooks) {
+        let bookFieldsContainer = document.getElementById('bookFieldsContainer');
+        bookFieldsContainer.innerHTML = '';
+        for (let i = 1; i <= numOfBooks; i++) {
+            let bookField = '<div class="form-group">' +
+                '<label for="book' + i + '">Sách thứ ' + i + ':</label>' +
+                '<select class="form-control" id="book' + i + '" name="book' + i + '">';
+            for (let j = 0; j < books.length; j++) {
+                let book = books[j];
+                bookField += '<option value="' + book.id + '">' + book.name + '</option>';
             }
-            let newBookIndex = numOfBooks + 1;
-
-            // Tạo phần tử HTML cho sách mới
-            let newBookFieldGroup = document.createElement("div");
-            newBookFieldGroup.classList.add("form-group");
-
-            let newBookLabel = document.createElement("label");
-            newBookLabel.setAttribute("for", "book" + newBookIndex);
-            newBookLabel.innerText = "Sách " + newBookIndex + ":";
-
-            let newBookSelect = document.createElement("select");
-            newBookSelect.classList.add("form-control");
-            newBookSelect.setAttribute("id", "book" + newBookIndex);
-            newBookSelect.setAttribute("name", "book" + newBookIndex);
-            newBookSelect.setAttribute("required", "required");
-
-            // Thêm tùy chọn sách vào select
-            // ...
-
-            let newNumOfDaysLabel = document.createElement("label");
-            newNumOfDaysLabel.setAttribute("for", "numOfDays" + newBookIndex);
-            newNumOfDaysLabel.innerText = "Số ngày mượn sách " + newBookIndex + ":";
-
-            let newNumOfDaysInput = document.createElement("input");
-            newNumOfDaysInput.classList.add("form-control");
-            newNumOfDaysInput.setAttribute("type", "number");
-            newNumOfDaysInput.setAttribute("id", "numOfDays" + newBookIndex);
-            newNumOfDaysInput.setAttribute("name", "numOfDays" + newBookIndex);
-            newNumOfDaysInput.setAttribute("min", "1");
-            newNumOfDaysInput.setAttribute("required", "required");
-
-            // Thêm các phần tử vào container
-            newBookFieldGroup.appendChild(newBookLabel);
-            newBookFieldGroup.appendChild(newBookSelect);
-            newBookFieldGroup.appendChild(newNumOfDaysLabel);
-            newBookFieldGroup.appendChild(newNumOfDaysInput);
-
-            bookFieldsContainer.appendChild(newBookFieldGroup);
-        });
+            bookField += '</select></div>' +
+                '<div class="form-group">' +
+                '<label for="numOfDays' + i + '">Số ngày mượn sách thứ ' + i + ':</label>' +
+                '<input type="number" class="form-control" id="numOfDays' + i + '" name="numOfDays' + i + '" min="1" max="30" required>' +
+                '</div>';
+            bookFieldsContainer.insertAdjacentHTML('beforeend', bookField);
+        }
+    }
 </script>
-
 </body>
 </html>
