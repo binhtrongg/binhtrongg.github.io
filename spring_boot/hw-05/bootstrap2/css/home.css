@@ -1,0 +1,386 @@
+body {
+    /* font-family: "Inter", sans-serif; */
+    font-weight: 400;
+    font-size: 1.0625rem;
+    line-height: 1.75rem;
+    text-rendering: optimizeSpeed;
+    box-sizing: border-box;
+    /* color: var(--text-color); */
+}
+
+
+.client-area {
+    top: -6.25rem;
+    z-index: 99;
+}
+
+.client-wrapper {
+    box-shadow: 0 1.25rem 3.125rem rgba(0, 0, 0, 0.05);
+    border-radius: 1.875rem;
+    padding: 4.6875rem 3.75rem 4.6875rem;
+    background: #fff;
+}
+
+.client-text h4 {
+    max-width: 55%;
+}
+
+.client-image img {
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+}
+
+.client-meta .client-review-icon li {
+    color: #EFBA34;
+    font-size: 1.125rem;
+}
+.header-area {
+    position: relative;
+    z-index: 99999;
+    transition: 0.4s all ease;
+}
+
+.navbar {
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 20;
+    position: absolute;
+}
+
+.navbar_fixed.menu_three {
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.15);
+}
+
+
+.menu_three {
+    background: transparent;
+    transition: all 0.2s linear;
+}
+
+.navbar_fixed {
+    z-index: 35;
+}
+
+.active {
+    color: #ec595a !important;
+}
+.dropdown-menu {
+    opacity: 0;
+   
+}
+
+.btn {
+    color: #fff;
+    background-color: #ec595a;
+    transition: all 0.5s;
+}
+
+.btn:hover {
+    background-color: #000;
+    color: #ec595a;
+    animation-timing-function: 1s;
+}
+
+/* main */
+
+
+
+.banner-area {
+    position: relative;
+    z-index: 1;
+    padding-top: 15rem;
+    padding-bottom: 9.375rem;
+    overflow: hidden;
+    background: linear-gradient(256.17deg, #fff6d6 1.04%, rgba(255, 255, 255, 0) 100%);
+}
+
+.banner-area .banner-left h1 span {
+    color: #ec595a;
+}
+
+.form-group {
+    max-width: 33.75rem;
+    
+}
+
+input {
+    color: #a0a1a3;
+    background: #fff;
+    text-transform: capitalize;
+    padding: 0.8rem 1.5625rem;
+    margin: 0 0;
+    width: 100%;
+    height: auto;
+    border: 2px solid #5d5d66;
+    border-radius: 0.375rem;
+    transition: 0.3s ease-out;
+}
+
+.form-group .btn-red {
+    
+    right: 0;
+    position: absolute;
+    margin-top: 0;
+    padding: 1rem 2rem;
+    border: 2px solid #000;
+}
+
+img{
+    max-width: 100%;
+    display: block;
+}
+
+.banner-area .banner-right {
+    position: relative;
+    height: 451px;}
+
+.banner-area .banner-right .banner-shapes {
+    top: -50px;
+    left: 4rem;
+    position: absolute;
+    width: 7.375rem;
+    height: 7.375rem;
+    border-radius: 50%;
+    background-color: #ec595a;
+}
+
+.banner-area .banner-right .banner-shapes2 {
+    top: 10.75rem;
+    left: 0;
+    position: absolute;
+}
+
+.banner-area .banner-right .banner-shapes3 {
+    top: 0.5rem;
+    right: 5.0625rem;
+    position: absolute;
+    z-index: 1;
+    width: 30%;
+}
+
+.banner-area .banner-right .banner-shapes4 {
+    top: 7.5rem;
+    right: -2.5rem;
+    position: absolute;
+}
+.banner-area .banner-right .banner-shapes5 {
+    right: -2.5rem;
+    bottom: 0;
+    position: absolute;
+}
+
+.banner-area .banner-right .banner-shapes6 {
+    top: 7.5rem;
+    right: -30px;
+    position: absolute;
+}
+
+.banner-area .banner-right .banner-shapes7 {
+    top: 6px;
+    left: 1.0625rem;
+    position: absolute;
+    width: 30%;
+}
+
+.client-meta .client-review-number {
+    font-size: 1.375rem;
+}
+
+.client-meta .client-review {
+    font-size: 1.375rem;
+}
+
+
+/*  */
+
+.section-padding {
+    padding-top: 4.375rem;
+    padding-bottom: 4.375rem;
+}
+
+.features-image {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.features-image .features-object1 {
+    top: 0;
+    left: 40%;
+    position: absolute;
+}
+
+.features-image .features-object2 {
+    top: 21%;
+    left: 22%;
+    position: absolute;
+}
+
+.features-image .features-object3 {
+    top: 13%;
+    left: 29%;
+    position: absolute;
+}
+
+.features-image .features-object4 {
+    top: 50%;
+    left: 10px;
+    position: absolute;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.features-image .features-object5 {
+    top: 45%;
+    left: 5px;
+    position: absolute;
+    transform: translateY(-50%);
+}
+
+.features-image .object-element {
+    transform: unset;
+    transition: transform 0.2s linear 0s;
+    will-change: transform;
+}
+
+.features-image .round-object {
+    right: 17%;
+    bottom: -45px;
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #fce7e9;
+    z-index: -1;
+}
+
+.features-content h2 {
+    z-index: 9;
+    font-size: 3.125rem;
+    line-height: 3.875rem;
+}
+
+.features-content h3 {
+    font-size: 2.5rem;
+}
+
+.features-content h3 span {
+    color: #ec595a;
+}
+
+.features-content p {
+    max-width: 86%;
+    font-size: 0.9375rem;
+    line-height: 1.6875rem;
+}
+
+.why-choose-wrapper {
+    background: #f9f9f9;
+    border-radius: 1.6875rem;
+    padding: 2.5rem 1.25rem 4.0625rem;
+}
+
+
+
+.features-content h2 {
+    width: 90%;
+}
+
+.features-content p {
+    width: 65%;
+}
+
+.features-area-two .features-counter::before {
+    content: "";
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 0.375rem;
+    height: 7.125rem;
+    background: #ec595a;
+}
+
+.features-counter .counter{
+    font-size: 50px;
+}
+
+.features-counter .counter-text {
+    font-size: 22px;
+}
+
+.features-counter p {
+    width: 65%;
+}
+
+
+.section-title-center h2 {
+    font-size: 50px;
+}
+
+
+
+.features-area-three {
+    padding: 4.6875rem 0rem 4.0625rem;
+}
+
+.section-title-center p {
+    width: 40%;
+}
+
+
+.nav button {
+    border-style: none;
+    background-color: #fff;
+}
+
+.nav .nav-link {
+    font-size: 22px;
+    color: none;
+    
+}
+
+.nav .active {
+    color: #000 !important;
+}
+footer{
+    background-color: black;
+    color: white;}
+li{
+    list-style: none;
+}
+a{
+    color:#7d848d;
+}
+.footer-bottom-menu > ul{
+    width: 80%;
+}
+
+.footer-bottom-menu > ul li a{
+    font-size: 14px;
+}
+.contact-icon{
+    width: 15%;
+    text-align: center;
+}
+h4{
+    font-weight: bold;
+    font-size: 20px;
+}
+.newsletter-text{
+    color:#7d848d;
+}
+.subscribe{
+    color: white;
+    font-weight: bold;
+    background-color: #3a3c3e;
+    height: 50px;
+}
