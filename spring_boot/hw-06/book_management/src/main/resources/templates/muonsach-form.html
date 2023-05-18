@@ -26,6 +26,8 @@
     <div class="row">
         <div class="col">
             <a class="btn btn-primary" data-toggle="modal" data-target="#addBookModal">Thêm Mới</a>
+            <a class="btn btn-primary" href="/books">Quản Lí Sách</a>
+            <a class="btn btn-primary" href="/readers">Quản Lí Bạn Đọc</a>
             <div class="modal fade" id="addBookModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -54,11 +56,6 @@
                                     <label for="numOfDays">Số Ngày Mượn</label>
                                     <input type="number" class="form-control" id="numOfDays" name="numOfDays" required>
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="dob">Ngày Mượn</label>
-                                    <input type="date" class="form-control" id="dob" name="dob" required>
-                                </div>
                                 <button type="submit" class="btn btn-primary">Thêm</button>
                             </form>
                         </div>
@@ -74,22 +71,14 @@
                     <th>Id</th>
                     <th>Người mượn</th>
                     <th>Chi Tiết Mượn Sách</th>
-                    <th>Ngày Mượn</th>
                     <th>Actions</th>
                 </tr>
                 <tr th:each="bookBorrowingModel : ${dsBookBorrowing}">
                     <td th:text="${bookBorrowingModel.id}"></td>
                     <td th:text="${bookBorrowingModel.readerModel.name}"></td>
                     <td th:text="${bookBorrowingModel.bookModel.name} + ' (' + ${bookBorrowingModel.numOfDays} + ' ngày)'"></td>
-                    <td th:text="${bookBorrowingModel.dob}"></td>
                     <td class="col-1">
                         <div class="d-flex justify-content-between">
-                            <form th:action="@{'borrow-book/delete/' + ${bookBorrowingModel.id}}" method="post"
-                                  onsubmit="return confirm('Bạn có chắc chắn muốn xóa sách này không này không?');">
-                                <button type="submit" class="btn btn-link p-0 mr-2">
-                                    <span><i class="fa-solid fa-trash-can fa-lg text-danger"></i></span>
-                                </button>
-                            </form>
                             <a data-toggle="modal" data-target="#updateBookModal" class="btn btn-link p-0">
                                 <i class="fa-solid fa-pencil fa-lg text-primary"></i> <!-- Nút Update -->
                             </a>

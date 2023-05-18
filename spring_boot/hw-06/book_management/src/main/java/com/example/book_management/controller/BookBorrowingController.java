@@ -34,12 +34,10 @@ public class BookBorrowingController {
     @PostMapping("/addNewBorrow")
     public String addBookBorrow(@RequestParam("readerModel") int readerId,
                                 @RequestParam("bookModel") int bookId,
-                                @RequestParam("numOfDays") int numOfDays,
-                                @RequestParam("dob") LocalDate dob
-                                ) {
+                                @RequestParam("numOfDays") int numOfDays) {
         ReaderModel readerModel =readerService.getReaderById(readerId);
         BookModel bookModel =bookService.getBookById(bookId);
-        BookBorrowingModel bookBorrowingModel =new BookBorrowingModel(readerModel, bookModel,numOfDays,dob);
+        BookBorrowingModel bookBorrowingModel =new BookBorrowingModel(readerModel, bookModel,numOfDays);
         bookBorrowingService.saveBookBorrow(bookBorrowingModel);
         return "redirect:/borrow-book";
     }
@@ -59,11 +57,6 @@ public class BookBorrowingController {
             bookBorrowingService.updateBookborrowing(bookBorrowingModel);
         }
 
-        return "redirect:/borrow-book";
-    }
-    @PostMapping("/delete/{id}")
-    public String deleteBorrow(@ModelAttribute BookBorrowingModel bookBorrowingModel){
-        bookBorrowingService.deleteBorrow(bookBorrowingModel.getId());
         return "redirect:/borrow-book";
     }
 

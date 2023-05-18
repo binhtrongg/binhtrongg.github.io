@@ -14,6 +14,5 @@ public class BookBorrowing {
     Reader reader;
     Book book;
     int numOfDays;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    LocalDate dob;
+
 }

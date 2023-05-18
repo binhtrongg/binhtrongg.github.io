@@ -14,13 +14,10 @@ public class BookBorrowingModel {
     ReaderModel readerModel;
     BookModel bookModel;
     int numOfDays;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    LocalDate dob;
 
-    public BookBorrowingModel(ReaderModel readerModel, BookModel bookModel, int numOfDays, LocalDate dob) {
+    public BookBorrowingModel(ReaderModel readerModel, BookModel bookModel, int numOfDays) {
         this.readerModel = readerModel;
         this.bookModel = bookModel;
         this.numOfDays = numOfDays;
-        this.dob = dob;
     }
 }

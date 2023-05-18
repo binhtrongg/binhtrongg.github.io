@@ -26,6 +26,8 @@
   <div class="row">
     <div class="col">
       <a class="btn btn-primary" data-toggle="modal" data-target="#addReaderModal">Thêm Mới</a>
+      <a class="btn btn-primary" href="/books">Quản Lí Sách</a>
+      <a class="btn btn-primary" href="/borrow-book">Quản Lí Mượn Sách</a>
       <div class="modal fade" id="addReaderModal">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -47,7 +49,9 @@
 
                 <div class="form-group">
                   <label for="phoneNumber">Số Điện Thoại</label>
-                  <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" required>
+                  <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}"
+                         title="Vui lòng nhập số điện thoại gồm 10 chữ số"
+                         required>
                 </div>
 
                 <div class="form-group">

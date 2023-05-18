@@ -29,7 +29,6 @@ public class BookBorrowingService {
             bookBorrowingModel.setReaderModel(objectMapper.convertValue(b.getReader(), ReaderModel.class));
             bookBorrowingModel.setBookModel(objectMapper.convertValue(b.getBook(), BookModel.class));
             bookBorrowingModel.setNumOfDays(b.getNumOfDays());
-            bookBorrowingModel.setDob(b.getDob());
             bookBorrowingModels.add(bookBorrowingModel);
         }
         return bookBorrowingModels;
@@ -40,7 +39,6 @@ public class BookBorrowingService {
         bookBorrowing.setBook(objectMapper.convertValue(bookBorrowingModel.getBookModel(), Book.class));
         bookBorrowing.setReader(objectMapper.convertValue(bookBorrowingModel.getReaderModel(), Reader.class));
         bookBorrowing.setNumOfDays(bookBorrowingModel.getNumOfDays());
-        bookBorrowing.setDob(bookBorrowingModel.getDob());
         ++auto_id;
         bookBorrowing.setId(auto_id);
         bookBorrowings.add(bookBorrowing);
@@ -54,14 +52,11 @@ public class BookBorrowingService {
             return null;
         }
         BookBorrowing bookBorrowing = bookBorrowingOptional.get();
-
         BookBorrowingModel bookBorrowingModel = new BookBorrowingModel();
         bookBorrowingModel.setId(bookBorrowing.getId());
         bookBorrowingModel.setReaderModel(objectMapper.convertValue(bookBorrowing.getReader(), ReaderModel.class));
         bookBorrowingModel.setBookModel(objectMapper.convertValue(bookBorrowing.getBook(), BookModel.class));
         bookBorrowingModel.setNumOfDays(bookBorrowing.getNumOfDays());
-        bookBorrowingModel.setDob(bookBorrowing.getDob());
-
         return bookBorrowingModel;
     }
 
@@ -74,12 +69,6 @@ public class BookBorrowingService {
             bookBorrowing.setBook(objectMapper.convertValue(bookBorrowingModelUpdate.getBookModel(), Book.class));
             bookBorrowing.setReader(objectMapper.convertValue(bookBorrowingModelUpdate.getReaderModel(), Reader.class));
             bookBorrowing.setNumOfDays(bookBorrowingModelUpdate.getNumOfDays());
-            bookBorrowing.setDob(bookBorrowingModelUpdate.getDob());
         });
-    }
-
-
-    public void deleteBorrow(int id) {
-        bookBorrowings.removeIf(bookBorrowingModel -> bookBorrowingModel.getId() == id);
     }
 }

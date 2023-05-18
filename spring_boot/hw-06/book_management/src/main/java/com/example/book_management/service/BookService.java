@@ -1,5 +1,7 @@
 package com.example.book_management.service;
 import com.example.book_management.entity.Book;
+import com.example.book_management.entity.BookBorrowing;
+import com.example.book_management.model.BookBorrowingModel;
 import com.example.book_management.model.BookModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
@@ -15,6 +17,7 @@ public class BookService {
     private static final List<Book> books =new ArrayList<>();
 
     ObjectMapper objectMapper;
+    BookBorrowingService bookBorrowingService;
 
     public void saveBook(BookModel bookModel) {
         Book book=objectMapper.convertValue(bookModel,Book.class);
