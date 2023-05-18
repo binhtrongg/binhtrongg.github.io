@@ -2,6 +2,7 @@ package com.example.book_management.controller;
 
 import com.example.book_management.model.BookModel;
 import com.example.book_management.service.BookService;
+import com.example.book_management.statics.BookState;
 import com.example.book_management.statics.BookType;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,7 @@ public class BookController {
         List<BookModel> bookModels = bookService.getBooks();
         model.addAttribute("dsBook", bookModels);
         model.addAttribute("bookTypes", BookType.values());
+        model.addAttribute("bookStates", BookState.values());
         return "list-book";
     }
 

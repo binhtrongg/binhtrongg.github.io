@@ -1,5 +1,6 @@
 package com.example.book_management.model;
 
+import com.example.book_management.statics.BookState;
 import com.example.book_management.statics.BookType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -28,6 +29,9 @@ public class BookModel {
 
     @NotNull(message = "Loại Sách Không Được Trống")
     BookType bookType;
+
+    @NotNull(message = "Loại Sách Không Được Trống")
+    BookState bookState;
 
     @NotNull(message = "Năm Sáng Tác Không Được Trống")
     @Min(value = 0, message = "Năm Sáng Tác Phải Lớn Hơn Hoặc Bằng 0")

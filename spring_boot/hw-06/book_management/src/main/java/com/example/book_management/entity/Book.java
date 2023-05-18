@@ -1,4 +1,5 @@
 package com.example.book_management.entity;
+import com.example.book_management.statics.BookState;
 import com.example.book_management.statics.BookType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -16,5 +17,6 @@ public class Book {
     String name;
     String author;
     BookType bookType;
+    BookState bookState;
     int creationYear;
 }

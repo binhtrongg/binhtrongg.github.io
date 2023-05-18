@@ -57,6 +57,13 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="bookState">Tình Trạng Sách</label>
+                                    <select class="form-control" id="bookState" name="bookState">
+                                        <option th:each="type : ${bookStates}" th:value="${type}" th:text="${type}"></option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="creationYear">Năm Sáng Tác</label>
                                     <input type="number" class="form-control" id="creationYear" name="creationYear" required>
                                 </div>
@@ -77,6 +84,7 @@
                     <th>Name</th>
                     <th>Author</th>
                     <th>BookType</th>
+                    <th>BookState</th>
                     <th>CreationYear</th>
                     <th>Actions</th> <!-- Thêm cột Actions -->
                 </tr>
@@ -85,6 +93,7 @@
                     <td th:text="${bookModel.name}"></td>
                     <td th:text="${bookModel.author}"></td>
                     <td th:text="${bookModel.bookType}"></td>
+                    <td th:text="${bookModel.bookState}"></td>
                     <td th:text="${bookModel.creationYear}"></td>
                     <td class="col-1">
                         <div class="d-flex justify-content-between">
@@ -122,6 +131,13 @@
                                                 <label for="bookType">Loại Sách</label>
                                                 <select class="form-control" id="bookType" name="bookType">
                                                     <option th:each="type : ${bookTypes}" th:value="${type}" th:text="${type}"></option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="bookState">Tình Trạng Sách</label>
+                                                <select class="form-control" id="bookState" name="bookState">
+                                                    <option th:each="type : ${bookStates}" th:value="${type}" th:text="${type}"></option>
                                                 </select>
                                             </div>
 

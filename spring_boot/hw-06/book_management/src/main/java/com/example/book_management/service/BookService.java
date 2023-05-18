@@ -51,6 +51,7 @@ public class BookService {
             book.setName(updateBookModel.getName());
             book.setAuthor(updateBookModel.getAuthor());
             book.setBookType(updateBookModel.getBookType());
+            book.setBookState(updateBookModel.getBookState());
             book.setCreationYear(updateBookModel.getCreationYear());
         });
     }
