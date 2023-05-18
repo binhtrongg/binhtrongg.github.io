@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Management</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-primary" data-toggle="modal" data-target="#addBookModal">Thêm Mới</a>
+            <div class="modal fade" id="addBookModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Thêm Mới Mượn Sách</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form th:action="@{/borrow-book/addNewBorrow}" method="post">
+                                <div class="form-group">
+                                    <label for="readerModel">Người mượn:</label>
+                                    <select  class="form-control" id="readerModel" name="readerModel">
+                                        <option th:each="readerModel : ${readers}" th:value="${readerModel.id}"
+                                                th:text="${readerModel.name}"></option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bookModel">Tên Sách:</label>
+                                    <select  class="form-control" id="bookModel" name="bookModel">
+                                        <option th:each="bookModel : ${books}" th:value="${bookModel.id}"
+                                                th:text="${bookModel.name}"></option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="numOfDays">Số Ngày Mượn</label>
+                                    <input type="number" class="form-control" id="numOfDays" name="numOfDays" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="dob">Ngày Mượn</label>
+                                    <input type="date" class="form-control" id="dob" name="dob" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Thêm</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col">
+            <table class="table table-bordered table-hover table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Người mượn</th>
+                    <th>Chi Tiết Mượn Sách</th>
+                    <th>Ngày Mượn</th>
+                    <th>Actions</th>
+                </tr>
+                <tr th:each="bookBorrowingModel : ${dsBookBorrowing}">
+                    <td th:text="${bookBorrowingModel.id}"></td>
+                    <td th:text="${bookBorrowingModel.readerModel.name}"></td>
+                    <td th:text="${bookBorrowingModel.bookModel.name} + ' (' + ${bookBorrowingModel.numOfDays} + ' ngày)'"></td>
+                    <td th:text="${bookBorrowingModel.dob}"></td>
+                    <td class="col-1">
+                        <div class="d-flex justify-content-between">
+                            <form th:action="@{'borrow-book/delete/' + ${bookBorrowingModel.id}}" method="post"
+                                  onsubmit="return confirm('Bạn có chắc chắn muốn xóa sách này không này không?');">
+                                <button type="submit" class="btn btn-link p-0 mr-2">
+                                    <span><i class="fa-solid fa-trash-can fa-lg text-danger"></i></span>
+                                </button>
+                            </form>
+                            <a data-toggle="modal" data-target="#updateBookModal" class="btn btn-link p-0">
+                                <i class="fa-solid fa-pencil fa-lg text-primary"></i> <!-- Nút Update -->
+                            </a>
+                        </div>
+                        <div class="modal fade" id="updateBookModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Cập Nhật Mượn Sách</h5>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form th:action="@{'borrow-book/update-borrow/' + ${bookBorrowingModel.id}}" method="post">
+                                            <input type="hidden" id="id" name="id" th:value="${bookBorrowingModel.id}" />
+                                            <div class="form-group">
+                                                <label for="readerModel">Người mượn:</label>
+                                                <select  class="form-control" id="readerModel" name="readerModel">
+                                                    <option th:each="readerModel : ${readers}" th:value="${readerModel.id}"
+                                                            th:text="${readerModel.name}"></option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="bookModel">Tên Sách:</label>
+                                                <select  class="form-control" id="bookModel" name="bookModel">
+                                                    <option th:each="bookModel : ${books}" th:value="${bookModel.id}"
+                                                            th:text="${bookModel.name}"></option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="numOfDays">Số Ngày Mượn</label>
+                                                <input type="number" class="form-control" id="numOfDays" name="numOfDays" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Cập Nhật</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+</script>
+</body>
+</html>
