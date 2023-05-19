@@ -1,0 +1,31 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+.nav-item a{
+    color: #777;
+}
+.nav-item a:hover{
+    color: #1abc9c;
+}
+a{
+    color: #777;
+}
+.first-container{
+    background-color: #1abc9c;
+}
+.first-container p{
+    font-size: 24px;
+}
+.second-container{
+    background-color: #474e5d;
+}
+h2{font-size: 24px;}
+button{
+    background-color: #d4d4d4 !important;
+}
+.items{
+    color: #777;
+}
+.footer{
+    background-color: #2f2f2f;
+}

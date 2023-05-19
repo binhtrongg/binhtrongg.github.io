@@ -1,0 +1,50 @@
+body {
+    font-family: 'Lato', sans-serif;
+}
+.first-container a{
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #a7a5a5;
+}
+.first-container .my-nav{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #2d2d30;
+    opacity: 0.8;
+}
+.nav-item a:hover{
+    color: white;
+}
+.carousel-indicators li {
+    border: solid 1px white;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+h3{
+    font-size: 25px;
+    letter-spacing: 10px;
+}
+.band p,.tour p,.contact.p{
+    color: #777;
+}
+.tour{
+    background-color: #2d2d30;
+}
+.card-item{
+    max-width: 32%;
+}
+li{
+    list-style: none;
+}
+.second-gr {
+    color: #818181;
+}
+.nav-link{
+    color: #818181;
+}
+.tab-pane{
+    color: #818181;
+}
+.footer{
+    background-color: #2f2f2f;
+}

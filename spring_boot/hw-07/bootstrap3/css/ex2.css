@@ -1,0 +1,109 @@
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+.first-container {
+    background-color: #f4511e;
+    font-family: 'Montserrat', sans-serif;
+}
+.my-nav{
+    background-color: #f4511e;
+}
+
+.first-container a {
+    color: white;
+    font-size: 13px;
+    font-weight: 100;
+    letter-spacing: 3px;
+}
+
+.nav-item :hover {
+    color: #f4511e;
+    background-color: white;
+}
+
+.input {
+    width: 45%;
+}
+
+.subcribe-btn {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
+.custom-img {
+    width: 60%;
+}
+
+.first-gr {
+    font-size: 18px;
+}
+
+.second-gr {
+    color: #818181;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+.path {
+    font-weight: bold;
+}
+
+.about-2 {
+    background-color: #f6f6f6;
+}
+
+i {
+    color: #f4511e;
+}
+
+.portfolio {
+    background-color: #f6f6f6;
+}
+
+img {
+    max-width: 100%;
+}
+
+.feedback {
+    font-size: 20px;
+    font-style: italic;
+}
+
+.carousel-indicators li {
+    border: solid 1px #f4511e;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+}
+
+.carousel-indicators .active {
+    background-color: #f4511e;
+}
+.item{
+    border: solid 1px #f4511e;
+}
+.item-header {
+    background-color: #f4511e;
+    color: white;
+}
+.item-body{
+    border-bottom: solid 1px #f6f6f6;
+}
+.money{
+    font-weight: bold;
+    color: #818181;
+    font-size: 30px;
+}
+.sign-up{
+    width: 25%;
+    background-color: #f4511e;
+    color: white;
+}
+.sign-up :hover{
+    background-color: white;
+    color:  #f4511e;
+}
