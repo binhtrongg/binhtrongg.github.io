@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Book</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row px-5">
+        <div class="col">
+            <div class="row justify-content-center">
+                <h1>Create New Route</h1>
+            </div>
+            <div class="row justify-content-center mb-4">
+                <div class="col">
+                    <form th:action="@{/driverAss/add-driverAss}" th:object="${newDriverAss}" method="post">
+                        <div class="form-group">
+                            <label for="driverId">Tài Xế</label>
+                            <select class="form-control" th:field="*{driverId}" id="driverId">
+                                <option th:each="driver : ${dsDriver}" th:value="${driver.id}" th:text="${driver.name}"></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="routeId">Chuyến Xe</label>
+                            <select class="form-control" th:field="*{routeId}" id="routeId">
+                                <option th:each="route : ${dsRoute}" th:value="${route.id}" th:text="${route.id}"></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nums">Số Lượt</label>
+                            <input type="number" th:field="*{nums}" class="form-control" id="nums">
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('nums')}"
+                                 th:errors="*{nums}"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

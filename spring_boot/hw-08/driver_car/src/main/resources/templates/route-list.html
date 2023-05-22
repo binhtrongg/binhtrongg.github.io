@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Management</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+<body>
+<div class="container">
+  <div class="row my-4">
+    <div class="col">
+      <a class="btn btn-primary" href="/routes/creat-form">Tạo mới</a>
+      <a class="btn btn-primary" href="/driverAss">Phân Tuyến</a>
+      <a class="btn btn-primary" href="/drivers">Tài Xế</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered table-hover table-striped">
+        <tr>
+          <th>Id</th>
+          <th>Khoảng Cách</th>
+          <th>Số Điểm Dừng</th>
+          <th>Actions</th> <!-- Thêm cột Actions -->
+        </tr>
+        <tr th:each="routeModel : ${dsRoute}">
+          <td th:text="${routeModel.id}"></td>
+          <td th:text="${routeModel.distance}"></td>
+          <td th:text="${routeModel.stops}"></td>
+          <td class="text-center col-1">
+            <div class="d-flex justify-content-between">
+
+              <a th:href="@{'/routes/update/' + ${routeModel.id}}" class="btn btn-link p-0">
+                <i class="fa-solid fa-pencil fa-lg text-primary"></i>
+              </a>
+
+              <form th:action="@{'routes/delete/'+${routeModel.id}}" method="post"
+                    onsubmit="return confirm('Bạn có chắc chắn muốn tuyến xe này không?');">
+                <button type="submit" class="btn btn-link p-0 mr-2">
+                  <span><i class="fa-solid fa-trash-can fa-lg text-danger"></i></span>
+                </button>
+              </form>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
