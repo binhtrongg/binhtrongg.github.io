@@ -95,6 +95,40 @@
   $(document).ready(function () {
     toastr.options.timeOut = 2500; // 1.5s
 
+    $("#driver-creat-modal-form").validate({
+      onfocusout: false,
+      onkeyup: false,
+      onclick: false,
+      rules: {
+        "name": {
+          required: true,
+          maxlength: 255
+        },
+        "address": {
+          required: true,
+          maxlength: 255
+        },
+        "phoneNumber": {
+          required: true,
+          maxlength: 10
+        }
+      },
+      messages: {
+        "name": {
+          required: "Bắt buộc nhập tên tài xế",
+          maxlength: "Hãy nhập tối đa 255 ký tự"
+        },
+        "address": {
+          required: "Bắt buộc nhập địa chỉ tài xế",
+          maxlength: "Hãy nhập tối đa 255 ký tự"
+        },
+        "phoneNumber": {
+          required: "Bắt buộc nhập số điện thoại",
+          maxlength: "Hãy nhập tối đa 10 ký tự"
+        }
+      }
+    });
+
     $("#driver-update-modal-form").validate({
       onfocusout: false,
       onkeyup: false,
