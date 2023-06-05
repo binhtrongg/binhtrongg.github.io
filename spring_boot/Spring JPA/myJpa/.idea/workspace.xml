@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="60031261-1de0-4ac1-ba2d-99ffa8dd5eb1" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="2QHnEq2rKHGFDqqaEyQ9vYgHovA" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\admin\Downloads\spring-tutorial-practice-master\myJpa\src\main\java\com\example\myjpa" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.MyJpaApplication">
+    <configuration name="StudentTest.findAllPageable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="myJpa" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.myjpa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.myjpa" />
+      <option name="MAIN_CLASS_NAME" value="com.example.myjpa.StudentTest" />
+      <option name="METHOD_NAME" value="findAllPageable" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StudentTest.findStudent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="myJpa" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.myjpa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.myjpa" />
+      <option name="MAIN_CLASS_NAME" value="com.example.myjpa.StudentTest" />
+      <option name="METHOD_NAME" value="findStudent" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StudentTest.saverUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="myJpa" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.myjpa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.myjpa" />
+      <option name="MAIN_CLASS_NAME" value="com.example.myjpa.StudentTest" />
+      <option name="METHOD_NAME" value="saverUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TodoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="myJpa" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.myjpa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.myjpa" />
+      <option name="MAIN_CLASS_NAME" value="com.example.myjpa.TodoTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TodoTest.save_todo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="myJpa" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.myjpa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.myjpa" />
+      <option name="MAIN_CLASS_NAME" value="com.example.myjpa.TodoTest" />
+      <option name="METHOD_NAME" value="save_todo" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyJpaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="myJpa" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.myjpa.MyJpaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TodoTest.save_todo" />
+        <item itemvalue="JUnit.TodoTest" />
+        <item itemvalue="JUnit.StudentTest.findStudent" />
+        <item itemvalue="JUnit.StudentTest.findAllPageable" />
+        <item itemvalue="JUnit.StudentTest.saverUser" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="60031261-1de0-4ac1-ba2d-99ffa8dd5eb1" name="Default Changelist" comment="" />
+      <created>1685019267269</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1685019267269</updated>
+      <workItem from="1685019268597" duration="5865000" />
+      <workItem from="1685201283111" duration="849000" />
+      <workItem from="1685621777934" duration="4430000" />
+      <workItem from="1685626300132" duration="5191000" />
+      <workItem from="1685697700618" duration="8000" />
+      <workItem from="1685801449965" duration="1289000" />
+      <workItem from="1685962212562" duration="20000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
