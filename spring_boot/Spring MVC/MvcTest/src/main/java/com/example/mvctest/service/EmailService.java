@@ -31,4 +31,13 @@ public class EmailService {
 
         javaMailSender.send(mailMessage);
     }
+
+    public void sendNotification(String email) {
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setFrom(sender);
+        mailMessage.setTo(email);
+        mailMessage.setText("Vui Lòng Nạp Tiền");
+        mailMessage.setSubject("Sắp Mua Được Hàng");
+        javaMailSender.send(mailMessage);
+    }
 }

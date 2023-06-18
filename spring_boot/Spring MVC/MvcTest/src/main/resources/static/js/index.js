@@ -167,7 +167,7 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             success: function (data) {
-                console.log(data)
+                //data là url
                 updateProduct(data)
             },
             error: function (errorData) {

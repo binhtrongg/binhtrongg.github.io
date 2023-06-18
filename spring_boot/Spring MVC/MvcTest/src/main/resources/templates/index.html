@@ -455,7 +455,7 @@
               <span>$</span>
               <span th:text="${product.price}"></span>
             </h3>
-            <a href="" id="buyProductBtn">Buy Now</a>
+             <button class="btn btn-primary buyProductBtnok" >Mua Ngay</button>
           </div>
         </div>
       </div>
@@ -463,7 +463,7 @@
   </section>
 
   <div
-          th:insert="fragments/sentMailModal :: sentMailModal">
+          th:insert="fragments/sentMailModal.html :: sentMailModal">
   </div>
 
 
@@ -708,7 +708,7 @@
       document.querySelector(".custom_menu-btn").classList.toggle("menu_btn-style")
     }
   </script>
-  <script src="/js/booking.js"></script>
+  <script src="/js/home.js"></script>
 
 </body>
 

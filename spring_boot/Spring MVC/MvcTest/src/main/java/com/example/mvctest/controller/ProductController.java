@@ -23,7 +23,7 @@ public class ProductController {
     @PostMapping("api/v1/products")
     public String saveProducts(@ModelAttribute("newProduct") ProductRequest productRequest){
         productService.saveProduct(productRequest);
-        return "redirect:/admin/products";
+        return "redirect:/admin";
     }
 
     @GetMapping("/api/v1/products/{id}")

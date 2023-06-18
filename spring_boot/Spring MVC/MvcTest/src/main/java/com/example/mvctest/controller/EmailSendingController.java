@@ -13,4 +13,9 @@ public class EmailSendingController {
     public void sendOtp(@PathVariable String email, @RequestBody String isApproved) {
         emailService.sendSimpleMail(email,isApproved);
     }
+
+    @PostMapping("/{email}/sent-notification")
+    public void sendNofication(@PathVariable String email){
+        emailService.sendNotification(email);
+    }
 }

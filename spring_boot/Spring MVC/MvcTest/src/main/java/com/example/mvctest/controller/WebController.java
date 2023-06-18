@@ -30,7 +30,7 @@ public class WebController {
         return "index";
     }
 
-    @GetMapping("/admin/products")
+    @GetMapping("/admin")
     public String getAdminWeb(Model model){
         List<Product> products= productService.getProducts();
         model.addAttribute("allProduct",products);
