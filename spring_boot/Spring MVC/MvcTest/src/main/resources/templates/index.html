@@ -455,12 +455,16 @@
               <span>$</span>
               <span th:text="${product.price}"></span>
             </h3>
-            <a href="">Buy Now</a>
+            <a href="" id="buyProductBtn">Buy Now</a>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <div
+          th:insert="fragments/sentMailModal :: sentMailModal">
+  </div>
 
 
   <!-- end food section -->

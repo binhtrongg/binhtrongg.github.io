@@ -35,6 +35,40 @@ $(document).ready(function () {
         },
     });
 
+    $("#updateForm").validate({
+        onfocusout: false,
+        onkeyup: false,
+        onclick: false,
+        rules: {
+            "name": {
+                required: true,
+                maxlength: 255
+            },
+            "price": {
+                required: true,
+                min: 0
+            },
+            "description": {
+                required: true,
+                maxlength: 255
+            }
+        },
+        messages: {
+            "name": {
+                required: "Yêu cầu nhập tên sản phẩm",
+                maxlength: "Hãy nhập tối đa 255 ký tự"
+            },
+            "price": {
+                required: "Yêu cầu nhập giá",
+                min: "Giá phải lớn hơn 0"
+            },
+            "description": {
+                required: "Yêu cầu nhập mô tả",
+                maxlength: "Không quá 255 kí tự"
+            }
+        },
+    });
+
     function handleAvatarChange(event, key) {
         const tempFiles = event.target.files;
         if (!tempFiles || tempFiles.length === 0) {
@@ -116,6 +150,10 @@ $(document).ready(function () {
 
     $("#submit-update-product").click(function (event) {
         event.preventDefault();
+        const isValidFormUpdate = $("#updateForm").valid();
+        if (!isValidFormUpdate) {
+            return;
+        }
         if (!chosenFile) {
             toastr.error("chưa chọn file")
             return;

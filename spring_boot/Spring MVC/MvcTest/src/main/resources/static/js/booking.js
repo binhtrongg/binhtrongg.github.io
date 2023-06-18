@@ -108,7 +108,9 @@ $(document).ready(function () {
                 success: function(response) {
                     toastr.success(message);
                     console.log(response)
-                    sendEmail(response)
+                    let isApproved = response.status !== 'Approved';
+                    console.log(isApproved)
+                    sendEmail(response,isApproved)
                     setTimeout(() => {
                         location.reload();
                     }, 1000);
@@ -119,9 +121,9 @@ $(document).ready(function () {
             });
         }
     });
-    function sendEmail(email) {
+    function sendEmail(email,isApproved) {
         let requestData = {
-            isApproved: isApproved
+            isApproved: isApproved.toString()
         };
         $.ajax({
             url: '/api/v1/users/' + email + '/otp-sending',
@@ -135,4 +137,8 @@ $(document).ready(function () {
             }
         });
     }
+
+    $("#buyProductBtn").click(function() {
+        $("#sentMailModal").modal("show");
+    });
 });

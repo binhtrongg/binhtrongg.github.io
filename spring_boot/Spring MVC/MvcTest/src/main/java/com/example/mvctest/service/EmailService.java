@@ -16,12 +16,19 @@ public class EmailService {
         this.javaMailSender = javaMailSender;
     }
 
-    public void sendSimpleMail(String receiver) {
+    public void sendSimpleMail(String receiver, String isApproved) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setFrom(sender);
         mailMessage.setTo(receiver);
-        mailMessage.setText("Mã OTP của bạn là: 123456.\n\n Không chia sẻ mã này cho bất kỳ ai!");
-        mailMessage.setSubject("[Techmaster] OTP Vefification");
+
+        if (isApproved.equals("true")) {
+            mailMessage.setText("Yêu cầu đã được phê duyệt,cảm ơn bạn đã sử dụng dịch vụ");
+            mailMessage.setSubject("Phê duyệt yêu cầu");
+        } else {
+            mailMessage.setText("Yêu cầu đã bị từ chối,đen");
+            mailMessage.setSubject("Từ chối yêu cầu");
+        }
+
         javaMailSender.send(mailMessage);
     }
 }
