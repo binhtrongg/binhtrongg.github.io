@@ -6,6 +6,9 @@ import com.example.demo.entity.Topic;
 import com.example.demo.repository.CourseRepository;
 import com.example.demo.repository.TopicRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashSet;
@@ -21,8 +24,13 @@ public class TopicService {
 
     CourseRepository courseRepository;
 
-    public List<Topic> getAllTopic() {
+    public List<Topic> getAllTopic(){
         return topicRepository.findAll();
+    }
+
+    public Page<Topic> getAllTopicPage(Integer page, Integer pageSize) {
+            Pageable pageRequest = PageRequest.of(page - 1, pageSize);
+            return topicRepository.findAll(pageRequest);
     }
 
     public Topic save(String name)throws RuntimeException {

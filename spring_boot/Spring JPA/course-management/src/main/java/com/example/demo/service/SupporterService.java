@@ -10,6 +10,9 @@ import com.example.demo.repository.SupporterRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashSet;
@@ -26,6 +29,11 @@ public class SupporterService {
 
     Faker faker;
     CourseRepository courseRepository;
+
+    public Page<Supporter> getAllSPPage(Integer page, Integer pageSize) {
+        Pageable pageRequest = PageRequest.of(page - 1, pageSize);
+        return supporterRepository.findAll(pageRequest);
+    }
 
     public List<Supporter> getSupporter(){
         return supporterRepository.findAll();

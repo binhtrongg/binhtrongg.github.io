@@ -35,7 +35,6 @@ public class CourseController {
                                @RequestParam(required = false, defaultValue = "6") Integer pageSize,
                                Model model) {
         Page<Course> pageInfo = courseService.getAllCourse(page, pageSize);
-        List<Topic> topicList = topicService.getAllTopic();
 
         model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("currentPage", page);
@@ -52,9 +51,11 @@ public class CourseController {
     }
 
     @GetMapping("admin/topics")
-    public String topics(Model model){
-        List<Topic> topics=topicService.getAllTopic();
-        model.addAttribute("topicList", topics);
+    public String topics(@RequestParam(required = false, defaultValue = "1") Integer page,
+                         @RequestParam(required = false, defaultValue = "6") Integer pageSize,Model model){
+        Page<Topic> pageInfo=topicService.getAllTopicPage(page,pageSize);
+        model.addAttribute("pageInfo", pageInfo);
+        model.addAttribute("currentPage", page);
         return "topic-list";
     }
 
@@ -122,8 +123,11 @@ public class CourseController {
         return ResponseEntity.ok(HttpStatus.ACCEPTED);
     }
     @GetMapping("/admin/supporters")
-    public String allSupporter(Model model){
-        model.addAttribute("supporterList",supporterService.getSupporter());
+    public String allSupporter(@RequestParam(required = false, defaultValue = "1") Integer page,
+                               @RequestParam(required = false, defaultValue = "6") Integer pageSize,Model model){
+        Page<Supporter> pageInfo=supporterService.getAllSPPage(page,pageSize);
+        model.addAttribute("pageInfo", pageInfo);
+        model.addAttribute("currentPage", page);
         return "supporter-list";
     }
     @GetMapping("/admin/supporters/create")
