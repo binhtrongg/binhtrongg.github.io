@@ -43,6 +43,8 @@
       <div class="menu">
         <a class="text-white ms-5" th:href="@{/}">Danh sách khóa học</a>
         <a class="text-white ms-3" th:href="@{/admin/course/createForm}">Tạo khóa học</a>
+        <a class="text-white ms-5" th:href="@{/admin/supporters}">Danh sách hỗ trợ</a>
+        <a class="text-white ms-5" th:href="@{/admin/topics}">Danh sách danh mục</a>
       </div>
     </div>
   </div>
@@ -159,6 +161,8 @@
       let courseName = $('#course-name').val();
       let courseDescription = $('#course-description').val();
       let courseType = $('#course-type').val();
+
+      console.log(document.getElementById("course-type").value)
       let selectedTopics = [];
       $('#course-topic option:selected').each(function() {
         selectedTopics.push($(this).val());

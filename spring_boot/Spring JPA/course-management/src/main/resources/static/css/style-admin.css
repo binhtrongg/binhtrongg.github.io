@@ -12,6 +12,9 @@ body {
 a {
     text-decoration: none;
 }
+.error {
+    color: red;
+}
 
 button {
     border: none;

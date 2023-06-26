@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -89,6 +90,13 @@ public class CourseService {
     }
 
     public void deleteCourse(Integer id) {
-        courseRepository.deleteById(id);
+        Optional<Course> courseOptional = courseRepository.findById(id);
+        if (courseOptional.isPresent()) {
+            Course course = courseOptional.get();
+            course.setTopics(null);
+            course.setSupporter(null);
+            courseRepository.delete(course);
+            }
+        }
     }
-}
+

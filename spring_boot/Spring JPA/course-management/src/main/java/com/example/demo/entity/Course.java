@@ -31,11 +31,11 @@ public class Course {
     @Column(name = "thumbnail")
     private String thumbnail;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "supporter_id")
     private Supporter supporter;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "course_topic",
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "topic_id"))

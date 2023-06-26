@@ -22,6 +22,8 @@ public class Topic {
     @Column(name = "name", unique = true, nullable = false)
     private String name;
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
