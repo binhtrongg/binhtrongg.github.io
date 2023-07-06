@@ -13,7 +13,7 @@ public class LoginRequest {
 
     @NotBlank
     @Size(max = 50)
-    String username;
+    String email;
 
     @NotBlank
     String password;

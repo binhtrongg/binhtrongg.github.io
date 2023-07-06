@@ -22,7 +22,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.Set;
 import java.util.UUID;
@@ -47,7 +46,7 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public JwtResponse authenticateUser(@Valid @RequestBody LoginRequest request) {
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
@@ -75,7 +74,7 @@ public class AuthenticationController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RegistrationRequest request) {
-        return userRepository.findByUsername(request.getUsername())
+        return userRepository.findByEmail(request.getEmail())
                 .map(user -> new ResponseEntity<>("Username is existed", HttpStatus.BAD_REQUEST))
                 .orElseGet(() -> {
                     userService.registerUser(request);

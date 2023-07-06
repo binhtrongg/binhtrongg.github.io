@@ -37,7 +37,7 @@ public class UserController {
             userService.createUser(request);
             return ResponseEntity.ok(null);
         } catch (ExistedUserException ex) {
-            return new ResponseEntity<>("username đã tồn tại", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("email đã tồn tại", HttpStatus.BAD_REQUEST);
         }
     }
 

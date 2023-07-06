@@ -16,8 +16,9 @@ import java.util.Set;
 @Table(name = "users")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class User extends BaseEntity {
+    String name;
 
-    String username;
+    String email;
 
     String password;
 
@@ -33,6 +34,6 @@ public class User extends BaseEntity {
 
     LocalDateTime deletedDateTime;
 
-//    String refreshToken;
+
 
 }
