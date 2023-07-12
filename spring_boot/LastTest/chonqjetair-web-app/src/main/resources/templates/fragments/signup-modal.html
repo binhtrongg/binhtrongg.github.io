@@ -1,0 +1,35 @@
+<div th:fragment="signup-modal" class="modal fade" id="registerModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title text-center">Register</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <input class="login-input" type="text" placeholder="Enter Your Email!">
+
+        <div class="input-group mt-4">
+          <input class="login-input" type="text" id="name-signup-data"
+                 placeholder="Enter Your Name">
+        </div>
+        <div class="input-group mt-4">
+          <input class="login-input" type="password" id="registerPasswordInput"
+                 placeholder="Enter Your Password">
+        </div>
+        <div class="input-group mt-4">
+          <input class="login-input" type="password" id="confirmPasswordInput"
+                 placeholder="Confirm Your Password">
+        </div>
+        <div class="account text-center my-3">
+          <Button class="btn btn-success signup-btn">Register</Button>
+        </div>
+        <div class="switch-modal">
+          <p>Already have an account? <a class="switch-confirm" href="#" data-bs-dismiss="modal" data-bs-toggle="modal"
+                                         data-bs-target="#myModal">Login</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

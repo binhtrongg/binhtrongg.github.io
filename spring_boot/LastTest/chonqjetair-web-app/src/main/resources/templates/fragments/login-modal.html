@@ -1,0 +1,43 @@
+<div th:fragment="login-modal" class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content" style="width: 600px; height: 400px;">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title text-center">Login</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-5 login-banner-img">
+
+          </div>
+          <div class="col-7 login-form">
+            <form id="login-form">
+              <input class="login-input" id="email-login-data" type="text" placeholder="Enter Your Email!" name="email">
+              <div class="error-container">
+                <div class="error-message"></div>
+              </div>
+              <div class="mt-2 position-relative">
+                <input class="login-input" type="password" id="passwordInput" placeholder="Enter Your Password" name="password">
+                <img id="togglePasswordBtn" src="/assets/img/icon/hide.png" alt="">
+                <div class="error-container">
+                  <div class="error-message"></div>
+                </div>
+              </div>
+            </form>
+            <div class="account text-center mt-2">
+              <Button class="btn btn-success login-btn">Login</Button>
+            </div>
+            <div class="switch-modal">
+              <a class="switch-confirm" href="#" data-bs-dismiss="modal" data-bs-toggle="modal"
+                                           data-bs-target="#resetPasswordModal">Forgot Password?</a>
+              <p>Don't have an account? <a class="switch-confirm" href="#" data-bs-dismiss="modal" data-bs-toggle="modal"
+                                           data-bs-target="#registerModal">Register</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+.login-banner-img {
+    background-image: url('/assets/img/icon/abstract-art-colorful-painting-art-modern-airplane-landing-airport-background-illustration-generative-ai_438099-11317.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.modal-body input[type="text"],
+.modal-body input[type="password"] {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #8b3eea;
+    color: gray;
+}
+
+#togglePasswordBtn {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 300px;
+    top: 5px;
+    cursor: pointer;
+}
+
+.modal-body > .row{
+    height: 100%;
+}
+
+.login-input {
+    width: 100%;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.switch-modal {
+    margin-top: 10px;
+}
+.switch-modal > p,.switch-modal >a{
+    color: #8b3eea;
+    font-weight: bold;
+    font-size: 13px;
+}
+.switch-confirm{
+    color: #198754;
+    font-weight: bold;
+    text-decoration: none;
+}
+.error-container {
+    margin-top: 3px;
+    height: 20px;
+}
+
+.error-message {
+    color: red;
+}
+#email-login-data-error,#passwordInput-error,#email-reset-data-error{
+    font-size: 12px;
+}
+.send-otp-btn{
+    position: absolute;
+    right: 0;
+    bottom: 23px;
+}
+.red-email{
+    color: darkred;
+}

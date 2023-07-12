@@ -138,4 +138,8 @@ public class UserService {
                 .build();
         userRepository.save(user);
     }
+
+    public Boolean existUserByEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
 }

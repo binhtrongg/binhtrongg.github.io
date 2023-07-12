@@ -1,6 +1,7 @@
 package com.example.chonqjetairwebapp.controller;
 import com.example.chonqjetairwebapp.exception.ExistedUserException;
 import com.example.chonqjetairwebapp.model.request.CreateUserRequest;
+import com.example.chonqjetairwebapp.model.request.ExistedEmailRequest;
 import com.example.chonqjetairwebapp.model.response.UserResponse;
 import com.example.chonqjetairwebapp.service.UserService;
 import lombok.AccessLevel;
@@ -39,6 +40,11 @@ public class UserController {
         } catch (ExistedUserException ex) {
             return new ResponseEntity<>("email đã tồn tại", HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @PostMapping("/email-check")
+    public ResponseEntity<Boolean> existByEmail(@RequestBody ExistedEmailRequest existedEmailRequest){
+        return ResponseEntity.ok(userService.existUserByEmail(existedEmailRequest.getEmail()));
     }
 
 }

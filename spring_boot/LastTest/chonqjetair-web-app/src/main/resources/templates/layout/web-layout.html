@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:fragment="main-fragment(title, header, cssResources, jsResources, mainContent)">
+<head>
+    <meta charset="UTF-8">
+    <title th:replace="${title}">Page Title</title>
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+    <!-- animate css -->
+    <link rel="stylesheet" href="assets/css/animate.min.css"/>
+    <!-- Fontawesome css -->
+    <link rel="stylesheet" href="assets/css/fontawesome.all.min.css"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="assets/css/error.css"/>
+    <!-- owl.theme.default css -->
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css"/>
+    <!-- navber css -->
+    <link rel="stylesheet" href="assets/css/navber.css"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- meanmenu css -->
+    <link rel="stylesheet" href="assets/css/meanmenu.css"/>
+    <!-- Style css -->
+    <link rel="stylesheet" href="assets/css/style.css"/>
+    <link rel="stylesheet" href="assets/css/modal.css"/>
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="assets/css/responsive.css"/>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+</head>
+<body>
+<!-- HEADER -->
+<th:block th:replace="~{fragments/header :: ${header}}"></th:block>
+
+<!-- BODY -->
+<th:block th:replace="${mainContent} ?: ~{}"></th:block>
+
+
+<th:block th:replace="~{fragments/footer :: footer}"></th:block>
+
+
+<!-- LOGIN MODAL -->
+<th:block th:replace="~{fragments/login-modal :: login-modal}"></th:block>
+
+<th:block th:replace="~{fragments/signup-modal :: signup-modal}"></th:block>
+
+<th:block th:replace="~{fragments/reset-password-modal :: reset-password-modal}"></th:block>
+
+
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- Bootstrap js -->
+<script src="assets/js/bootstrap.bundle.js"></script>
+<!-- Meanu js -->
+<script src="assets/js/jquery.meanmenu.js"></script>
+<!-- owl carousel js -->
+<script src="assets/js/owl.carousel.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<!-- wow.js -->
+<script src="assets/js/wow.min.js"></script>
+<script src="assets/js/modal.js"></script>
+<script src="assets/js/login.js"></script>
+<script src="assets/js/validate.js"></script>
+<th:block th:replace="${jsResources} ?: ~{}"></th:block>
+</body>
+</html>

@@ -4,11 +4,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("")
 public class WebContronller {
 
     @GetMapping("")
     public String web(){
-        return "index";
+        return "frontend/layout-index";
+    }
+
+    @GetMapping("/login")
+    public String login(){
+        return "frontend/layout-login";
     }
 }
