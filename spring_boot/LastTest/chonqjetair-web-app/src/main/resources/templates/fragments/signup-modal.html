@@ -8,21 +8,38 @@
       </div>
       <!-- Modal body -->
       <div class="modal-body">
-        <input class="login-input" type="text" placeholder="Enter Your Email!">
+        <form id="signup-form">
+          <input class="login-input" type="text" name="email" placeholder="Enter Your Email!" id="email-signup-data">
+          <div class="error-container">
+            <div class="error-message"></div>
+          </div>
 
-        <div class="input-group mt-4">
-          <input class="login-input" type="text" id="name-signup-data"
-                 placeholder="Enter Your Name">
+           <div>
+             <input class="login-input" type="text" id="name-signup-data" name="name"
+                    placeholder="Enter Your Name">
+             <div class="error-container">
+               <div class="error-message"></div>
+             </div>
+           </div>
+            <div class="position-relative">
+              <input class="login-input" type="password" id="registerPasswordInput" name="password"
+                     placeholder="Enter Your Password">
+              <img id="togglePasswordBtnSignup" src="/assets/img/icon/hide.png" alt="" onclick="hidePassword('registerPasswordInput','togglePasswordBtnSignup')">
+              <div class="error-container">
+                <div class="error-message"></div>
+              </div>
+            </div>
+            <div class="position-relative">
+              <input class="login-input" type="password" id="confirmPasswordInput" name="confirmPassword"
+                     placeholder="Confirm Your Password">
+              <img id="togglePasswordBtnSignupConfirm" src="/assets/img/icon/hide.png" alt="" onclick="hidePassword('confirmPasswordInput','togglePasswordBtnSignupConfirm')">
+              <div class="error-container">
+                <div class="error-message"></div>
+              </div>
+            </div>
+        </form>
         </div>
-        <div class="input-group mt-4">
-          <input class="login-input" type="password" id="registerPasswordInput"
-                 placeholder="Enter Your Password">
-        </div>
-        <div class="input-group mt-4">
-          <input class="login-input" type="password" id="confirmPasswordInput"
-                 placeholder="Confirm Your Password">
-        </div>
-        <div class="account text-center my-3">
+        <div class="account text-center mt-2">
           <Button class="btn btn-success signup-btn">Register</Button>
         </div>
         <div class="switch-modal">

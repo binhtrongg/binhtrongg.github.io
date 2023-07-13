@@ -21,6 +21,14 @@
     top: 5px;
     cursor: pointer;
 }
+#togglePasswordBtnSignup,#togglePasswordBtnSignupConfirm{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 445px;
+    top: 5px;
+    cursor: pointer;
+}
 
 .modal-body > .row{
     height: 100%;
@@ -35,7 +43,9 @@
 }
 
 .switch-modal {
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-left: 20px;
+    margin-bottom: 5px;
 }
 .switch-modal > p,.switch-modal >a{
     color: #8b3eea;
@@ -55,7 +65,7 @@
 .error-message {
     color: red;
 }
-#email-login-data-error,#passwordInput-error,#email-reset-data-error{
+#email-login-data-error,#passwordInput-error,#email-reset-data-error,#email-signup-data-error,#name-signup-data-error,#registerPasswordInput-error,#confirmPasswordInput-error{
     font-size: 12px;
 }
 .send-otp-btn{
@@ -65,4 +75,7 @@
 }
 .red-email{
     color: darkred;
+}
+#registerModal .modal-body{
+    padding-bottom: 0;
 }

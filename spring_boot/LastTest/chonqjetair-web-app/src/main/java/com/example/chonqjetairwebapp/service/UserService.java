@@ -46,6 +46,8 @@ public class UserService {
 
     final RefreshTokenRepository refreshTokenRepository;
 
+    final EmailService emailService;
+
     @Value("${application.security.refreshToken.tokenValidityMilliseconds}")
     long refreshTokenValidityMilliseconds;
 
@@ -53,13 +55,14 @@ public class UserService {
 
     public UserService(PasswordEncoder passwordEncoder, UserRepository userRepository,
                        RoleRepository roleRepository, ObjectMapper objectMapper,
-                       RefreshTokenRepository refreshTokenRepository, JwtUtils jwtUtils) {
+                       RefreshTokenRepository refreshTokenRepository, JwtUtils jwtUtils,EmailService emailService) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.objectMapper = objectMapper;
         this.refreshTokenRepository = refreshTokenRepository;
         this.jwtUtils = jwtUtils;
+        this.emailService=emailService;
     }
 
     public void registerUser(RegistrationRequest registrationRequest) {
@@ -141,5 +144,9 @@ public class UserService {
 
     public Boolean existUserByEmail(String email) {
         return userRepository.existsByEmail(email);
+    }
+
+    public void sendOtp(String email) {
+        emailService.sendSimpleMail(email);
     }
 }

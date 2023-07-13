@@ -4,11 +4,14 @@ import com.example.chonqjetairwebapp.exception.RefreshTokenNotFoundException;
 import com.example.chonqjetairwebapp.model.request.LoginRequest;
 import com.example.chonqjetairwebapp.model.request.RefreshTokenRequest;
 import com.example.chonqjetairwebapp.model.request.RegistrationRequest;
+import com.example.chonqjetairwebapp.model.request.VerifyOtpRequest;
 import com.example.chonqjetairwebapp.model.response.JwtResponse;
+import com.example.chonqjetairwebapp.model.response.OtpResponse;
 import com.example.chonqjetairwebapp.repository.RefreshTokenRepository;
 import com.example.chonqjetairwebapp.repository.UserRepository;
 import com.example.chonqjetairwebapp.security.CustomUserDetails;
 import com.example.chonqjetairwebapp.security.JwtUtils;
+import com.example.chonqjetairwebapp.service.OtpService;
 import com.example.chonqjetairwebapp.service.UserService;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -43,6 +46,8 @@ public class AuthenticationController {
     RefreshTokenRepository refreshTokenRepository;
 
     AuthenticationManager authenticationManager;
+
+    OtpService otpService;
 
     @PostMapping("/login")
     public JwtResponse authenticateUser(@Valid @RequestBody LoginRequest request) {
@@ -95,6 +100,11 @@ public class AuthenticationController {
     public ResponseEntity<?> logout() {
         userService.logout();
         return ResponseEntity.ok(null);
+    }
+
+    @PostMapping("/verify-otp")
+    public ResponseEntity<?> verifyOtp(@RequestBody VerifyOtpRequest request){
+        return ResponseEntity.ok(otpService.verifyOtp(request.getOtpCode()));
     }
 
 }

@@ -47,4 +47,9 @@ public class UserController {
         return ResponseEntity.ok(userService.existUserByEmail(existedEmailRequest.getEmail()));
     }
 
+    @PostMapping("/{email}/otp-sending")
+    public void sendOtp(@PathVariable String email) {
+        userService.sendOtp(email);
+    }
+
 }

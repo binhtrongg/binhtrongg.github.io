@@ -1,18 +1,23 @@
-document.getElementById('togglePasswordBtn').addEventListener('click', function () {
-    var passwordInput = document.getElementById('passwordInput');
-    var toggleBtn = document.getElementById('togglePasswordBtn');
+function hidePassword(inputId, toggleBtnId) {
+    let passwordInput = document.getElementById(inputId);
+    let toggleBtn = document.getElementById(toggleBtnId);
 
-    if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        toggleBtn.src = '/assets/img/icon/hide.png';
-    } else {
-        passwordInput.type = 'password';
-        toggleBtn.src = '/assets/img/icon/see.png';
-    }
-});
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            toggleBtn.src = '/assets/img/icon/hide.png';
+        } else {
+            passwordInput.type = 'password';
+            toggleBtn.src = '/assets/img/icon/see.png';
+        }
+}
 $(document).ready(function () {
     $(".send-otp-btn").click(function (event) {
         event.preventDefault()
+        let isValidCreatForm=$("#reset-password-form").valid()
+        if (!isValidCreatForm){
+            return
+        }
         let emailExisted={}
         let email = document.getElementById("email-reset-data").value;
         let formdata = {
@@ -26,6 +31,7 @@ $(document).ready(function () {
             success: function (response) {
                 emailExisted=response
                 if (emailExisted===true){
+                    sendingEmail(email)
                     document.getElementById("email-reset-data").readOnly = true;
                     let message = `A code has been sent to <span class='red-email'>${email}</span>`;
                     let messageElement = document.getElementById("otpSection").querySelector("p");
@@ -67,3 +73,59 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     OTPInput();
 });
+function sendingEmail(email) {
+    $.ajax({
+        url:"/api/v1/users/"+email+"/otp-sending",
+        type:"POST",
+        contentType: 'application/json',
+        success: function (response) {
+            console.log("ok")
+        },
+        error: function (xhr, status, error) {
+        }
+    })
+}
+$(".confirm-otp-btn").click(function (event) {
+    event.preventDefault()
+    let email = document.getElementById("email-reset-data").value;
+    let first = document.getElementById("first").value;
+    let second = document.getElementById("second").value;
+    let third = document.getElementById("third").value;
+    let fourth = document.getElementById("fourth").value;
+    let fifth = document.getElementById("fifth").value;
+    let sixth = document.getElementById("sixth").value;
+
+    let otp = first + second + third + fourth + fifth + sixth;
+    console.log(otp)
+    console.log(email)
+    let formData={
+        otpCode:otp
+    }
+    $.ajax({
+        url:"/api/v1/authentication/verify-otp",
+        type:"POST",
+        contentType: 'application/json',
+        data: JSON.stringify(formData),
+        success: function (response) {
+            console.log(response)
+            if (!response||response.email!==email||response.otpCode!==otp){
+                toastr.error("Mã Otp Không Chính Xác")
+            }
+            else if (convertTime(response.expiredTime <new Date())){
+                toastr.error("Otp Đã Hết Hạn")
+            }
+        },
+        error: function (xhr, status, error) {
+        }
+    })
+})
+function convertTime(arr) {
+    let year = arr[0];
+    let month = arr[1] - 1;
+    let day = arr[2];
+    let hour = arr[3];
+    let minute = arr[4];
+    let second = arr[5];
+
+    return  new Date(year, month, day, hour, minute, second);
+}

@@ -16,4 +16,9 @@ public class WebContronller {
     public String login(){
         return "frontend/layout-login";
     }
+
+    @GetMapping("/my-profile")
+    public String muprofile() {
+        return "frontend/layout-my-profile";
+    }
 }
