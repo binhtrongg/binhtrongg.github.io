@@ -2,6 +2,7 @@ package com.example.chonqjetairwebapp.controller;
 import com.example.chonqjetairwebapp.exception.ExistedUserException;
 import com.example.chonqjetairwebapp.model.request.CreateUserRequest;
 import com.example.chonqjetairwebapp.model.request.ExistedEmailRequest;
+import com.example.chonqjetairwebapp.model.request.ResetPasswordRequest;
 import com.example.chonqjetairwebapp.model.response.UserResponse;
 import com.example.chonqjetairwebapp.service.UserService;
 import lombok.AccessLevel;
@@ -50,6 +51,12 @@ public class UserController {
     @PostMapping("/{email}/otp-sending")
     public void sendOtp(@PathVariable String email) {
         userService.sendOtp(email);
+    }
+
+    @PutMapping("/reset-password")
+    public ResponseEntity<?> resetPassword(@RequestBody ResetPasswordRequest request){
+        userService.reserPassword(request);
+        return ResponseEntity.ok(null);
     }
 
 }

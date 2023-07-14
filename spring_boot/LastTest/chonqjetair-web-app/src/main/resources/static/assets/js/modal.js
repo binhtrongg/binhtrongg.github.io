@@ -111,8 +111,12 @@ $(".confirm-otp-btn").click(function (event) {
             if (!response||response.email!==email||response.otpCode!==otp){
                 toastr.error("Mã Otp Không Chính Xác")
             }
-            else if (convertTime(response.expiredTime <new Date())){
+            else if (convertTime(response.expiredTime) < new Date()){
                 toastr.error("Otp Đã Hết Hạn")
+            }
+            else {
+                $('#resetPasswordModal').modal('hide')
+                $('#new-password-modal').modal('show');
             }
         },
         error: function (xhr, status, error) {
@@ -126,6 +130,32 @@ function convertTime(arr) {
     let hour = arr[3];
     let minute = arr[4];
     let second = arr[5];
-
     return  new Date(year, month, day, hour, minute, second);
 }
+$('.confirm-new-password-btn').click(function (event) {
+    event.preventDefault()
+    let email = document.getElementById("email-reset-data").value;
+    let newPassword=$('#new-password-input').val()
+    let isValidNewPasswordForm = $("#login-form").valid()
+    if (!isValidNewPasswordForm) {
+        return
+    }
+
+    let formData={
+        email:email,
+        newPassword:newPassword
+    }
+    console.log(formData)
+    $.ajax({
+        url:"/api/v1/users/reset-password",
+        type:"PUT",
+        contentType: 'application/json',
+        data: JSON.stringify(formData),
+        success: function (response) {
+            toastr.success("ok")
+        },
+        error: function (xhr, status, error) {
+            toastr.error("not ok")
+        }
+    })
+})

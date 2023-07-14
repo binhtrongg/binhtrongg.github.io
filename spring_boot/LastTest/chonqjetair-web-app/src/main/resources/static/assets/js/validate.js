@@ -1,14 +1,10 @@
-$.validator.addMethod("uppercase", function (value, element) {
-    return /[A-Z]/.test(value);
-}, "Please enter at least one uppercase letter.");
 $(document).ready(function () {
     let form = $('#login-form');
     form.validate({
         rules: {
             password: {
                 required: true,
-                minlength: 8,
-                uppercase: true
+                minlength: 7,
             },
             email: {
                 required: true,
@@ -37,8 +33,6 @@ $(document).ready(function () {
         let input = $(this);
         form.validate().element(input);
     });
-
-//    validate email reset form
 });
 
 
@@ -88,12 +82,10 @@ $(document).ready(function () {
                 password: {
                     required: true,
                     minlength: 8,
-                    uppercase: true
                 },
                 confirmPassword:{
                     required: true,
                     minlength: 8,
-                    uppercase: true,
                     equalTo: '#registerPasswordInput'
                 }
             },
@@ -128,5 +120,47 @@ $(document).ready(function () {
     inputs.on('input', function () {
         let input = $(this);
         signupForm.validate().element(input);
+    });
+})
+
+
+$(document).ready(function () {
+    let newPasswordForm = $('#new-password-form');
+    newPasswordForm.validate(
+        {
+            rules: {
+                password: {
+                    required: true,
+                    minlength: 8,
+                },
+                newPassword:{
+                    required: true,
+                    minlength: 8,
+                    equalTo: '#new-password-input'
+                }
+            },
+            messages: {
+                password: {
+                    required: 'Please enter password.',
+                    minlength: 'password should be at least 8 characters long.',
+                },
+                newPassword: {
+                    required: 'Please enter confirm password.',
+                    minlength: 'password should be at least 8 characters long.',
+                    equalTo: 'Passwords do not match'
+                },
+
+
+            },
+            errorPlacement: function (error, element) {
+                let errorContainer = element.siblings('.error-container');
+                errorContainer.find('.error-message').html(error);
+                errorContainer.show();
+            },
+        })
+    let inputs = newPasswordForm.find('input');
+    inputs.on('input', function () {
+        let input = $(this);
+        newPasswordForm.validate().element(input);
     });
 })

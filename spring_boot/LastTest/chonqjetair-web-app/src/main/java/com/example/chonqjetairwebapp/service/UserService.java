@@ -7,6 +7,7 @@ import com.example.chonqjetairwebapp.exception.RefreshTokenNotFoundException;
 import com.example.chonqjetairwebapp.model.request.CreateUserRequest;
 import com.example.chonqjetairwebapp.model.request.RefreshTokenRequest;
 import com.example.chonqjetairwebapp.model.request.RegistrationRequest;
+import com.example.chonqjetairwebapp.model.request.ResetPasswordRequest;
 import com.example.chonqjetairwebapp.model.response.JwtResponse;
 import com.example.chonqjetairwebapp.model.response.UserResponse;
 import com.example.chonqjetairwebapp.repository.RefreshTokenRepository;
@@ -148,5 +149,14 @@ public class UserService {
 
     public void sendOtp(String email) {
         emailService.sendSimpleMail(email);
+    }
+
+    public void reserPassword(ResetPasswordRequest request) {
+        Optional<User> userOptional=userRepository.findByEmail(request.getEmail());
+        if (userOptional.isPresent()){
+            User user=userOptional.get();
+            user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+            userRepository.save(user);
+        }
     }
 }

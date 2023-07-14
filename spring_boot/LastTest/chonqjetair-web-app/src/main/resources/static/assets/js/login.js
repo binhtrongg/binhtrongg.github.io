@@ -2,18 +2,7 @@ $(document).ready(function () {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
         const loginBtn = document.getElementById('home-login-btn');
-        let html = `<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown"
-    aria-expanded="false">
-    User Name
-  </button>
-  <ul id="dropdownMenu" class="dropdown-menu" aria-labelledby="userDropdown">
-    <li><a class="dropdown-item" id="profile-link" th:href="@{/my-profile}">Thông tin cá nhân</a></li>
-    <li><a class="dropdown-item" href="#">Cài đặt</a></li>
-    <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
-  </ul>
-</div>`
+        let html = `<a class="dropdown-item" id="profile-link" th:href="@{/my-profile}"> <img style="width: 40px;height: 40px" src="/assets/img/banner/defautAvatar.png"> </a>`
         loginBtn.innerHTML = html
         const profileLink = document.getElementById('profile-link');
         profileLink.addEventListener('click', function (event) {
@@ -23,8 +12,8 @@ $(document).ready(function () {
     }
 })
 $(".login-btn").click(function () {
-    let isValidCreatForm=$("#login-form").valid()
-    if (!isValidCreatForm){
+    let isValidCreatForm = $("#login-form").valid()
+    if (!isValidCreatForm) {
         return
     }
     let email = $('#email-login-data').val()
@@ -49,6 +38,10 @@ $(".login-btn").click(function () {
             }
             localStorage.setItem("userInfor", JSON.stringify(userInfor))
             $('#myModal').modal('hide');
+            setTimeout(function () {
+                location.reload();
+            }, 1000);
+
         },
         error: function (xhr, status, error) {
             toastr.error('Thông Tin Tài Khoản Hoặc Mật Khẩu Không Chính Xác!');
@@ -57,8 +50,8 @@ $(".login-btn").click(function () {
     })
 })
 $(".signup-btn").click(function () {
-    let isValidCreatForm=$("#signup-form").valid()
-    if (!isValidCreatForm){
+    let isValidCreatForm = $("#signup-form").valid()
+    if (!isValidCreatForm) {
         return
     }
     let email = $('#email-signup-data').val()
