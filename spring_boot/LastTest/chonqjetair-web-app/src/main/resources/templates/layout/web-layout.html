@@ -54,6 +54,7 @@
 <th:block th:replace="~{fragments/reset-password-modal :: reset-password-modal}"></th:block>
 
 <th:block th:replace="~{fragments/new-password-modal :: new-password-modal}"></th:block>
+<th:block th:replace="~{fragments/activation-modal :: activation-modal}"></th:block>
 
 
 <script src="assets/js/jquery-3.6.0.min.js"></script>
@@ -72,9 +73,9 @@
 
 <!-- wow.js -->
 <script src="assets/js/wow.min.js"></script>
-<script src="assets/js/modal.js"></script>
-<script src="assets/js/login.js"></script>
-<script src="assets/js/validate.js"></script>
+<script src="assets/js/handleJs/modal.js"></script>
+<script src="assets/js/handleJs/login.js"></script>
+<script src="assets/js/handleJs/validate.js"></script>
 <th:block th:replace="${jsResources} ?: ~{}"></th:block>
 </body>
 </html>

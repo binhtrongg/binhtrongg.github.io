@@ -65,7 +65,7 @@
 .error-message {
     color: red;
 }
-#email-login-data-error,#passwordInput-error,#email-reset-data-error,#email-signup-data-error,#name-signup-data-error,#registerPasswordInput-error,#confirmPasswordInput-error{
+#email-login-data-error,#passwordInput-error,#email-reset-data-error,#email-signup-data-error,#name-signup-data-error,#registerPasswordInput-error,#confirmPasswordInput-error,#new-password-input-error,#new-confirm-password-error{
     font-size: 12px;
 }
 .send-otp-btn{

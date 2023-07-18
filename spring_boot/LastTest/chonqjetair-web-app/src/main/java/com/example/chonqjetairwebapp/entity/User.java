@@ -33,7 +33,4 @@ public class User extends BaseEntity {
     String avatar;
 
     LocalDateTime deletedDateTime;
-
-
-
 }

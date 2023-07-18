@@ -2,6 +2,7 @@ package com.example.chonqjetairwebapp.service;
 
 import com.example.chonqjetairwebapp.entity.Role;
 import com.example.chonqjetairwebapp.entity.User;
+import com.example.chonqjetairwebapp.exception.ActivatedAccountException;
 import com.example.chonqjetairwebapp.exception.ExistedUserException;
 import com.example.chonqjetairwebapp.exception.RefreshTokenNotFoundException;
 import com.example.chonqjetairwebapp.model.request.CreateUserRequest;
@@ -76,6 +77,7 @@ public class UserService {
                 .roles(roles)
                 .build();
         userRepository.save(user);
+        emailService.sendActivationEmail(registrationRequest.getEmail());
     }
 
 
@@ -158,5 +160,23 @@ public class UserService {
             user.setPassword(passwordEncoder.encode(request.getNewPassword()));
             userRepository.save(user);
         }
+    }
+
+    public void activeAccount(String email) throws ActivatedAccountException {
+        Optional<User> userOptional=userRepository.findByEmail(email);
+        if (userOptional.isPresent()){
+            User user=userOptional.get();
+            if (!user.isActivated()){
+                user.setActivated(true);
+                userRepository.save(user);
+            }
+            else {
+                throw new ActivatedAccountException("Tài Khoản Đã Được Kích Hoạt RỒi");
+            }
+        }
+    }
+
+    public void resentActivationEmail(String email) {
+        emailService.sendActivationEmail(email);
     }
 }

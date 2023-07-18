@@ -1,7 +1,9 @@
 package com.example.chonqjetairwebapp.controller;
+import com.example.chonqjetairwebapp.exception.ActivatedAccountException;
 import com.example.chonqjetairwebapp.exception.ExistedUserException;
 import com.example.chonqjetairwebapp.model.request.CreateUserRequest;
 import com.example.chonqjetairwebapp.model.request.ExistedEmailRequest;
+import com.example.chonqjetairwebapp.model.request.ReActivationAccountRequest;
 import com.example.chonqjetairwebapp.model.request.ResetPasswordRequest;
 import com.example.chonqjetairwebapp.model.response.UserResponse;
 import com.example.chonqjetairwebapp.service.UserService;
@@ -11,6 +13,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -58,5 +61,19 @@ public class UserController {
         userService.reserPassword(request);
         return ResponseEntity.ok(null);
     }
+    @GetMapping("/active-account/{email}")
+    public ModelAndView activeAccount(@PathVariable("email") String email) throws ActivatedAccountException {
+        try {
+            userService.activeAccount(email);
+            return new ModelAndView("frontend/notification-activation.html");
+        } catch (ActivatedAccountException e) {
+            return new ModelAndView("frontend/activation-error.html");
+        }
+    }
 
+    @PostMapping("/resend-activation-email/")
+    public ResponseEntity<?> resentActivationEmail(@RequestBody ReActivationAccountRequest request){
+        userService.resentActivationEmail(request.getEmail());
+        return ResponseEntity.ok(HttpStatus.CREATED);
+    }
 }

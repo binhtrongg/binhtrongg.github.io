@@ -3,16 +3,23 @@ import com.example.chonqjetairwebapp.entity.Otp;
 import com.example.chonqjetairwebapp.entity.User;
 import com.example.chonqjetairwebapp.repository.OtpRepository;
 import com.example.chonqjetairwebapp.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
+
+@EnableAsync
 @Service
 public class EmailService {
 
@@ -60,5 +67,25 @@ public class EmailService {
         }
 
         // Setting up necessary details
+    }
+
+
+    @Async
+    public void sendActivationEmail(String receiver) {
+        MimeMessage message = javaMailSender.createMimeMessage();
+        try {
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+            helper.setFrom(sender);
+            helper.setTo(receiver);
+            helper.setSubject("[SkyHub] Kích Hoạt Tài Khoản");
+
+            String activationLink = "http://localhost:8080/api/v1/users/active-account/" + receiver;
+            String emailContent = "Bạn Vừa Đăng Kí Tài Khoản, Ấn <a href=\"" + activationLink + "\">đây</a> Để Thực Hiện Kích Hoạt Tài Khoản";
+            helper.setText(emailContent, true);
+
+            javaMailSender.send(message);
+        } catch (MessagingException e) {
+            // Xử lý ngoại lệ khi gửi email không thành công
+        }
     }
 }

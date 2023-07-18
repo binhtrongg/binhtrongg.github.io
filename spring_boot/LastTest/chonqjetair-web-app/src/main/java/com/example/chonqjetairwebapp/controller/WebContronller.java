@@ -21,4 +21,9 @@ public class WebContronller {
     public String muprofile() {
         return "frontend/layout-my-profile";
     }
+
+    @GetMapping("/admin")
+    public String adminProfile(){
+        return "dashboard/db-dashboard";
+    }
 }

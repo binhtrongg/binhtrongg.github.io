@@ -1,5 +1,8 @@
 package com.example.chonqjetairwebapp.controller;
+import ch.qos.logback.core.joran.spi.ActionException;
 import com.example.chonqjetairwebapp.entity.RefreshToken;
+import com.example.chonqjetairwebapp.entity.User;
+import com.example.chonqjetairwebapp.exception.ActivatedAccountException;
 import com.example.chonqjetairwebapp.exception.RefreshTokenNotFoundException;
 import com.example.chonqjetairwebapp.model.request.LoginRequest;
 import com.example.chonqjetairwebapp.model.request.RefreshTokenRequest;
@@ -50,13 +53,25 @@ public class AuthenticationController {
     OtpService otpService;
 
     @PostMapping("/login")
-    public JwtResponse authenticateUser(@Valid @RequestBody LoginRequest request) {
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest request) throws ActivatedAccountException {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
 
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+
+
+//        with active status
+
+        User user = userRepository.findById(userDetails.getId()).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        if (!user.isActivated()) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Account is not activated");
+        }
+
+
+
         Set<String> roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toSet());
@@ -68,19 +83,19 @@ public class AuthenticationController {
                 .build();
         refreshTokenRepository.save(refreshTokenEntity);
 
-        return JwtResponse.builder()
+        return ResponseEntity.ok(JwtResponse.builder()
                 .jwt(jwt)
                 .refreshToken(refreshToken)
                 .id(userDetails.getId())
                 .username(userDetails.getUsername())
                 .roles(roles)
-                .build();
+                .build());
     }
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RegistrationRequest request) {
         return userRepository.findByEmail(request.getEmail())
-                .map(user -> new ResponseEntity<>("Username is existed", HttpStatus.BAD_REQUEST))
+                .map(user -> new ResponseEntity<>("Tài Khoản Đã Tồn Tại", HttpStatus.BAD_REQUEST))
                 .orElseGet(() -> {
                     userService.registerUser(request);
                     return new ResponseEntity<>(null, HttpStatus.CREATED);
