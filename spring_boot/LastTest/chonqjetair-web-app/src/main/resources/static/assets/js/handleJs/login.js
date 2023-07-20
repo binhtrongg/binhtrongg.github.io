@@ -159,29 +159,20 @@ $(document).ready(function () {
         if (!isValidCreatForm){
             return
         }
-        let emailExisted={}
-        let email = document.getElementById("email-reset-data").value;
+        let email = $("#email-reset-data").val()
         let formdata = {
             email: email,
         }
         $.ajax({
-            url:"/api/v1/users/email-check",
+            url:"/api/v1/users/otp-sending",
             type:"POST",
             contentType: 'application/json',
-            data: JSON.stringify(formdata),
+            data:JSON.stringify(formdata),
             success: function (response) {
-                emailExisted=response
-                if (emailExisted===true){
-                    sendingEmail(email)
-                    document.getElementById("email-reset-data").readOnly = true;
-                    let message = `A code has been sent to <span class='red-email'>${email}</span>`;
-                    let messageElement = document.getElementById("otpSection").querySelector("p");
-                    messageElement.innerHTML = message;
-                    $("#otpSection").slideDown(500);
-                }
-                else toastr.error("Email Không Tồn Tại Trong Hệ Thống")
+                showOtpForm(email)
             },
             error: function (xhr, status, error) {
+                toastr.success("Email Không Tồn Tại Trong Hệ Thống")
             }
         })
     });
@@ -191,16 +182,7 @@ $(document).ready(function () {
 $(".confirm-otp-btn").click(function (event) {
     event.preventDefault()
     let email = document.getElementById("email-reset-data").value;
-    let first = document.getElementById("first").value;
-    let second = document.getElementById("second").value;
-    let third = document.getElementById("third").value;
-    let fourth = document.getElementById("fourth").value;
-    let fifth = document.getElementById("fifth").value;
-    let sixth = document.getElementById("sixth").value;
-
-    let otp = first + second + third + fourth + fifth + sixth;
-    console.log(otp)
-    console.log(email)
+    let otp=conectOtp()
     let formData={
         otpCode:otp
     }

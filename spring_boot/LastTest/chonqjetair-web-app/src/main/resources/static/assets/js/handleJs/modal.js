@@ -62,3 +62,19 @@ function sendingEmail(email) {
         }
     })
 }
+function showOtpForm(email) {
+    document.getElementById("email-reset-data").readOnly = true;
+    let message = `A code has been sent to <span class='red-email'>${email}</span>`;
+    let messageElement = document.getElementById("otpSection").querySelector("p");
+    messageElement.innerHTML = message;
+    $("#otpSection").slideDown(500);
+}
+function conectOtp() {
+    let first = document.getElementById("first").value;
+    let second = document.getElementById("second").value;
+    let third = document.getElementById("third").value;
+    let fourth = document.getElementById("fourth").value;
+    let fifth = document.getElementById("fifth").value;
+    let sixth = document.getElementById("sixth").value;
+    return first + second + third + fourth + fifth + sixth
+}

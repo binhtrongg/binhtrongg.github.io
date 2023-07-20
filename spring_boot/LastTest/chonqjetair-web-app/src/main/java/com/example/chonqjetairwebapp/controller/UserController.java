@@ -1,10 +1,7 @@
 package com.example.chonqjetairwebapp.controller;
 import com.example.chonqjetairwebapp.exception.ActivatedAccountException;
 import com.example.chonqjetairwebapp.exception.ExistedUserException;
-import com.example.chonqjetairwebapp.model.request.CreateUserRequest;
-import com.example.chonqjetairwebapp.model.request.ExistedEmailRequest;
-import com.example.chonqjetairwebapp.model.request.ReActivationAccountRequest;
-import com.example.chonqjetairwebapp.model.request.ResetPasswordRequest;
+import com.example.chonqjetairwebapp.model.request.*;
 import com.example.chonqjetairwebapp.model.response.UserResponse;
 import com.example.chonqjetairwebapp.service.UserService;
 import lombok.AccessLevel;
@@ -51,9 +48,14 @@ public class UserController {
         return ResponseEntity.ok(userService.existUserByEmail(existedEmailRequest.getEmail()));
     }
 
-    @PostMapping("/{email}/otp-sending")
-    public void sendOtp(@PathVariable String email) {
-        userService.sendOtp(email);
+    @PostMapping("/otp-sending")
+    public ResponseEntity<?> sendOtp(@RequestBody SendingOtpRequest sendingOtpRequest) {
+        try {
+            userService.sendOtp(sendingOtpRequest.getEmail());
+            return ResponseEntity.ok(null);
+        } catch (ExistedUserException e) {
+             return new ResponseEntity<>("Email Không Tại Trong Hệ Thống", HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PutMapping("/reset-password")
@@ -61,10 +63,10 @@ public class UserController {
         userService.reserPassword(request);
         return ResponseEntity.ok(null);
     }
-    @GetMapping("/active-account/{email}")
-    public ModelAndView activeAccount(@PathVariable("email") String email) throws ActivatedAccountException {
+    @GetMapping("/{id}/activations")
+    public ModelAndView activeAccount(@PathVariable("id") Long id) {
         try {
-            userService.activeAccount(email);
+            userService.activeAccount(id);
             return new ModelAndView("frontend/notification-activation.html");
         } catch (ActivatedAccountException e) {
             return new ModelAndView("frontend/activation-error.html");

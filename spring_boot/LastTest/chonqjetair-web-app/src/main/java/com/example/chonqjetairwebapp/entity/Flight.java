@@ -1,5 +1,6 @@
 package com.example.chonqjetairwebapp.entity;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Fetch;
@@ -14,6 +15,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table
+@Builder
 public class Flight extends BaseEntity {
     @Column
     private String name;

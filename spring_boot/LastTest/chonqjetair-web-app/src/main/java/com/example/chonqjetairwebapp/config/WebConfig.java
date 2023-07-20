@@ -42,16 +42,14 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/assets/img/**").addResourceLocations("classpath:/static/assets/img/")
+        registry.addResourceHandler("/assets/img/**","/dashboard/img/**").addResourceLocations("classpath:/static/assets/img/","classpath:/static/templates/dashboard/img/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
-//        registry.addResourceHandler("/vendor/**").addResourceLocations("classpath:/static/vendor/")
-//                .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
-        registry.addResourceHandler("/assets/js/**").addResourceLocations("classpath:/static/assets/js/")
+        registry.addResourceHandler("/assets/js/**","/dashboard/js/**").addResourceLocations("classpath:/static/assets/js/","classpath:/static/templates/dashboard/js/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
-        registry.addResourceHandler("/assets/css/**").addResourceLocations("classpath:/static/assets/css/")
+        registry.addResourceHandler("/assets/css/**","/dashboard/css/**").addResourceLocations("classpath:/static/assets/css/","classpath:/static/templates/dashboard/css/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
-//        registry.addResourceHandler("/adminlte/**").addResourceLocations("classpath:/static/adminlte/")
-//                .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
+        registry.addResourceHandler("/dashboard/img/**").addResourceLocations("classpath:/static/templates/dashboard/img/")
+                .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
     }
 
 }

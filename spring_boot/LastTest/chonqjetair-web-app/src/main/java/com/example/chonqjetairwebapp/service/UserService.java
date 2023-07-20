@@ -77,7 +77,7 @@ public class UserService {
                 .roles(roles)
                 .build();
         userRepository.save(user);
-        emailService.sendActivationEmail(registrationRequest.getEmail());
+        emailService.sendActivationEmail(registrationRequest.getEmail(), user.getId());
     }
 
 
@@ -149,8 +149,13 @@ public class UserService {
         return userRepository.existsByEmail(email);
     }
 
-    public void sendOtp(String email) {
-        emailService.sendSimpleMail(email);
+    public void sendOtp(String email) throws ExistedUserException {
+        if (!userRepository.existsByEmail(email)){
+            throw new ExistedUserException();
+        }
+        else {
+            emailService.sendSimpleMail(email);
+        }
     }
 
     public void reserPassword(ResetPasswordRequest request) {
@@ -162,8 +167,8 @@ public class UserService {
         }
     }
 
-    public void activeAccount(String email) throws ActivatedAccountException {
-        Optional<User> userOptional=userRepository.findByEmail(email);
+    public void activeAccount(Long id) throws ActivatedAccountException {
+        Optional<User> userOptional=userRepository.findById(id);
         if (userOptional.isPresent()){
             User user=userOptional.get();
             if (!user.isActivated()){
@@ -177,6 +182,8 @@ public class UserService {
     }
 
     public void resentActivationEmail(String email) {
-        emailService.sendActivationEmail(email);
+        Optional<User> userOp = userRepository.findByEmail(email);
+        User user = userOp.orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        emailService.sendActivationEmail(email, user.getId());
     }
 }
