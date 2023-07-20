@@ -44,6 +44,7 @@
         </a>
       </div>
 
+
       <div class="row justify-between items-center pl-60 lg:pl-20">
         <div class="col-auto">
           <div class="d-flex items-center">
@@ -51,12 +52,7 @@
               <i class="icon-menu-2 text-20"></i>
             </button>
 
-            <div class="single-field relative d-flex items-center md:d-none ml-30">
-              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="email" placeholder="Search">
-              <button class="absolute d-flex items-center h-full">
-                <i class="icon-search text-20 px-15 text-dark-1"></i>
-              </button>
-            </div>
+
           </div>
         </div>
 
@@ -122,11 +118,11 @@
                 <ul class="list-disc pb-5 pl-40">
 
                   <li>
-                    <a href="db-vendor-hotels.html" class="text-15">All hotels</a>
+                    <a th:href="@{/flight}" class="text-15">All hotels</a>
                   </li>
 
                   <li>
-                    <a href="db-vendor-add-hotel.html" class="text-15">Add hotel</a>
+                    <a th:href="@{/add-flight}" class="text-15">Add hotel</a>
                   </li>
                 </ul>
               </div>
@@ -238,17 +234,38 @@
     <div class="dashboard__main">
       <div class="dashboard__content">
         <div class="row y-gap-20 justify-between items-end pb-20 lg:pb-40 md:pb-32">
-          <div class="col-auto">
+          <div class="d-flex justify-between">
+            <div class="single-field relative d-flex items-center md:d-none ml-30">
+              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="email" placeholder="Search">
+            </div>
+          </div>
+          <div class="d-flex justify-between">
+            <div class="single-field relative d-flex items-center md:d-none ml-30">
+              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="date" placeholder="Search">
+            </div>
+            <div class="single-field relative d-flex items-center md:d-none ml-30">
+              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="date" placeholder="Search">
+            </div>
+          </div>
 
-            <h1 class="text-30 lh-14 fw-600">All Airport</h1>
-            <div class="text-15 text-light-1">Add An Airport</div>
-
+          <div class="d-flex justify-between">
+            <div class="single-field relative d-flex items-center md:d-none ml-30">
+              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="email" placeholder="Search">
+            </div>
+            <div class="single-field relative d-flex items-center md:d-none ml-30">
+              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="email" placeholder="Search">
+            </div>
           </div>
 
           <div class="col-auto">
+
+
 
           </div>
         </div>
+        <button class="btn btn-success">
+          Add New Flight
+        </button>
 
 
         <div class="py-30 px-30 rounded-4 bg-white custom_shadow">
@@ -258,7 +275,7 @@
               <div class="col-auto">
                 <button
                   class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button is-tab-el-active"
-                  data-tab-target=".-tab-item-1">All hotels</button>
+                  data-tab-target=".-tab-item-1">All Flights</button>
               </div>
 
             </div>
@@ -270,27 +287,30 @@
                   <table class="table-4 -border-bottom col-12">
                     <thead class="bg-light-2">
                       <tr>
-                        <th>Hotel name</th>
-                        <th>Location</th>
-                        <th>Owner</th>
-                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Departure Time</th>
+                        <th>Arrival Time</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
                         <th>Status</th>
-                        <th>Reviews</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+<!--                      <tr>-->
 
-                        <td>binh trong</td>
-                        <td>California, USA</td>
-                        <td> David hoffman</td>
-                        <td>28 Sep 2022</td>
+
+<!--                      </tr>-->
+                    <th:block th:with="flights=${pageInfo.getContent()}">
+                      <tr th:each="flight:${flights}">
+                        <td th:text="${flight.name}"></td>
+                        <td th:text="${#temporals.format(flight.departureTime, 'dd-MM-yyyy HH:mm:ss')}"></td>
+                        <td th:text="${#temporals.format(flight.arrivalTime, 'dd-MM-yyyy HH:mm:ss')}"></td>
+                        <td th:text="${flight.origin.name}"></td>
+                        <td th:text="${flight.destination.name}"></td>
+
                         <td><span
-                            class="rounded-100 py-4 px-10 text-center text-14 fw-500 bg-yellow-4 text-yellow-3">Confirmed</span>
-                        </td>
-                        <td>
-                          <div class="rounded-4 size-35 bg-blue-1 text-white flex-center text-12 fw-600">4.8</div>
+                                class="rounded-100 py-4 px-10 text-center text-14 fw-500 bg-yellow-4 text-yellow-3">Confirmed</span>
                         </td>
                         <td>
                           <div class="row x-gap-10 y-gap-10 items-center">
@@ -327,6 +347,8 @@
                           </div>
                         </div>
                       </tr>
+
+                    </th:block>
                     </tbody>
                   </table>
                 </div>

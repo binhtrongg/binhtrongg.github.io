@@ -4,6 +4,8 @@ import com.example.chonqjetairwebapp.entity.Flight;
 import com.example.chonqjetairwebapp.exception.FlightNotFoundException;
 import com.example.chonqjetairwebapp.model.request.CreatFlightRequest;
 import com.example.chonqjetairwebapp.model.request.UpdateFlightRequest;
+import com.example.chonqjetairwebapp.repository.AircraftTypeRepository;
+import com.example.chonqjetairwebapp.repository.AirportRepository;
 import com.example.chonqjetairwebapp.service.FlightService;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,8 +25,14 @@ public class FlightController {
 
     FlightService flightService;
 
+    AircraftTypeRepository aircraftTypeRepository;
+
+    AirportRepository airportRepository;
+
     @Autowired
-    public FlightController(FlightService flightService) {
+    public FlightController(FlightService flightService,AircraftTypeRepository aircraftTypeRepository,AirportRepository airportRepository) {
+        this.aircraftTypeRepository=aircraftTypeRepository;
+        this.airportRepository=airportRepository;
         this.flightService = flightService;
     }
 
@@ -39,6 +47,15 @@ public class FlightController {
         model.addAttribute("currentPage", page);
         return "admin/db-vendor-hotels";
     }
+
+
+    @GetMapping("/add-flight")
+    public String getAllFlight(Model model) {
+        model.addAttribute("aircraftType",aircraftTypeRepository.findAll());
+        model.addAttribute("airportList", airportRepository.findAll());
+        return "admin/db-vendor-add-hotel";
+    }
+
 
 
     @PostMapping("/api/v1/flights")

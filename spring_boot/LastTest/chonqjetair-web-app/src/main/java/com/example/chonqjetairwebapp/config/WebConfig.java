@@ -42,13 +42,17 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/assets/img/**","/admin/img/**").addResourceLocations("classpath:/static/assets/img/","classpath:/static/templates/admin/img/")
+        registry.addResourceHandler("/assets/img/**").addResourceLocations("classpath:/static/assets/img/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
-        registry.addResourceHandler("/assets/js/**","/admin/js/**").addResourceLocations("classpath:/static/assets/js/","classpath:/static/templates/admin/js/")
+        registry.addResourceHandler("/admin/img/**").addResourceLocations("classpath:/templates/admin/img/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
-        registry.addResourceHandler("/assets/css/**","/admin/css/**").addResourceLocations("classpath:/static/assets/css/","classpath:/static/templates/admin/css/")
+        registry.addResourceHandler("/assets/js/**").addResourceLocations("classpath:/static/assets/js/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
-        registry.addResourceHandler("/admin/img/**").addResourceLocations("classpath:/static/templates/admin/img/")
+        registry.addResourceHandler("/admin/js/**").addResourceLocations("classpath:/templates/admin/js/")
+                .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
+        registry.addResourceHandler("/assets/css/**").addResourceLocations("classpath:/static/assets/css/")
+                .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
+        registry.addResourceHandler("/admin/css/**").addResourceLocations("classpath:/templates/admin/css/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
     }
 
