@@ -1,5 +1,7 @@
 package com.example.chonqjetairwebapp.controller;
 import com.example.chonqjetairwebapp.entity.Flight;
+import com.example.chonqjetairwebapp.service.FlightService;
+import com.example.chonqjetairwebapp.service.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("")
 public class WebContronller {
+
+
 
     @GetMapping("")
     public String web(){
