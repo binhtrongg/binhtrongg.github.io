@@ -11326,6 +11326,43 @@ div[data-slider]>input[type=range]::-ms-tooltip {
     transition: all .4s cubic-bezier(.165, .84, .44, 1)
 }
 
+.location{
+    font-size: 14px;
+    color: black;
+    font-weight: bold;
+}
+.airport{
+    font-size: 12px;
+}
+.highlight {
+    color: lightblue;
+}
+
+.autocomplete-list-from,.autocomplete-list-to {
+    position: absolute;
+    z-index: 9999;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+.autocomplete-list-from li,.autocomplete-list-to li {
+    padding: 0px 12px;
+    cursor: pointer;
+}
+
+.autocomplete-list-from li:hover ,.autocomplete-list-to li:hover{
+    background-color: #f1f1f1;
+}
+
 .langMenu.is-hidden {
     pointer-events: none;
     opacity: 0
@@ -11958,7 +11995,7 @@ div[data-slider]>input[type=range]::-ms-tooltip {
     pointer-events: none;
     font-size: 14px
 }
-.form-input input, .form-input textarea {
+.form-input input, .form-input textarea,.form-input select {
     padding: 0 15px 0;
     min-height: 56px;
     transition: all .2s cubic-bezier(.165, .84, .44, 1);

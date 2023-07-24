@@ -10,7 +10,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 public class Airport extends BaseEntity {
-
     @Column(nullable = false)
     private String name;
 
@@ -24,6 +23,6 @@ public class Airport extends BaseEntity {
     private double longitude;
 
     @Column(nullable = false)
-    private String timeZone;
+    private String nation;
 
 }

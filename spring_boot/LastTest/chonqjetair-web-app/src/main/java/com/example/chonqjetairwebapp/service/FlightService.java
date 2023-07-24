@@ -1,7 +1,10 @@
 package com.example.chonqjetairwebapp.service;
 
+import com.example.chonqjetairwebapp.entity.AircraftType;
+import com.example.chonqjetairwebapp.entity.Airport;
 import com.example.chonqjetairwebapp.entity.Flight;
 import com.example.chonqjetairwebapp.exception.FlightNotFoundException;
+import com.example.chonqjetairwebapp.model.request.AdSearchFlightRequest;
 import com.example.chonqjetairwebapp.model.request.CreatFlightRequest;
 import com.example.chonqjetairwebapp.model.request.UpdateFlightRequest;
 import com.example.chonqjetairwebapp.repository.AircraftTypeRepository;
@@ -13,6 +16,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @AllArgsConstructor
@@ -55,5 +60,16 @@ public class FlightService {
     public Page<Flight> findAll(Integer page, Integer pageSize) {
             Pageable pageRequest = PageRequest.of(page - 1, pageSize);
             return flightRepository.findAll(pageRequest);
+    }
+
+    public List<AircraftType> getAllAircraft(){
+        return aircraftTypeRepository.findAll();
+    }
+    public List<Airport> getAllAirport(){
+        return airportRepository.findAll();
+    }
+
+    public List<Flight> searchFlight(AdSearchFlightRequest searchRequest) {
+      return flightRepository.searchFlight(searchRequest.getName(),searchRequest.getDepartureTime(),searchRequest.getArrivalTime(),searchRequest.getFrom(),searchRequest.getTo());
     }
 }

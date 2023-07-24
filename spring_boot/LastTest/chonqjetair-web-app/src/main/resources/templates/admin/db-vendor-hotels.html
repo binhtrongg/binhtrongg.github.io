@@ -11,9 +11,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
   <!-- Latest compiled and minified CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -39,8 +38,8 @@
     <div data-anim="fade" class="header__container px-30 sm:px-20">
       <div class="-left-side">
         <a href="#!" class="header-logo" data-x="header-logo" data-x-toggle="is-logo-dark">
-          <img src="img/general/logo.png" alt="logo icon">
-          <img src="img/general/logo.png" alt="logo icon">
+          <img src="/admin/img/general/logo.png" alt="logo icon">
+          <img src="/admin/img/general/logo.png" alt="logo icon">
         </a>
       </div>
 
@@ -49,7 +48,7 @@
         <div class="col-auto">
           <div class="d-flex items-center">
             <button data-x-click="dashboard">
-              <i class="icon-menu-2 text-20"></i>
+              <i class="fa-solid fa-bars"></i>
             </button>
 
 
@@ -73,7 +72,7 @@
             </div>
 
             <div class="pl-15">
-              <img src="img/avatars/3.png" alt="image" class="size-50 rounded-22 object-cover">
+              <img src="/admin/img/avatars/3.png" alt="image" class="size-50 rounded-22 object-cover">
             </div>
           </div>
         </div>
@@ -236,36 +235,37 @@
         <div class="row y-gap-20 justify-between items-end pb-20 lg:pb-40 md:pb-32">
           <div class="d-flex justify-between">
             <div class="single-field relative d-flex items-center md:d-none ml-30">
-              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="email" placeholder="Search">
+              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="email" placeholder="Name" id="flight-search-name">
             </div>
           </div>
           <div class="d-flex justify-between">
             <div class="single-field relative d-flex items-center md:d-none ml-30">
-              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="date" placeholder="Search">
+              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="date" id="departure-time">
             </div>
             <div class="single-field relative d-flex items-center md:d-none ml-30">
-              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="date" placeholder="Search">
+              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="date" id="arrival-time">
             </div>
           </div>
-
           <div class="d-flex justify-between">
-            <div class="single-field relative d-flex items-center md:d-none ml-30">
-              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="email" placeholder="Search">
+            <div class="single-field relative  md:d-none ml-30">
+              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" id="search-input-from" type="text" placeholder="From">
+              <ul class="autocomplete-list-from"></ul>
             </div>
-            <div class="single-field relative d-flex items-center md:d-none ml-30">
-              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="email" placeholder="Search">
+            <div class="single-field relative  md:d-none ml-30">
+              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" id="search-input-to" type="text" placeholder="To">
+              <ul class="autocomplete-list-to"></ul>
             </div>
           </div>
-
-          <div class="col-auto">
-
-
-
+          <div class="col-auto d-flex justify-content-center w-100 search-btn">
+            <button class="btn btn-dark">Search</button>
           </div>
         </div>
-        <button class="btn btn-success">
-          Add New Flight
-        </button>
+
+        <div class="d-flex justify-end mb-3">
+          <button class="btn btn-success">
+            Add New Flight
+          </button>
+        </div>
 
 
         <div class="py-30 px-30 rounded-4 bg-white custom_shadow">
@@ -296,16 +296,12 @@
                         <th>Action</th>
                       </tr>
                     </thead>
-                    <tbody>
-<!--                      <tr>-->
-
-
-<!--                      </tr>-->
+                    <tbody id="render-flight">
                     <th:block th:with="flights=${pageInfo.getContent()}">
                       <tr th:each="flight:${flights}">
                         <td th:text="${flight.name}"></td>
-                        <td th:text="${#temporals.format(flight.departureTime, 'dd-MM-yyyy HH:mm:ss')}"></td>
-                        <td th:text="${#temporals.format(flight.arrivalTime, 'dd-MM-yyyy HH:mm:ss')}"></td>
+                        <td th:text="${#temporals.format(flight.departureTime, 'HH:mm:ss, dd/MM/yyyy')}"></td>
+                        <td th:text="${#temporals.format(flight.arrivalTime, 'HH:mm:ss, dd/MM/yyyy')}"></td>
                         <td th:text="${flight.origin.name}"></td>
                         <td th:text="${flight.destination.name}"></td>
 
@@ -317,19 +313,19 @@
 
                             <div class="col-auto">
                               <button class="flex-center bg-light-2 rounded-4 size-35" data-bs-toggle="offcanvas" data-bs-target="#demo">
-                                <i class="icon-eye text-16 text-light-1"></i>
+                                <i class="fa-solid fa-eye"></i>
                               </button>
                             </div>
 
                             <div class="col-auto">
                               <button class="flex-center bg-light-2 rounded-4 size-35">
-                                <i class="icon-edit text-16 text-light-1"></i>
+                                <i class="fa-solid fa-pen"></i>
                               </button>
                             </div>
 
                             <div class="col-auto">
                               <button class="flex-center bg-light-2 rounded-4 size-35">
-                                <i class="icon-trash-2 text-16 text-light-1"></i>
+                                <i class="fa-solid fa-trash"></i>
                               </button>
                             </div>
                           </div>
@@ -359,65 +355,6 @@
 
           <div class="pt-30">
             <div class="row justify-between">
-              <div class="col-auto">
-                <button class="button -blue-1 size-40 rounded-full border-light">
-                  <i class="icon-chevron-left text-12"></i>
-                </button>
-              </div>
-
-              <div class="col-auto">
-                <div class="row x-gap-20 y-gap-20 items-center">
-
-                  <div class="col-auto">
-
-                    <div class="size-40 flex-center rounded-full">1</div>
-
-                  </div>
-
-                  <div class="col-auto">
-
-                    <div class="size-40 flex-center rounded-full bg-dark-1 text-white">2</div>
-
-                  </div>
-
-                  <div class="col-auto">
-
-                    <div class="size-40 flex-center rounded-full">3</div>
-
-                  </div>
-
-                  <div class="col-auto">
-
-                    <div class="size-40 flex-center rounded-full bg-light-2">4</div>
-
-                  </div>
-
-                  <div class="col-auto">
-
-                    <div class="size-40 flex-center rounded-full">5</div>
-
-                  </div>
-
-                  <div class="col-auto">
-
-                    <div class="size-40 flex-center rounded-full">...</div>
-
-                  </div>
-
-                  <div class="col-auto">
-
-                    <div class="size-40 flex-center rounded-full">20</div>
-
-                  </div>
-
-                </div>
-              </div>
-
-              <div class="col-auto">
-                <button class="button -blue-1 size-40 rounded-full border-light">
-                  <i class="icon-chevron-right text-12"></i>
-                </button>
-              </div>
             </div>
           </div>
         </div>
@@ -435,7 +372,7 @@
 
             <div class="col-auto">
               <div class="d-flex x-gap-5 y-gap-5 items-center">
-                <img src="./img/avatars/card.png" alt="img">
+                <img src="/admin/img/avatars/card.png" alt="img">
               </div>
             </div>
           </div>
@@ -447,11 +384,17 @@
   <script src="../../../cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"
     integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM"></script>
   <script src="../../../unpkg.com/%40googlemaps/markerclusterer%402.0.13/dist/index.min.js"></script>
 
   <script src="/admin/js/vendors.js"></script>
   <script src="/admin/js/main.js"></script>
+  <script src="/admin/js/search.js"></script>
+  <script src="/admin/js/ultil.js"></script>
+
 </body>
 
 </html>

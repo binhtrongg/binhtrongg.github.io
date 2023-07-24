@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
   <!-- Stylesheets -->
   <link rel="stylesheet" th:href="@{/admin/css/vendors.css}">
@@ -269,98 +271,51 @@
 <!--                    <div class="col-6">-->
                       <div class="form-input ">
                         <label class="lh-1 text-16 text-light-1">Name</label>
-                        <input type="text" required>
+                        <input type="text" required id="flight-create-name">
                       </div>
 <!--                    </div>-->
                     <div class="col-6">
                       <div class="form-input ">
-                        <label class="lh-1 text-16 text-light-1">Owner name</label>
-                        <input type="text" required>
+                        <label class="lh-1 text-16 text-light-1">Departure Time</label>
+                        <input type="datetime-local" required id="flight-create-departure-time">
                       </div>
                     </div>
                     <div class="col-6">
                       <div class="form-input ">
-                        <label class="lh-1 text-16 text-light-1">Email address</label>
-                        <input type="text" required>
+                        <label class="lh-1 text-16 text-light-1">Arrival Time</label>
+                        <input type="datetime-local" required id="flight-create-arrival-time">
                       </div>
                     </div>
                     <div class="col-6">
                       <div class="form-input ">
-                        <label class="lh-1 text-16 text-light-1">Mobile number</label>
-                        <input type="text" required>
+                        <label class="lh-1 text-16 text-light-1">Origin</label>
+                        <select id="mySelectOrigin" name="mySelect">
+                          <option th:each="origin : ${airportList}" th:value="${origin.id}" th:text="${origin.name}"></option>
+                        </select>
                       </div>
                     </div>
                     <div class="col-6">
                       <div class="form-input ">
-                        <label class="lh-1 text-16 text-light-1">Floor</label>
-                        <input type="text" required>
+                        <label class="lh-1 text-16 text-light-1">Destination</label>
+                        <select id="mySelectDestination" name="mySelect">
+                          <option th:each="destination : ${airportList}" th:value="${destination.id}" th:text="${destination.name}"></option>
+                        </select>
                       </div>
                     </div>
                     <div class="col-6">
                       <div class="form-input ">
-                        <label class="lh-1 text-16 text-light-1">Hotel reg. no.</label>
-                        <input type="text" required>
+                        <label class="lh-1 text-16 text-light-1">Destination</label>
+                        <select id="mySelectAircraft" name="mySelect">
+                          <option th:each="aircraft : ${aircraftType}" th:value="${aircraft.id}" th:text="${aircraft.name}"></option>
+                        </select>
                       </div>
                     </div>
-                    <div class="col-6">
-                      <div class="form-input ">
-                        <label class="lh-1 text-16 text-light-1">Room</label>
-                        <input type="text" required>
-                      </div>
-                    </div>
-                    <div class="col-6">
-                      <div class="form-input ">
-                        <label class="lh-1 text-16 text-light-1">Trade lisense no.</label>
-                        <input type="text" required>
-                      </div>
-                    </div>
-                   
-<!--                    <div class="col-12">-->
-<!--                      <div class="form-input ">-->
-<!--                        <label class="lh-1 text-16 text-light-1">About hotel</label>-->
-<!--                        <textarea required rows="5"></textarea>-->
-<!--                      </div>-->
-<!--                    </div>-->
                   </div>
-
-<!--                  <div class="mt-30">-->
-<!--                    <div class="fw-500">Images</div>-->
-
-<!--                    <div class="row x-gap-20 y-gap-20 pt-15">-->
-<!--                      <div class="col-auto">-->
-<!--                        <div class="w-200">-->
-<!--                          <div class="d-flex ratio ratio-1:1">-->
-<!--                            <div-->
-<!--                              class="flex-center flex-column text-center bg-blue-2 h-full w-1/1 absolute rounded-4 border-type-1">-->
-<!--                              <div class="icon-upload-file text-40 text-blue-1 mb-10"></div>-->
-<!--                              <div class="text-blue-1 fw-500">Upload Images</div>-->
-<!--                            </div>-->
-<!--                          </div>-->
-<!--                          <div class="text-center mt-10 text-14 text-light-1">PNG or JPG no bigger than 800px wide and-->
-<!--                            tall.</div>-->
-<!--                        </div>-->
-<!--                      </div>-->
-
-
-<!--                      <div class="col-auto">-->
-<!--                        <div class="d-flex ratio ratio-1:1 w-200">-->
-<!--                          <img src="img/avatars/add-1.png" alt="image" class="img-ratio rounded-4">-->
-<!--                        </div>-->
-<!--                      </div>-->
-
-<!--                      <div class="col-auto">-->
-<!--                        <div class="d-flex ratio ratio-1:1 w-200">-->
-<!--                          <img src="img/avatars/add-2.png" alt="image" class="img-ratio rounded-4">-->
-<!--                        </div>-->
-<!--                      </div>-->
-
-<!--                    </div>-->
-<!--                  </div>-->
                 </div>
 
                 <div class="d-inline-block pt-30">
 
-                  <a href="#" class="button h-50 px-24 -dark-1 bg-blue-1 text-white">
+                  <a href="#" class="button h-50 px-24 -dark-1 bg-blue-1 save-flight-btn">
                     Save changes
                   </a>
 
@@ -825,11 +780,6 @@
                   </div>
 
                   <div class="d-inline-block mt-30">
-
-                    <a href="#" class="button h-50 px-24 -dark-1 bg-blue-1 text-white">
-                      Save Changes
-                    </a>
-
                   </div>
                 </div>
               </div>
@@ -868,6 +818,7 @@
 
   <script src="admin/js/vendors.js"></script>
   <script src="admin/js/main.js"></script>
+  <script src="admin/js/crud.js"></script>
 </body>
 
 </html>

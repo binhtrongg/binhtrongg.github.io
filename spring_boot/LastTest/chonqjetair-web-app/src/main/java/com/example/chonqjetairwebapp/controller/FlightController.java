@@ -1,11 +1,9 @@
 package com.example.chonqjetairwebapp.controller;
-
 import com.example.chonqjetairwebapp.entity.Flight;
 import com.example.chonqjetairwebapp.exception.FlightNotFoundException;
+import com.example.chonqjetairwebapp.model.request.AdSearchFlightRequest;
 import com.example.chonqjetairwebapp.model.request.CreatFlightRequest;
 import com.example.chonqjetairwebapp.model.request.UpdateFlightRequest;
-import com.example.chonqjetairwebapp.repository.AircraftTypeRepository;
-import com.example.chonqjetairwebapp.repository.AirportRepository;
 import com.example.chonqjetairwebapp.service.FlightService;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,14 +23,9 @@ public class FlightController {
 
     FlightService flightService;
 
-    AircraftTypeRepository aircraftTypeRepository;
-
-    AirportRepository airportRepository;
 
     @Autowired
-    public FlightController(FlightService flightService,AircraftTypeRepository aircraftTypeRepository,AirportRepository airportRepository) {
-        this.aircraftTypeRepository=aircraftTypeRepository;
-        this.airportRepository=airportRepository;
+    public FlightController(FlightService flightService) {
         this.flightService = flightService;
     }
 
@@ -51,8 +44,8 @@ public class FlightController {
 
     @GetMapping("/add-flight")
     public String getAllFlight(Model model) {
-        model.addAttribute("aircraftType",aircraftTypeRepository.findAll());
-        model.addAttribute("airportList", airportRepository.findAll());
+        model.addAttribute("aircraftType",flightService.getAllAircraft());
+        model.addAttribute("airportList", flightService.getAllAirport());
         return "admin/db-vendor-add-hotel";
     }
 
@@ -76,5 +69,15 @@ public class FlightController {
     public ResponseEntity<?> deleteFlight(@PathVariable("id") Long id) throws FlightNotFoundException {
             flightService.deleteFlight(id);
             return ResponseEntity.ok(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("api/v1/flights/airports")
+    public ResponseEntity<?> getAllAirport(){
+            return ResponseEntity.ok(flightService.getAllAirport());
+    }
+
+    @PostMapping("/api/v1/admin/flights/search")
+    public ResponseEntity<?> adminSearch(@RequestBody AdSearchFlightRequest searchRequest){
+        return ResponseEntity.ok(flightService.searchFlight(searchRequest));
     }
 }

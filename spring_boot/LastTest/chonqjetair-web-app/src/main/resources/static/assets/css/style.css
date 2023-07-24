@@ -631,6 +631,7 @@ section {
     font-weight: 500;
     height: 35px;
     padding: 0;
+    border-bottom: 1px solid;
 }
 
 .flight_Search_boxed input:focus-within {
