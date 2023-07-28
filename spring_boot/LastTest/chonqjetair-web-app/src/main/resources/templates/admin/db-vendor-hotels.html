@@ -12,6 +12,7 @@
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
   <!-- Latest compiled and minified CSS -->
@@ -262,9 +263,7 @@
         </div>
 
         <div class="d-flex justify-end mb-3">
-          <button class="btn btn-success">
-            Add New Flight
-          </button>
+          <a class="btn btn-success" th:href="@{/add-flight}">Add New Flight</a>
         </div>
 
 
@@ -318,13 +317,13 @@
                             </div>
 
                             <div class="col-auto">
-                              <button class="flex-center bg-light-2 rounded-4 size-35">
+                              <button class="flex-center bg-light-2 rounded-4 size-35" th:attr="flight-id=${flight.id}">
                                 <i class="fa-solid fa-pen"></i>
                               </button>
                             </div>
 
                             <div class="col-auto">
-                              <button class="flex-center bg-light-2 rounded-4 size-35">
+                              <button class="flex-center bg-light-2 rounded-4 size-35 delete-flight-btn" th:attr="flight-id=${flight.id}">
                                 <i class="fa-solid fa-trash"></i>
                               </button>
                             </div>
@@ -333,13 +332,21 @@
                         <!-- Offcanvas Sidebar -->
                         <div class="offcanvas offcanvas-end" id="demo">
                           <div class="offcanvas-header">
-                            <h1 class="offcanvas-title">Flight Detail</h1>
+                            <h1 class="offcanvas-title">Chi Tiết Chuyến Bay</h1>
                             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
                           </div>
                           <div class="offcanvas-body">
-                            <p>Some text lorem ipsum.</p>
-                            <p>Some text lorem ipsum.</p>
                             <button class="btn btn-secondary" type="button">A Button</button>
+                          </div>
+                        </div>
+                        <div class="modal-confirm" id="deleteConfirmationModal">
+                          <div class="modal-content">
+                            <span class="close" id="closeModal">&times;</span>
+                            <h3>Bạn có chắc chắn muốn xóa chuyến bay này?</h3>
+                            <div class="modal-actions">
+                              <button id="confirmDeleteBtn" class="btn btn-danger" th:attr="flight-id=${flight.id}">Xác nhận</button>
+                              <button id="cancelDeleteBtn" class="btn btn-dark">Hủy</button>
+                            </div>
                           </div>
                         </div>
                       </tr>
@@ -385,6 +392,9 @@
     integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM"></script>
@@ -394,6 +404,7 @@
   <script src="/admin/js/main.js"></script>
   <script src="/admin/js/search.js"></script>
   <script src="/admin/js/ultil.js"></script>
+  <script src="/admin/js/crud.js"></script>
 
 </body>
 

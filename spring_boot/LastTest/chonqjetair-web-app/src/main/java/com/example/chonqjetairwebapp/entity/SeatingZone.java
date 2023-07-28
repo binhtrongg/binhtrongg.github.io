@@ -1,5 +1,6 @@
 package com.example.chonqjetairwebapp.entity;
 import com.example.chonqjetairwebapp.statics.CabinClass;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,5 +26,6 @@ public class SeatingZone extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name = "aircraft_type_id")
+    @JsonIgnore
     private AircraftType aircraftType;
 }

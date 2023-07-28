@@ -1,101 +1,74 @@
-
-$('.btn-add,.btn-subtract').on('click touchstart', function () {
-
-    const qadult = $('#f-qadult').val();
-    const qchild = $('#f-qchild').val();
-    const qinfant = $('#f-qinfant').val();
-
-    $('.qstring').text(` ${qadult} Adults - ${qchild} Childs - ${qinfant} Infants`);
-    event.stopPropagation();
-    event.preventDefault();
-});
-
-
+// JavaScript
+let sum = 1; // Đặt sum ban đầu là 1 để phù hợp với số hành khách ban đầu là 1
 
 function addValue(a) {
-    const sum = a++;
-    $('.final-count').text(`${sum}`);
+    sum += a;
+    if (sum < 0) sum = 1; // Đảm bảo tổng số hành khách không âm
+    $('.final-count').text(`${sum} Passenger`);
 }
 
-var i = 0;
+let i = 1;
+let y = 0;
+let z = 0;
 
 $('.btn-add').on('click touchstart', function () {
     const value = ++i;
     $('.pcount').text(`${value}`);
-    addValue(value);
+    addValue(1);
     event.stopPropagation();
     event.preventDefault();
 });
 
-
 $('.btn-subtract').on('click touchstart', function () {
-    if (i == 1) {
+    if (i === 1) {
+        $(this).addClass('active');
         $('.pcount').text(1);
-        addValue(1);
-
+        addValue(0);
     } else {
         const value = --i;
         $('.pcount').text(`${value}`);
-        addValue(value);
+        addValue(-1);
     }
     event.stopPropagation();
     event.preventDefault();
 });
-
 
 $('.btn-add-c').on('click touchstart', function () {
-    const value = ++i;
+    const value = ++y;
     $('.ccount').text(`${value}`);
-    addValue(value);
+    addValue(1);
     event.stopPropagation();
     event.preventDefault();
 });
-
 
 $('.btn-subtract-c').on('click touchstart', function () {
-    if (i == 1) {
-        $('.ccount').text(1);
-        addValue(1);
+    if (y === 0) { // Nếu không còn crew (y === 0) thì không trừ được nữa
+        $('.ccount').text(0);
     } else {
-        const value = --i;
+        const value = --y;
         $('.ccount').text(`${value}`);
-        addValue(value);
+        addValue(-1);
     }
     event.stopPropagation();
     event.preventDefault();
 });
-
-
 
 $('.btn-add-in').on('click touchstart', function () {
-    const value = ++i;
+    const value = ++z;
     $('.incount').text(`${value}`);
-    addValue(value);
+    addValue(1);
     event.stopPropagation();
     event.preventDefault();
 });
 
-
 $('.btn-subtract-in').on('click touchstart', function () {
-    if (i == 1) {
-        $('.incount').text(1);
-        addValue(1);
+    if (z === 0) { // Nếu không còn infants (z === 0) thì không trừ được nữa
+        $('.incount').text(0);
     } else {
-        const value = --i;
+        const value = --z;
         $('.incount').text(`${value}`);
-        addValue(value);
+        addValue(-1);
     }
     event.stopPropagation();
     event.preventDefault();
-});
-
-
-
-$(document).ready(function () {
-    $('.cabin-list button').click(function () {
-        event.stopPropagation();
-        event.preventDefault();
-        $('.cabin-list button.active').removeClass("active");
-        $(this).addClass("active");
-    });
 });

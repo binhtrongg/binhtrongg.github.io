@@ -23,6 +23,6 @@ public class FlightBooking extends BaseEntity{
     @OneToOne(mappedBy = "flightBooking")
     Payment payment;
 
-    @OneToMany(mappedBy = "flightBooking",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "flightBooking")
     private Set<SeatBookingDetail> seatBookingDetails = new HashSet<>();
 }

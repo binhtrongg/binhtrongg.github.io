@@ -26,7 +26,7 @@ public class Flight extends BaseEntity {
     @Column
     private ZonedDateTime arrivalTime;
 
-    @OneToMany(mappedBy = "flight", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "flight")
     @Fetch(FetchMode.SUBSELECT)
     private Set<FlightBooking> bookings = new HashSet<>();
 
@@ -39,6 +39,6 @@ public class Flight extends BaseEntity {
     @ManyToOne
     private Airport destination;
 
-    @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "flight")
     private Set<SeatPricing> seatPricings = new HashSet<>();
 }

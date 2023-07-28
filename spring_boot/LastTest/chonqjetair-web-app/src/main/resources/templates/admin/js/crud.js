@@ -32,3 +32,37 @@ $(document).ready(function () {
     })
 })
 
+
+
+$(document).ready(function() {
+    $('.delete-flight-btn').click(function() {
+        $('#deleteConfirmationModal').show();
+    });
+
+    $('#closeModal').click(function () {
+        $('#deleteConfirmationModal').hide()
+    });
+
+    $('#confirmDeleteBtn').click(function() {
+        const flightId = $(this).attr('flight-id');
+        console.log(flightId)
+
+        $.ajax({
+            url:"/api/v1/flights/"+flightId,
+            type:"DELETE",
+            contentType: 'application/json',
+            success: function (response) {
+                toastr.success("Xóa Chuyến Bay Thành Công")
+            },
+            error: function (xhr, status, error) {
+                toastr.error("Xóa Chuyến Bay Thất Bại")
+            }
+        })
+        ;
+    });
+
+    $('#cancelDeleteBtn').click(function () {
+        $('#deleteConfirmationModal').hide()
+    });
+});
+

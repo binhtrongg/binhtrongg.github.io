@@ -3,20 +3,20 @@ import com.example.chonqjetairwebapp.entity.Flight;
 import com.example.chonqjetairwebapp.exception.FlightNotFoundException;
 import com.example.chonqjetairwebapp.model.request.AdSearchFlightRequest;
 import com.example.chonqjetairwebapp.model.request.CreatFlightRequest;
+import com.example.chonqjetairwebapp.model.request.FlightSearchRequest;
 import com.example.chonqjetairwebapp.model.request.UpdateFlightRequest;
+import com.example.chonqjetairwebapp.model.response.CommonResponse;
 import com.example.chonqjetairwebapp.service.FlightService;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("")
-@Controller
+@RestController
 @NoArgsConstructor
 @Data
 public class FlightController {
@@ -29,17 +29,6 @@ public class FlightController {
         this.flightService = flightService;
     }
 
-
-    @GetMapping("/flight")
-    public String getAllFlight(@RequestParam(required = false, defaultValue = "1") Integer page,
-                               @RequestParam(required = false, defaultValue = "6") Integer pageSize,
-                               Model model) {
-        Page<Flight> pageInfo = flightService.findAll(page, pageSize);
-
-        model.addAttribute("pageInfo", pageInfo);
-        model.addAttribute("currentPage", page);
-        return "admin/db-vendor-hotels";
-    }
 
 
     @GetMapping("/add-flight")
@@ -58,14 +47,14 @@ public class FlightController {
     }
 
 
-    @PutMapping("/api/v1/flights/update/{id}")
+    @PutMapping("/api/v1/flights/{id}")
     public ResponseEntity<?> updateFlight(@RequestBody UpdateFlightRequest updateFlightRequest, @PathVariable("id") Long id) throws FlightNotFoundException {
             updateFlightRequest.setId(id);
             flightService.updateFlight(updateFlightRequest);
             return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("/api/v1/flights/delete/{id}")
+    @DeleteMapping("/api/v1/flights/{id}")
     public ResponseEntity<?> deleteFlight(@PathVariable("id") Long id) throws FlightNotFoundException {
             flightService.deleteFlight(id);
             return ResponseEntity.ok(HttpStatus.NO_CONTENT);
@@ -79,5 +68,9 @@ public class FlightController {
     @PostMapping("/api/v1/admin/flights/search")
     public ResponseEntity<?> adminSearch(@RequestBody AdSearchFlightRequest searchRequest){
         return ResponseEntity.ok(flightService.searchFlight(searchRequest));
+    }
+    @GetMapping("/api/v1/flights")
+    public CommonResponse<?> search(FlightSearchRequest request) {
+        return flightService.searchFlight(request);
     }
 }

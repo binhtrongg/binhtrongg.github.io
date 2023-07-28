@@ -107,24 +107,30 @@
                                                     <form action="#!">
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                                                                <div class="flight_Search_boxed">
-                                                                    <p>From</p>
-                                                                    <input type="text">
-                                                                    <div class="plan_icon_posation">
-                                                                        <i class="fas fa-plane-departure"></i>
+                                                                    <div class="position-relative">
+                                                                        <div class="flight_Search_boxed">
+                                                                            <p>From</p>
+                                                                            <input type="text" id="search-input-from">
+                                                                            <div class="plan_icon_posation">
+                                                                                <i class="fas fa-plane-departure"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                        <ul class="autocomplete-list-from"></ul>
                                                                     </div>
-                                                                </div>
                                                             </div>
                                                             <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-                                                                <div class="flight_Search_boxed">
-                                                                    <p>To</p>
-                                                                    <input type="text">
-                                                                    <div class="plan_icon_posation">
-                                                                        <i class="fas fa-plane-arrival"></i>
+                                                                <div class="position-relative">
+                                                                 <div class="flight_Search_boxed">
+                                                                        <p>To</p>
+                                                                        <input type="text" id="search-input-to">
+                                                                        <div class="plan_icon_posation">
+                                                                            <i class="fas fa-plane-arrival"></i>
+                                                                        </div>
+                                                                        <div class="range_plan">
+                                                                            <i class="fas fa-exchange-alt"></i>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="range_plan">
-                                                                        <i class="fas fa-exchange-alt"></i>
-                                                                    </div>
+                                                                    <ul class="autocomplete-list-to"></ul>
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4  col-md-6 col-sm-12 col-12">
@@ -132,7 +138,7 @@
                                                                     <div class="flight_Search_boxed date_flex_area">
                                                                         <div class="Journey_date">
                                                                             <p>Journey date</p>
-                                                                            <input type="date" value="2022-05-05">
+                                                                            <input type="date" value="2022-05-05" id="oneway-journey-date">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -229,38 +235,20 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="cabin-selection">
-                                                                                    <h6>Cabin Class</h6>
-                                                                                    <div class="cabin-list">
-                                                                                        <button type="button"
-                                                                                                class="label-select-btn">
-                                                                                            <span
-                                                                                                    class="muiButton-label">Economy
-                                                                                            </span>
-                                                                                        </button>
-                                                                                        <button type="button"
-                                                                                                class="label-select-btn active">
-                                                                                            <span
-                                                                                                    class="muiButton-label">
-                                                                                                Business
-                                                                                            </span>
-                                                                                        </button>
-                                                                                        <button type="button"
-                                                                                                class="label-select-btn">
-                                                                                            <span
-                                                                                                    class="MuiButton-label">First
-                                                                                                Class </span>
-                                                                                        </button>
-                                                                                    </div>
-                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <span>Business</span>
+                                                                    <div class="style1">
+                                                                        <select class="select-cabin-class">
+                                                                            <option value="Business">Business</option>
+                                                                            <option value="Economy">Economy</option>
+                                                                            <option value="FirstClass">Firstclass</option>
+                                                                        </select>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="top_form_search_button">
-                                                                <button class="btn btn_theme btn_md">Search</button>
+                                                                <button class="btn btn_theme btn_md search-flight-btn">Search</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -278,7 +266,10 @@
                                                             <div class="col-lg-3  col-md-6 col-sm-12 col-12">
                                                                 <div class="flight_Search_boxed">
                                                                     <p>From</p>
-                                                                    <input type="text">
+                                                                    <div>
+                                                                        <input type="text">
+                                                                        <ul class="autocomplete-list-from"></ul>
+                                                                    </div>
                                                                     <div class="plan_icon_posation">
                                                                         <i class="fas fa-plane-departure"></i>
                                                                     </div>
@@ -287,7 +278,10 @@
                                                             <div class="col-lg-3  col-md-6 col-sm-12 col-12">
                                                                 <div class="flight_Search_boxed">
                                                                     <p>To</p>
-                                                                    <input type="text">
+                                                                    <div>
+                                                                        <input type="text">
+                                                                        <ul class="autocomplete-list-to"></ul>
+                                                                    </div>
                                                                     <div class="plan_icon_posation">
                                                                         <i class="fas fa-plane-arrival"></i>
                                                                     </div>
@@ -2135,6 +2129,8 @@
     <script src="assets/js/form-dropdown.js"></script>
     <script src="admin/js/ultil.js"></script>
     <script src="admin/js/search.js"></script>
+    <script src="assets/js/handleJs/client-search.js"></script>
+
 </th:block>
 </body>
 </html>

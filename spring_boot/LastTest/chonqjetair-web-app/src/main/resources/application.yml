@@ -3,7 +3,7 @@
 # ===============================
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/db-jet-air?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/db-skyhub?createDatabaseIfNotExist=true
     username: root
     password:
 

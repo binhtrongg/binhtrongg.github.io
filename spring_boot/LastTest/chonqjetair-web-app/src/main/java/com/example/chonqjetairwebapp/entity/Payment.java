@@ -26,7 +26,7 @@ public class Payment extends BaseEntity{
 
     String paymentMethod;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "transaction_id")
     Transaction transaction;
 

@@ -9,10 +9,13 @@ import java.time.ZonedDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class FlightSearchRequest {
+public class FlightSearchRequest extends BaseSearchRequest{
     String destination;
     String origin;
-
     ZonedDateTime departureTime;
-    ZonedDateTime 
+    ZonedDateTime arrivalTime;
+    int numAdults;
+    int numChildren;
+    int numInfants;
+    String cabinClass;
 }

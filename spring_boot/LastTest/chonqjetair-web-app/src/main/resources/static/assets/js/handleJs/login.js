@@ -38,9 +38,15 @@ $(".login-btn").click(function () {
             }
             localStorage.setItem("userInfor", JSON.stringify(userInfor))
             $('#myModal').modal('hide');
-            setTimeout(function () {
-                location.reload();
-            }, 1000);
+            console.log(response.roles.includes("ADMIN"))
+            if (response.roles.includes("ADMIN")){
+                location.href="http://localhost:8080/admin/flights"
+            }
+            else {
+                setTimeout(function () {
+                    location.reload();
+                }, 1000);
+            }
 
         },
         error: function (xhr, status, error) {

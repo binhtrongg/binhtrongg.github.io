@@ -1,5 +1,6 @@
 package com.example.chonqjetairwebapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ public class AircraftType extends BaseEntity{
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "aircraftType", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "aircraftType", orphanRemoval = true)
+    @JsonIgnore
     private Set<SeatingZone> seatingZones = new HashSet<>();
 }

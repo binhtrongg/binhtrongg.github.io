@@ -57,7 +57,7 @@ function renderFlights(flights) {
               </button>
             </div>
             <div class="col-auto">
-              <button class="flex-center bg-light-2 rounded-4 size-35">
+              <button class="flex-center bg-light-2 rounded-4 size-35" onclick="deleteFlight(${flight.id})"">
                 <i class="icon-edit text-16 text-light-1"></i>
               </button>
             </div>

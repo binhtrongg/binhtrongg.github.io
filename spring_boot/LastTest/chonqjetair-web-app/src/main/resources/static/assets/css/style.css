@@ -590,6 +590,19 @@ section {
     position: relative;
 }
 
+.select-cabin-class{
+    outline: none;
+    border: none;
+    background-color: #f5eefd;
+    font-size: 14px;
+}
+
+.select-cabin-class option{
+    padding: 100px;
+    background-color: #f5eefd;
+    font-size: 13px;
+}
+
 .plan_icon_posation {
     position: absolute;
     top: 20px;
@@ -621,6 +634,43 @@ section {
 
 .flight_Search_boxed p {
     font-size: 14px;
+}
+
+.location{
+    font-size: 14px;
+    color: black;
+    font-weight: bold;
+}
+.airport{
+    font-size: 12px;
+}
+.highlight {
+    color: blue;
+}
+
+.autocomplete-list-from,.autocomplete-list-to {
+    position: absolute;
+    z-index: 9999;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+.autocomplete-list-from li,.autocomplete-list-to li {
+    padding: 0px 12px;
+    cursor: pointer;
+}
+
+.autocomplete-list-from li:hover ,.autocomplete-list-to li:hover{
+    background-color: #f1f1f1;
 }
 
 .flight_Search_boxed input {

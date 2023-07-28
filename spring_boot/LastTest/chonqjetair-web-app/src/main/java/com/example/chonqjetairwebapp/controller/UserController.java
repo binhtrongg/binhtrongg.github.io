@@ -78,4 +78,5 @@ public class UserController {
         userService.resentActivationEmail(request.getEmail());
         return ResponseEntity.ok(HttpStatus.CREATED);
     }
+
 }
