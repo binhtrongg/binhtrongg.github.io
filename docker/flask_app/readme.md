@@ -15,5 +15,3 @@ Trong Docker, **mạng bridge** là một cơ chế ảo cho phép các containe
 - Việc tự tạo mạng bridge cho phép bạn tùy chỉnh cấu hình mạng như gán địa chỉ IP cố định, sử dụng DHCP, chia sẻ dải mạng riêng, v.v.
 - Container có thể kết nối vào mạng bridge do người dùng tạo bằng cách chỉ định tên mạng khi sử dụng lệnh `docker run`.
 - Mạng bridge do người dùng tự tạo giúp bạn tạo ra các mô hình mạng phức tạp hơn cho các ứng dụng Docker của bạn.
-
-**Kết Luận:** Hiểu biết về sự khác biệt giữa mạng bridge mặc định và mạng bridge do người dùng tự tạo trong Docker là quan trọng để bạn có thể cấu hình và triển khai các ứng dụng Docker một cách hiệu quả và phù hợp với nhu cầu của bạn.
